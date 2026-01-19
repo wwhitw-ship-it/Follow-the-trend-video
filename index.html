@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>順勢影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:ital,wght@1,300;1,700&display=swap');
+        
+        :root {
+            --dark-wood: #3d332d;
+            --bronze-gold: #c9a67a;
+            --cream-white: #faf8f6;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--dark-wood);
+            color: var(--cream-white);
+            scroll-behavior: smooth;
+        }
+
+        .font-serif-italic {
+            font-family: 'Noto Serif TC', serif;
+            font-style: italic;
+        }
+
+        .gold-border { border-color: rgba(201, 166, 122, 0.2); }
+        .gold-text { color: var(--bronze-gold); }
+        .gold-bg { background-color: var(--bronze-gold); }
+        .gold-bg-soft { background-color: rgba(201, 166, 122, 0.1); }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-wood); }
+        ::-webkit-scrollbar-thumb { background: var(--bronze-gold); border-radius: 4px; }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: flex; animation: fadeIn 0.5s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="relative h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#c9a67a33]">
+        <div class="absolute inset-0 opacity-20 pointer-events-none" 
+             style="background: radial-gradient(circle at center, var(--bronze-gold) 0%, transparent 70%);"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <p class="gold-text tracking-[0.4em] mb-6 text-base md:text-lg font-medium">2026 RENATA 蕾娜塔髮品 全新企劃</p>
+            <h1 class="text-6xl md:text-8xl font-light mb-8 tracking-tight">
+                順勢影音<span class="gold-text">沙龍</span>
+            </h1>
+            <p class="text-2xl md:text-3xl font-serif-italic mb-12 opacity-90">
+                「順著天賦拍，流量自然來」
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#about" class="px-10 py-4 rounded-full text-base tracking-widest border border-[#c9a67a] gold-text hover:bg-[#c9a67a] hover:text-[#3d332d] transition-all duration-300 font-bold inline-block">
+                    立即探索靈魂腳本
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Philosophy -->
+    <section id="about" class="py-24 container mx-auto px-6 max-w-5xl">
+        <div class="text-center mb-20">
+            <h2 class="text-3xl md:text-4xl mb-8 font-medium gold-text">宇宙法則與自我連結</h2>
+            <p class="leading-relaxed text-xl md:text-2xl opacity-90 font-light">
+                在宇宙法則的定律中，每一個靈魂都有屬於自己獨特魅力，只是缺少了一些與自己的連結。
+                短影音並非只是追求流量與變現，而是真實展現獨特價值，擴散影響力的過程。
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 mt-16 items-stretch">
+            <div class="p-10 border border-[#c9a67a4d] rounded-3xl bg-[#3d332d] flex flex-col justify-center shadow-xl">
+                <h3 class="text-2xl mb-6 font-bold gold-text">看見流量之外的價值</h3>
+                <p class="opacity-90 text-base md:text-lg leading-relaxed">
+                    目前市場上的短影音多以「變現」為主。但在變現之前，我們想協助您補上最關鍵的一塊——將真實的您呈現於影音中。
+                    不僅僅是為了數據，更是為了累積未來可被搜尋、具備生命力的價值型「數位資產」。
+                </p>
+            </div>
+            <div class="flex flex-col justify-center gap-8 px-4 text-left">
+                <div class="flex items-center gap-6 group">
+                    <div class="p-4 rounded-full gold-bg-soft gold-text group-hover:bg-[#c9a67a] group-hover:text-[#3d332d] transition-all"><i data-lucide="star" class="w-7 h-7"></i></div>
+                    <div>
+                        <p class="text-lg font-bold">紫微斗數分析</p>
+                        <p class="text-base opacity-70">找到世界上的個人使用導航方向</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 group">
+                    <div class="p-4 rounded-full gold-bg-soft gold-text group-hover:bg-[#c9a67a] group-hover:text-[#3d332d] transition-all"><i data-lucide="video" class="w-7 h-7"></i></div>
+                    <div>
+                        <p class="text-lg font-bold">靈魂腳本建議</p>
+                        <p class="text-base opacity-70">減少拍攝阻力，不費力地創作</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Cards -->
+    <section class="py-24 bg-[#342c27]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-light mb-6">服務項目</h2>
+                <div class="w-24 h-1 gold-bg mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                <!-- Card 1 -->
+                <div class="group p-10 rounded-[32px] border border-[#c9a67a1a] hover:border-[#c9a67a80] bg-[#3d332d] transition-all duration-500 shadow-lg">
+                    <div class="mb-8 gold-text group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="compass" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">紫微斗數：柔性解盤</h3>
+                    <p class="gold-text text-base mb-6 font-bold">指引你靈魂方向</p>
+                    <p class="text-base opacity-80 mb-8 leading-relaxed">提供「個人導航方向」報告書，包含「靈魂腳本」與「自在引導」。協助你找到個人創作方向。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">靈魂腳本</span>
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">自在引導</span>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="group p-10 rounded-[32px] border border-[#c9a67a1a] hover:border-[#c9a67a80] bg-[#3d332d] transition-all duration-500 shadow-lg">
+                    <div class="mb-8 gold-text group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="camera" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">光之沙龍：拍攝企劃</h3>
+                    <p class="gold-text text-base mb-6 font-bold">拍出屬於你的短影音</p>
+                    <p class="text-base opacity-80 mb-8 leading-relaxed">三種靈活方案：試拍、入門、訂閱。依據個人特質規劃，讓數位資產具備生命力。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">順流拍攝</span>
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">成果分析</span>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="group p-10 rounded-[32px] border border-[#c9a67a1a] hover:border-[#c9a67a80] bg-[#3d332d] transition-all duration-500 shadow-lg">
+                    <div class="mb-8 gold-text group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="layers" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">天賦綻放：實戰課</h3>
+                    <p class="gold-text text-base mb-6 font-bold">從種子到開花的旅程</p>
+                    <p class="text-base opacity-80 mb-8 leading-relaxed">結合「大腦使用技術」改善面對鏡頭的緊張感。包含體驗沙龍與五大成長階段。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">種子覺醒</span>
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">實戰訓練</span>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="group p-10 rounded-[32px] border border-[#c9a67a1a] hover:border-[#c9a67a80] bg-[#3d332d] transition-all duration-500 shadow-lg">
+                    <div class="mb-8 gold-text group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="sparkles" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">天賦錦囊：靈感包</h3>
+                    <p class="gold-text text-base mb-6 font-bold">持續產出的祕笈</p>
+                    <p class="text-base opacity-80 mb-8 leading-relaxed">提供腳本組合包，解決靈感枯竭。適合需要自主拍攝但缺乏切入點的創作者。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">腳本組合</span>
+                        <span class="text-sm px-3 py-1.5 rounded-full gold-bg-soft gold-text border border-[#c9a67a33] font-bold">文字指引</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Tables -->
+    <section class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8 text-center md:text-left">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-light mb-6 gold-text">光之沙龍：拍攝企劃</h2>
+                    <p class="opacity-80 text-xl font-light">順流拍攝企劃，拍出屬於您的數位資產</p>
+                </div>
+                <div class="flex bg-[#3d332d] p-1.5 rounded-full border border-[#c9a67a4d] shadow-inner">
+                    <button onclick="switchTab('trial')" id="btn-trial" class="tab-btn px-8 py-3 rounded-full text-sm font-bold transition-all bg-[#c9a67a] text-[#3d332d]">試拍方案</button>
+                    <button onclick="switchTab('starter')" id="btn-starter" class="tab-btn px-8 py-3 rounded-full text-sm font-bold transition-all text-white opacity-60">入門方案</button>
+                    <button onclick="switchTab('subscription')" id="btn-subscription" class="tab-btn px-8 py-3 rounded-full text-sm font-bold transition-all text-white opacity-60">訂閱方案</button>
+                </div>
+            </div>
+
+            <div id="content-trial" class="tab-content active bg-[#3d332d] border border-[#c9a67a33] rounded-[48px] p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center shadow-2xl relative">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h3 class="text-4xl font-light mb-4">試拍方案</h3>
+                    <p class="text-5xl font-serif-italic gold-text mb-4 font-bold">$8,800</p>
+                    <p class="text-xl opacity-70 mb-10 font-medium">$2,200 / 支</p>
+                    <div class="inline-block px-6 py-3 rounded-xl gold-bg-soft border border-[#c9a67a33]">
+                        <p class="text-base font-serif-italic gold-text font-bold text-left">適合初次嘗試流程者</p>
+                    </div>
+                </div>
+                <div class="md:w-2/3 grid md:grid-cols-2 gap-y-6 gap-x-12 text-left">
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">4 支短影音</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">10 支腳本選 4 支</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">拍攝時間 1 小時</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">出片時間預計 14 天</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">基礎剪輯呈現</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">含一次修改</span></div>
+                </div>
+            </div>
+
+            <div id="content-starter" class="tab-content bg-[#3d332d] border border-[#c9a67a33] rounded-[48px] p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center shadow-2xl relative">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h3 class="text-4xl font-light mb-4">入門方案</h3>
+                    <p class="text-5xl font-serif-italic gold-text mb-4 font-bold">$20,000</p>
+                    <p class="text-xl opacity-70 mb-10 font-medium">$2,500 / 支</p>
+                    <div class="inline-block px-6 py-3 rounded-xl gold-bg-soft border border-[#c9a67a33]">
+                        <p class="text-base font-serif-italic gold-text font-bold text-left">Bonus: 個人化虛擬人偶*1</p>
+                    </div>
+                </div>
+                <div class="md:w-2/3 grid md:grid-cols-2 gap-y-6 gap-x-12 text-left">
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">8 支短影音</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">15 支腳本選 8 支</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">拍攝時間 3 小時</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">出片時間預計 28 天</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">含基礎剪輯與圖樣輔助</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">含一次修改</span></div>
+                </div>
+            </div>
+
+            <div id="content-subscription" class="tab-content bg-[#3d332d] border border-[#c9a67a33] rounded-[48px] p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center shadow-2xl relative">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h3 class="text-4xl font-light mb-4">訂閱方案</h3>
+                    <p class="text-5xl font-serif-italic gold-text mb-4 font-bold">$22,500</p>
+                    <p class="text-xl opacity-70 mb-10 font-medium">$2,250 / 支</p>
+                    <div class="inline-block px-6 py-3 rounded-xl gold-bg-soft border border-[#c9a67a33]">
+                        <p class="text-base font-serif-italic gold-text font-bold text-left">Bonus: 虛擬人偶*6 (可打包)</p>
+                    </div>
+                </div>
+                <div class="md:w-2/3 grid md:grid-cols-2 gap-y-6 gap-x-12 text-left">
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">每月 10 支短影音</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">最少訂閱 2 個月</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">個人特質及喜好規劃</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">拍攝時間 5 小時</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">AI 動態素材與節奏搭配</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6"></i><span class="text-lg opacity-90">含一次修改</span></div>
+                </div>
+            </div>
+            
+            <div class="mt-10 pt-10 border-t border-[#c9a67a1a] flex flex-col lg:flex-row justify-between items-center gap-10">
+                <div class="text-base opacity-60 leading-relaxed max-w-md text-left">
+                    <p class="font-bold mb-1 gold-text">注意事項：</p>
+                    * 價格皆含稅，車資另計。新竹以北 $1,000 / 新竹以南 $3,000 / 嘉義以南 $5,000
+                </div>
+                <button class="whitespace-nowrap flex items-center gap-3 px-10 py-5 gold-bg text-[#3d332d] rounded-full text-lg font-black hover:shadow-[0_0_35px_rgba(201,166,122,0.6)] transition-all transform hover:-translate-y-1">
+                    查看方案範本 <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Five Stages Journey -->
+    <section class="py-24 bg-[#342c27] border-y border-[#c9a67a1a]">
+        <div class="container mx-auto px-6 overflow-hidden">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-light mb-6 gold-text">天賦綻放：五大成長階段</h2>
+                <p class="text-xl opacity-80 font-light max-w-2xl mx-auto">從種子到開花的實戰過程，結合大腦使用技術協助您全方位提升</p>
+            </div>
+            
+            <div class="relative flex flex-col md:flex-row justify-between items-start gap-12 md:gap-4 mt-10 text-left">
+                <div class="absolute top-0 bottom-0 left-7 md:left-0 md:top-14 md:bottom-auto md:w-full h-auto md:h-px bg-[#c9a67a4d]"></div>
+                
+                <div class="relative z-10 flex md:flex-col items-center md:items-start gap-8 md:gap-6 md:w-1/5 group">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 shrink-0 text-2xl font-black shadow-lg">1</div>
+                    <div><p class="text-base gold-text font-black tracking-[0.2em] mb-1 uppercase">扎根</p><h4 class="text-2xl font-bold mb-4">定位</h4><p class="text-base md:text-lg opacity-80 leading-relaxed">深入命盤特質，建立穩固品牌根基</p></div>
+                </div>
+                <div class="relative z-10 flex md:flex-col items-center md:items-start gap-8 md:gap-6 md:w-1/5 group">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 shrink-0 text-2xl font-black shadow-lg">2</div>
+                    <div><p class="text-base gold-text font-black tracking-[0.2em] mb-1 uppercase">萌芽</p><h4 class="text-2xl font-bold mb-4">主題</h4><p class="text-base md:text-lg opacity-80 leading-relaxed">從特質中抽芽，創建適合創作方向</p></div>
+                </div>
+                <div class="relative z-10 flex md:flex-col items-center md:items-start gap-8 md:gap-6 md:w-1/5 group">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 shrink-0 text-2xl font-black shadow-lg">3</div>
+                    <div><p class="text-base gold-text font-black tracking-[0.2em] mb-1 uppercase">枝葉</p><h4 class="text-2xl font-bold mb-4">內容</h4><p class="text-base md:text-lg opacity-80 leading-relaxed">產出豐富靈魂腳本，讓內容具生命力</p></div>
+                </div>
+                <div class="relative z-10 flex md:flex-col items-center md:items-start gap-8 md:gap-6 md:w-1/5 group">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 shrink-0 text-2xl font-black shadow-lg">4</div>
+                    <div><p class="text-base gold-text font-black tracking-[0.2em] mb-1 uppercase">獨特花色</p><h4 class="text-2xl font-bold mb-4">差異化</h4><p class="text-base md:text-lg opacity-80 leading-relaxed">調配專屬性格與情感美學</p></div>
+                </div>
+                <div class="relative z-10 flex md:flex-col items-center md:items-start gap-8 md:gap-6 md:w-1/5 group">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 shrink-0 text-2xl font-black shadow-lg">5</div>
+                    <div><p class="text-base gold-text font-black tracking-[0.2em] mb-1 uppercase">綻放顯現</p><h4 class="text-2xl font-bold mb-4">拍攝剪輯</h4><p class="text-base md:text-lg opacity-80 leading-relaxed">技術將積累轉化為動人影像</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-24 container mx-auto px-6 text-left">
+        <div class="grid lg:grid-cols-3 gap-20 items-start">
+            <div>
+                <h2 class="text-3xl font-light mb-8 tracking-[0.3em] uppercase">RENATA</h2>
+                <p class="text-lg opacity-80 leading-loose font-light">蕾娜塔髮品深耕美髮產業。自 2022 年起經營專業影片內容，2026 年全面啟動短影音全新企劃，致力於協助創作者順應天賦綻放，累積具價值的數位資產。</p>
+            </div>
+            <div>
+                <h3 class="gold-text text-base font-black mb-8 tracking-[0.3em] uppercase border-b border-[#c9a67a33] pb-2 inline-block">服務細則與回饋</h3>
+                <ul class="text-lg space-y-8 opacity-90">
+                    <li class="flex items-start gap-5"><i data-lucide="clock" class="gold-text w-6 h-6 mt-1"></i><div><p class="font-bold">柔性解盤報告</p><p class="text-base opacity-70">提供出生資料後 48 小時內完成</p></div></li>
+                    <li class="flex items-start gap-5"><i data-lucide="book-open" class="gold-text w-6 h-6 mt-1"></i><div><p class="font-bold">天賦錦囊靈感包</p><p class="text-base opacity-70">一份 10 支腳本組合，優惠 $4,800</p></div></li>
+                    <li class="flex items-start gap-5"><i data-lucide="award" class="gold-text w-6 h-6 mt-1"></i><div><p class="font-bold">長期訂閱回饋</p><p class="text-base opacity-70">回饋優惠享單月金額打 7 折 ($21,000)</p></div></li>
+                </ul>
+            </div>
+            <div class="p-10 gold-bg-soft rounded-[40px] border border-[#c9a67a33] shadow-xl">
+                <h3 class="text-2xl font-bold mb-6">預約您的靈魂導航</h3>
+                <p class="text-lg opacity-80 mb-8 italic">「每次的校正，都是來自於對您真實狀態的觀察。」</p>
+                <div class="space-y-5">
+                    <button class="w-full py-5 gold-bg text-[#3d332d] rounded-2xl text-lg font-black tracking-[0.2em] hover:brightness-110 transition-all shadow-lg">LINE 專人預約</button>
+                    <button class="w-full py-5 bg-transparent border border-[#c9a67a66] text-white rounded-2xl text-lg font-bold tracking-[0.1em] hover:border-[#c9a67a] transition-all">索取詳細企劃書 (PDF)</button>
+                </div>
+            </div>
+        </div>
+        <div class="mt-24 pt-10 border-t border-[#c9a67a1a] text-center">
+            <p class="text-sm opacity-40 tracking-[0.5em] uppercase font-medium">© 2026 RENATA SALON. BORN WITH TALENT, FLOW WITH ART.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-[#c9a67a]', 'text-[#3d332d]');
+                btn.classList.add('text-white', 'opacity-60');
+            });
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('bg-[#c9a67a]', 'text-[#3d332d]');
+            activeBtn.classList.remove('text-white', 'opacity-60');
+
+            // Update Content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('content-' + tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
