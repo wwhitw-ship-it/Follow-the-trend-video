@@ -137,31 +137,39 @@
             border: 1px solid rgba(201, 166, 122, 0.3);
         }
 
-        /* Scarcity Bar Animation */
+        /* Animations */
         @keyframes pulse-gold {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
         .scarcity-pulse { animation: pulse-gold 2s infinite; }
+
+        @keyframes glow-dot {
+            0% { box-shadow: 0 0 5px var(--bronze-gold); }
+            50% { box-shadow: 0 0 15px var(--bronze-gold), 0 0 5px rgba(255,255,255,0.5); }
+            100% { box-shadow: 0 0 5px var(--bronze-gold); }
+        }
+        .glowing-dot {
+            animation: glow-dot 3s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Mobile Sticky CTA (New Addition for Marketing Conversion) -->
+    <!-- Mobile Sticky CTA -->
     <div class="fixed bottom-6 left-4 right-4 z-50 md:hidden">
         <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="w-full bg-[#c9a67a] text-[#3d332d] py-4 rounded-full font-black text-lg shadow-2xl border border-white/20 backdrop-blur-md flex items-center justify-center gap-2">
             <span>立即預約</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>
         </button>
     </div>
 
-    <!-- Hero Section -->
+    <!-- 1. Hero Section (解方) -->
     <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#c9a67a33] px-6 text-center">
         <div class="absolute inset-0 opacity-20 pointer-events-none" style="background: radial-gradient(circle at center, var(--bronze-gold) 0%, transparent 75%);"></div>
         <div class="container mx-auto relative z-10 py-20">
             <p class="gold-text tracking-[0.4em] mb-6 text-sm md:text-lg font-medium uppercase text-center">2026 RENATA 蕾娜塔髮品 全新企劃</p>
             <h1 class="text-5xl md:text-8xl font-light mb-8 tracking-tight text-center">順勢影音<span class="gold-text">沙龍</span></h1>
             
-            <!-- Reverted Subheadline -->
             <p class="text-xl md:text-3xl font-serif-italic mb-8 opacity-90 leading-relaxed text-center">
                 「順著天賦拍，流量自然來」
             </p>
@@ -173,63 +181,7 @@
         </div>
     </section>
 
-    <!-- Brand Timeline -->
-    <section class="py-16 md:py-24 bg-[#3d332d] border-b border-white/5">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:flex md:flex-row justify-center items-center gap-8 md:gap-16 mb-12">
-                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2018</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">品牌誕生</h4></div>
-                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2021</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">數位轉型</h4></div>
-                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2024</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">天賦影音成形</h4></div>
-                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2026</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">沙龍正式啟動</h4></div>
-            </div>
-            
-            <!-- REPLACED: Stats Grid with Text Banner -->
-            <div class="pt-16 border-t border-white/5 text-center">
-                <p class="text-2xl md:text-4xl font-serif-italic gold-text font-bold tracking-widest opacity-90">
-                    「降低你拍片阻力，持續累積影響力」
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experiential Event (Updated with Scarcity Marketing) -->
-    <section id="event-march" class="py-24 bg-[#342c27] border-b border-[#c9a67a33]">
-        <div class="container mx-auto px-6 max-w-6xl text-center lg:text-left">
-            <div class="bg-[#3d332d] rounded-[48px] border-2 border-[#c9a67a] p-8 md:p-16 relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 gold-bg text-[#3d332d] px-12 py-2 rotate-45 translate-x-10 translate-y-4 font-black tracking-widest text-sm">LIMITED</div>
-                <div class="flex flex-col lg:flex-row items-center gap-12 relative z-10 text-left">
-                    <div class="w-full lg:w-1/2">
-                        <span class="gold-text font-bold tracking-widest uppercase mb-4 block">Experiential Course</span>
-                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">3/25-3/26<br><span class="gold-text">雙日快閃體驗課</span></h2>
-                        
-                        <!-- Marketing Addition: Scarcity Progress Bar -->
-                        <div class="mb-8">
-                            <div class="flex justify-between items-end mb-2">
-                                <span class="text-xs font-bold gold-text opacity-80">名額倒數中</span>
-                                <span class="text-xs font-black gold-text scarcity-pulse">僅剩最後 2 席</span>
-                            </div>
-                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-[#c9a67a] to-[#fff] w-[80%]"></div>
-                            </div>
-                        </div>
-
-                        <p class="text-lg opacity-80 mb-8 leading-relaxed">親身體驗現場解盤與影音引導的魅力，產出屬於您的 30 秒天賦影音。限量名額預約中。</p>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full font-black text-xl shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap">立即卡位 $2,980</button>
-                            <button onclick="window.openModal('event')" class="w-full sm:w-auto px-12 py-5 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-xl hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">了解課程詳情</button>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
-                        <div class="event-photo rounded-3xl"><img src="https://images.unsplash.com/photo-1595475244012-2e924296ce67?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
-                        <div class="event-photo rounded-3xl mt-8"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pain Points Section -->
+    <!-- 2. Pain Points Section (解決什麼問題) -->
     <section id="pain-points" class="py-20 md:py-32 bg-[#342c27] border-b border-[#c9a67a1a]">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="text-center mb-16">
@@ -262,8 +214,87 @@
         </div>
     </section>
 
-    <!-- Comparison Section -->
-    <section class="py-20 md:py-32 bg-[#3d332d]">
+    <!-- 3. Self Introduction (Part 1: Brand Timeline - UPDATE) -->
+    <section class="py-16 md:py-24 bg-[#3d332d] border-b border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:flex md:flex-row justify-center items-start gap-8 md:gap-16">
+                <!-- Timeline Item 1 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
+                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2007</span>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">品牌誕生</h4>
+                </div>
+                <!-- Timeline Item 2 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
+                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2022</span>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">數位轉型</h4>
+                </div>
+                <!-- Timeline Item 3 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
+                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2024</span>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">天賦影音成形</h4>
+                </div>
+                <!-- Timeline Item 4 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
+                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2026</span>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">沙龍正式啟動</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Self Introduction (Part 2: Gentle Manifesto / Values) -->
+    <section class="py-20 md:py-32 bg-[#3d332d] border-b border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none" style="background: radial-gradient(circle at center, #c9a67a 0%, transparent 60%);"></div>
+        <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+            <p class="gold-text font-serif-italic text-xl md:text-2xl mb-6 opacity-80">致 每一位願意深耕的美業職人</p>
+            <h2 class="text-3xl md:text-5xl font-light mb-8 leading-tight">「真實」是這時代<br>最稀缺的<span class="gold-text">商業競爭力</span></h2>
+            <div class="w-16 h-0.5 gold-bg mx-auto mb-10 opacity-50"></div>
+            
+            <p class="text-lg md:text-xl opacity-70 leading-relaxed mb-16 max-w-3xl mx-auto font-light">
+                與其追逐瞬息萬變的演算法，不如建立無可取代的個人品牌。<br>
+                在順勢影音沙龍，我們不教您演戲，而是協助您放大「本質」。<br>
+                <span class="text-white opacity-95 mt-6 block font-bold">因為唯有真實，才能篩選出頻率相近的高價值客群，<br>這才是讓業績細水長流的終極秘密。</span>
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="shield-check" class="w-5 h-5 gold-text"></i></div>
+                        <h4 class="text-lg font-bold gold-text">建立信任護城河</h4>
+                    </div>
+                    <p class="text-sm opacity-70 leading-relaxed">透過真實展現，讓客戶在踏入店門前就已對您產生深厚信任，大幅降低溝通成本與議價機率。</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="heart-handshake" class="w-5 h-5 gold-text"></i></div>
+                        <h4 class="text-lg font-bold gold-text">吸引精準高頻客群</h4>
+                    </div>
+                    <p class="text-sm opacity-70 leading-relaxed">不必討好所有人。順著天賦發出的訊號，自然會吸引懂您的客人，讓每一次服務都是愉快的交流。</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="trending-up" class="w-5 h-5 gold-text"></i></div>
+                        <h4 class="text-lg font-bold gold-text">累積複利型數位資產</h4>
+                    </div>
+                    <p class="text-sm opacity-70 leading-relaxed">影片不是消耗品，而是 24 小時為您工作的業務員。隨著時間推移，這些真實內容將持續為您帶來被動流量。</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="smile" class="w-5 h-5 gold-text"></i></div>
+                        <h4 class="text-lg font-bold gold-text">舒適永續的創作節奏</h4>
+                    </div>
+                    <p class="text-sm opacity-70 leading-relaxed">做自己最輕鬆。因為不需要「演」，所以不會累，這才是能讓您長期堅持、穩定產出的關鍵心法。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Plan Menu (Comparison) -->
+    <section class="py-20 md:py-32 bg-[#342c27]">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-light mb-6">為什麼選擇 <span class="gold-text">順勢影音</span>？</h2>
@@ -310,7 +341,43 @@
         </div>
     </section>
 
-    <!-- Pricing Tables -->
+    <!-- 4. Plan Menu (Experiential Event) -->
+    <section id="event-march" class="py-24 bg-[#342c27] border-b border-[#c9a67a33]">
+        <div class="container mx-auto px-6 max-w-6xl text-center lg:text-left">
+            <div class="bg-[#3d332d] rounded-[48px] border-2 border-[#c9a67a] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 gold-bg text-[#3d332d] px-12 py-2 rotate-45 translate-x-10 translate-y-4 font-black tracking-widest text-sm">LIMITED</div>
+                <div class="flex flex-col lg:flex-row items-center gap-12 relative z-10 text-left">
+                    <div class="w-full lg:w-1/2">
+                        <span class="gold-text font-bold tracking-widest uppercase mb-4 block">Experiential Course</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">3/25-3/26<br><span class="gold-text">雙日快閃體驗課</span></h2>
+                        
+                        <div class="mb-8">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold gold-text opacity-80">名額倒數中</span>
+                                <span class="text-xs font-black gold-text scarcity-pulse">僅剩最後 2 席</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-[#c9a67a] to-[#fff] w-[80%]"></div>
+                            </div>
+                        </div>
+
+                        <p class="text-lg opacity-80 mb-8 leading-relaxed">親身體驗現場解盤與影音引導的魅力，產出屬於您的 30 秒天賦影音。限量名額預約中。</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full font-black text-xl shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap">立即卡位 $2,980</button>
+                            <button onclick="window.openModal('event')" class="w-full sm:w-auto px-12 py-5 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-xl hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">了解課程詳情</button>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
+                        <div class="event-photo rounded-3xl"><img src="https://images.unsplash.com/photo-1595475244012-2e924296ce67?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
+                        <div class="event-photo rounded-3xl mt-8"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Plan Menu (Pricing Plans - Buttons Updated) -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="plans">
         <div class="container mx-auto px-6 max-w-7xl text-center">
             <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-center">光之沙龍：拍攝企劃</h2>
@@ -328,8 +395,8 @@
                         <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>掌握開場黃金 3 秒</li>
                     </ul>
                     <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('trial')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('trial')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
+                        <button onclick="window.selectPlanAndScroll('trial')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('trial')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
                     </div>
                 </div>
                 <!-- Starter -->
@@ -344,8 +411,8 @@
                         <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>專業內容視覺輔助</li>
                     </ul>
                     <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('starter')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('starter')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
+                        <button onclick="window.selectPlanAndScroll('starter')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('starter')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
                     </div>
                 </div>
                 <!-- Subscription -->
@@ -359,15 +426,15 @@
                         <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>全年度營運策略建議</li>
                     </ul>
                     <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
+                        <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Column & Video -->
+    <!-- 5. Articles (Professional Insights) -->
     <section class="py-20 md:py-32 bg-[#342c27] border-y border-white/5">
         <div class="container mx-auto px-6 max-w-6xl text-center">
             <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">專業 <span class="gold-text text-center">內容專欄</span></h2>
@@ -400,7 +467,80 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- 6. Reviews (Part 1: Asset Proof) -->
+    <section class="py-20 md:py-32 bg-[#3d332d] border-b border-white/5">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">資產實證：<span class="gold-text">順著天賦，流量是必然的紅利</span></h2>
+            <p class="opacity-60 text-lg text-center mb-16">不追求曇花一現的爆紅，而是打造 24 小時為您工作的數位分身</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="relative group cursor-default">
+                    <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a]/20 relative shadow-xl">
+                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800'); filter: blur(5px);"></div>
+                        <div class="absolute inset-0 bg-black/50 flex flex-col justify-between p-5">
+                            <div class="flex justify-end"><span class="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> 隱私保護中</span></div>
+                            <div class="text-left">
+                                <p class="gold-text font-black text-4xl mb-1">365天</p>
+                                <p class="text-white font-bold text-sm mb-3">持續獲客能力</p>
+                                <div class="w-8 h-px gold-bg mb-3 opacity-50"></div>
+                                <h4 class="text-white font-bold text-base mb-1">長尾效應資產</h4>
+                                <p class="text-xs text-white/70 leading-relaxed">影片發布一年後，依然在網路上為您介紹服務，越陳越香。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="relative group cursor-default">
+                    <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a]/20 relative shadow-xl">
+                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800'); filter: blur(5px);"></div>
+                        <div class="absolute inset-0 bg-black/50 flex flex-col justify-between p-5">
+                            <div class="flex justify-end"><span class="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> 隱私保護中</span></div>
+                            <div class="text-left">
+                                <p class="gold-text font-black text-4xl mb-1">0 距離</p>
+                                <p class="text-white font-bold text-sm mb-3">信任建立</p>
+                                <div class="w-8 h-px gold-bg mb-3 opacity-50"></div>
+                                <h4 class="text-white font-bold text-base mb-1">情感帳戶資產</h4>
+                                <p class="text-xs text-white/70 leading-relaxed">讓客人在預約前就感覺認識您，篩選出頻率相近的優質客群。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="relative group cursor-default">
+                    <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a]/20 relative shadow-xl">
+                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800'); filter: blur(5px);"></div>
+                        <div class="absolute inset-0 bg-black/50 flex flex-col justify-between p-5">
+                            <div class="flex justify-end"><span class="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> 隱私保護中</span></div>
+                            <div class="text-left">
+                                <p class="gold-text font-black text-4xl mb-1">高價值</p>
+                                <p class="text-white font-bold text-sm mb-3">品牌溢價</p>
+                                <div class="w-8 h-px gold-bg mb-3 opacity-50"></div>
+                                <h4 class="text-white font-bold text-base mb-1">專業形象資產</h4>
+                                <p class="text-xs text-white/70 leading-relaxed">獨特影像美學讓專業被看見。當價值確立，價格不再是唯一考量。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Reviews (Part 2: Portfolio Wall) -->
+    <section id="portfolio-wall" class="py-20 md:py-32 bg-[#342c27] overflow-hidden text-center text-center">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-light mb-6 uppercase tracking-widest text-center text-center">影音作品<span class="gold-text text-center text-center">鏡像牆</span></h2>
+                <div class="w-20 h-1 gold-bg mx-auto mb-8 text-center text-center"></div>
+                <p class="text-lg opacity-60 font-light text-center text-center text-center text-center">24 格直式縮圖牆：保護人像隱私模糊美學（3px）</p>
+            </div>
+            <div id="image-grid" class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-1 md:gap-2 text-center text-center text-center">
+                <!-- JS Populate with "RE 0xx" overlay -->
+            </div>
+            <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="mt-16 px-12 py-5 gold-bg text-[#3d332d] font-black text-xl shadow-2xl active:scale-95 transition-all text-center text-center whitespace-nowrap rounded-full">我也想拍出靈魂作品</button>
+        </div>
+    </section>
+
+    <!-- 6. Reviews (Part 3: Testimonials) -->
     <section class="py-20 md:py-32 bg-[#3d332d]">
         <div class="container mx-auto px-6 max-w-6xl text-center">
             <div class="mb-20">
@@ -421,21 +561,6 @@
                     <p class="text-lg font-bold leading-relaxed text-left">「訂閱方案解決了我一整年的主題焦慮，團隊完全懂我的風格。」</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Wall (Restored Restored Aesthetics) -->
-    <section id="portfolio-wall" class="py-20 md:py-32 bg-[#342c27] overflow-hidden text-center text-center">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-16 text-center">
-                <h2 class="text-3xl md:text-5xl font-light mb-6 uppercase tracking-widest text-center text-center">影音作品<span class="gold-text text-center text-center">鏡像牆</span></h2>
-                <div class="w-20 h-1 gold-bg mx-auto mb-8 text-center text-center"></div>
-                <p class="text-lg opacity-60 font-light text-center text-center text-center text-center">24 格直式縮圖牆：保護人像隱私模糊美學（3px）</p>
-            </div>
-            <div id="image-grid" class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-1 md:gap-2 text-center text-center text-center">
-                <!-- JS Populate with "RE 0xx" overlay -->
-            </div>
-            <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="mt-16 px-12 py-5 gold-bg text-[#3d332d] font-black text-xl shadow-2xl active:scale-95 transition-all text-center text-center whitespace-nowrap">我也想拍出靈魂作品</button>
         </div>
     </section>
 
@@ -466,7 +591,7 @@
         </div>
     </section>
 
-    <!-- Booking Form (Restored Restored Layout) -->
+    <!-- Booking Form -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="booking">
         <div class="container mx-auto px-6 max-w-5xl text-center">
             <h2 class="text-4xl gold-text font-light mb-4 text-center">預約您的創作旅程</h2>
