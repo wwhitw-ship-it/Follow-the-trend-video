@@ -24,6 +24,7 @@
             scroll-behavior: smooth;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+            padding-bottom: 80px; /* Space for mobile sticky bar */
         }
 
         .font-serif-italic {
@@ -41,15 +42,14 @@
         ::-webkit-scrollbar-thumb { background: var(--bronze-gold); border-radius: 3px; }
 
         /* Pricing Card Styling */
-        .plan-card {
+        .plan-card, .article-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(201, 166, 122, 0.15);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .plan-card:hover {
+        .plan-card:hover, .article-card:hover {
             border-color: var(--bronze-gold);
             transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.05);
         }
         .plan-card.featured {
             border: 2px solid var(--bronze-gold);
@@ -58,71 +58,59 @@
         }
         .featured-badge {
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--bronze-gold);
-            color: var(--dark-wood);
-            padding: 4px 20px;
-            border-radius: 99px;
-            font-weight: 900;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
+            top: 0; left: 50%; transform: translate(-50%, -50%);
+            background: var(--bronze-gold); color: var(--dark-wood);
+            padding: 4px 20px; border-radius: 99px; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.1em;
             white-space: nowrap;
         }
 
-        /* Article Accordion */
-        .article-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(201, 166, 122, 0.1);
-            transition: all 0.3s ease;
-        }
-        .article-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-        }
-        .article-card.active .article-content {
-            max-height: 1000px;
-        }
-        .article-card.active {
-            background: rgba(255,255,255,0.05);
-            border-color: var(--bronze-gold);
-        }
-
         /* FAQ Accordion */
-        .faq-item {
-            border-bottom: 1px solid rgba(201, 166, 122, 0.1);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-        }
-        .faq-item.active i {
-            transform: rotate(180deg);
-        }
+        .faq-item { border-bottom: 1px solid rgba(201, 166, 122, 0.1); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active i { transform: rotate(180deg); }
 
-        /* Event Image Section */
-        .event-photo {
-            aspect-ratio: 16/10;
-            background: rgba(0,0,0,0.2);
+        /* Portfolio Wall Styles */
+        .portfolio-grid-item {
+            aspect-ratio: 9/16;
+            background: rgba(0,0,0,0.4);
             border: 1px solid rgba(201, 166, 122, 0.1);
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
+            cursor: default;
+            transition: border-color 0.4s ease;
         }
-        .event-photo img {
+        .portfolio-blur-content {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            filter: blur(3px);
+            transition: transform 0.6s ease, opacity 0.4s ease;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
         }
-        .event-photo:hover img {
-            transform: scale(1.05);
+        .portfolio-grid-item:hover .portfolio-blur-content {
+            transform: scale(1.1);
+            opacity: 0.9;
         }
+        .portfolio-grid-item:hover {
+            border-color: var(--bronze-gold);
+            z-index: 10;
+        }
+
+        /* Event Photos */
+        .event-photo { aspect-ratio: 16/10; background: rgba(0,0,0,0.2); overflow: hidden; position: relative; border: 1px solid rgba(201, 166, 122, 0.1); }
+        .event-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+
+        /* Comparison Table */
+        .comparison-table th, .comparison-table td {
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .comparison-table th { color: var(--bronze-gold); font-size: 1.1rem; }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-highlight { background: rgba(201, 166, 122, 0.05); border-left: 1px solid rgba(201, 166, 122, 0.2); border-right: 1px solid rgba(201, 166, 122, 0.2); }
 
         /* Form Styling */
         input, textarea, select {
@@ -133,157 +121,114 @@
             appearance: none; 
             font-size: 16px !important;
         }
-
-        /* Portfolio Grid */
-        .portfolio-grid-item {
-            aspect-ratio: 9/16;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(201, 166, 122, 0.1);
-            position: relative;
-            overflow: hidden;
-            cursor: default;
-        }
-        
-        .portfolio-blur-content {
-            width: 100%;
-            height: 100%;
-            filter: blur(3px);
-            transition: transform 0.6s ease, opacity 0.4s ease;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.7;
+        input:focus, select:focus {
+            border-color: var(--bronze-gold) !important;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.08) !important;
         }
 
-        .portfolio-grid-item:hover .portfolio-blur-content {
-            filter: blur(3px); 
-            transform: scale(1.1);
-            opacity: 0.9;
-        }
-
-        /* Modal Settings */
-        .modal-overlay {
-            background-color: rgba(61, 51, 45, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 100;
-            padding: 1rem;
-        }
-        .modal-content {
-            border: 1px solid rgba(201, 166, 122, 0.3);
-            max-height: 92vh;
-            overflow-y: auto;
-        }
-
-        .target-label {
-            background: rgba(201, 166, 122, 0.15);
-            color: var(--bronze-gold);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
+        /* Modal Base */
+        .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
+        .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
+        .vertical-video-wrapper { position: relative; width: 100%; height: 100%; background: #000; }
 
         .notice-box {
             background: linear-gradient(135deg, rgba(201, 166, 122, 0.05) 0%, rgba(61, 51, 45, 0.3) 100%);
             border: 1px solid rgba(201, 166, 122, 0.3);
         }
+
+        /* Scarcity Bar Animation */
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .scarcity-pulse { animation: pulse-gold 2s infinite; }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Mobile Sticky CTA (New Addition for Marketing Conversion) -->
+    <div class="fixed bottom-6 left-4 right-4 z-50 md:hidden">
+        <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="w-full bg-[#c9a67a] text-[#3d332d] py-4 rounded-full font-black text-lg shadow-2xl border border-white/20 backdrop-blur-md flex items-center justify-center gap-2">
+            <span>立即預約</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+    </div>
+
     <!-- Hero Section -->
-    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#c9a67a33] px-6">
-        <div class="absolute inset-0 opacity-20 pointer-events-none" 
-             style="background: radial-gradient(circle at center, var(--bronze-gold) 0%, transparent 75%);"></div>
-        <div class="container mx-auto text-center relative z-10 py-20">
-            <p class="gold-text tracking-[0.4em] mb-6 text-sm md:text-lg font-medium uppercase">2026 RENATA 蕾娜塔髮品 全新企劃</p>
-            <h1 class="text-5xl md:text-8xl font-light mb-8 tracking-tight">
-                順勢影音<span class="gold-text">沙龍</span>
-            </h1>
-            <p class="text-xl md:text-3xl font-serif-italic mb-12 opacity-90 leading-relaxed">
-                「順著天賦拍，流量自然來」
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#c9a67a33] px-6 text-center">
+        <div class="absolute inset-0 opacity-20 pointer-events-none" style="background: radial-gradient(circle at center, var(--bronze-gold) 0%, transparent 75%);"></div>
+        <div class="container mx-auto relative z-10 py-20">
+            <p class="gold-text tracking-[0.4em] mb-6 text-sm md:text-lg font-medium uppercase text-center">2026 RENATA 蕾娜塔髮品 全新企劃</p>
+            <h1 class="text-5xl md:text-8xl font-light mb-8 tracking-tight text-center">順勢影音<span class="gold-text">沙龍</span></h1>
+            <!-- Marketing Tweak: Stronger Benefit Subheadline -->
+            <p class="text-xl md:text-3xl font-serif-italic mb-12 opacity-90 leading-relaxed text-center">
+                「不必演戲、順著天賦，讓流量自然來」
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#event-march" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest bg-[#c9a67a] text-[#3d332d] hover:brightness-110 transition-all duration-500 font-black shadow-xl active:scale-95">
-                    搶先預約 3/25-26 體驗課程
-                </a>
-                <a href="#plans" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest border border-[#c9a67a] gold-text hover:bg-[#c9a67a] hover:text-[#3d332d] transition-all duration-500 font-black shadow-xl active:scale-95">
-                    深入了解拍攝方案
-                </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 text-center">
+                <a href="#event-march" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest bg-[#c9a67a] text-[#3d332d] font-black shadow-xl active:scale-95 transition-all text-center whitespace-nowrap">預約 3/25-26 體驗課程</a>
+                <a href="#plans" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest border border-[#c9a67a] gold-text font-black active:scale-95 transition-all text-center whitespace-nowrap">深入了解拍攝方案</a>
             </div>
         </div>
     </section>
 
-    <!-- Brand Timeline Section -->
+    <!-- Brand Timeline -->
     <section class="py-16 md:py-24 bg-[#3d332d] border-b border-white/5">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
-                <div class="relative text-center">
-                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-2">2018</span>
-                    <p class="text-xs uppercase tracking-widest opacity-40 mb-2">Brand Origin</p>
-                    <h4 class="text-sm font-bold">蕾娜塔品牌誕生</h4>
+            <div class="grid grid-cols-2 md:flex md:flex-row justify-center items-center gap-8 md:gap-16 mb-12">
+                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2018</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">品牌誕生</h4></div>
+                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2021</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">數位轉型</h4></div>
+                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2024</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">天賦影音成形</h4></div>
+                <div class="text-center"><span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2026</span><h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">沙龍正式啟動</h4></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 border-t border-white/5">
+                <div class="p-6 text-center">
+                    <span class="block text-4xl md:text-5xl font-black gold-text mb-2">500+</span>
+                    <p class="text-sm opacity-70">合作美業設計師</p>
                 </div>
-                <div class="relative text-center">
-                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-2">2021</span>
-                    <p class="text-xs uppercase tracking-widest opacity-40 mb-2">Digital Pivot</p>
-                    <h4 class="text-sm font-bold">美業數位影響力實驗</h4>
+                <div class="p-6 text-center border-t md:border-t-0 md:border-l border-white/5">
+                    <span class="block text-4xl md:text-5xl font-black gold-text mb-2">300%</span>
+                    <p class="text-sm opacity-70">學員平均流量成長</p>
                 </div>
-                <div class="relative text-center">
-                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-2">2024</span>
-                    <p class="text-xs uppercase tracking-widest opacity-40 mb-2">Talent Discovery</p>
-                    <h4 class="text-sm font-bold">天賦影音系統成形</h4>
-                </div>
-                <div class="relative text-center">
-                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-2">2026</span>
-                    <p class="text-xs uppercase tracking-widest opacity-40 mb-2">The New Era</p>
-                    <h4 class="text-sm font-bold">順勢影音沙龍啟動</h4>
+                <div class="p-6 text-center border-t md:border-t-0 md:border-l border-white/5">
+                    <span class="block text-4xl md:text-5xl font-black gold-text mb-2">100%</span>
+                    <p class="text-sm opacity-70">鏡頭恐懼克服率</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experiential Event Section (NEW) -->
-    <section id="event-march" class="py-24 bg-gradient-to-b from-[#342c27] to-[#3d332d] border-b border-[#c9a67a33]">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="bg-[#3d332d] rounded-[48px] border-2 border-[#c9a67a] p-8 md:p-16 relative overflow-hidden">
-                <div class="absolute top-0 right-0 gold-bg text-[#3d332d] px-12 py-2 rotate-45 translate-x-10 translate-y-4 font-black tracking-widest text-sm">
-                    LIMITED
-                </div>
-                <div class="flex flex-col lg:flex-row items-center gap-12 relative z-10">
-                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+    <!-- Experiential Event (Updated with Scarcity Marketing) -->
+    <section id="event-march" class="py-24 bg-[#342c27] border-b border-[#c9a67a33]">
+        <div class="container mx-auto px-6 max-w-6xl text-center lg:text-left">
+            <div class="bg-[#3d332d] rounded-[48px] border-2 border-[#c9a67a] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 gold-bg text-[#3d332d] px-12 py-2 rotate-45 translate-x-10 translate-y-4 font-black tracking-widest text-sm">LIMITED</div>
+                <div class="flex flex-col lg:flex-row items-center gap-12 relative z-10 text-left">
+                    <div class="w-full lg:w-1/2">
                         <span class="gold-text font-bold tracking-widest uppercase mb-4 block">Experiential Course</span>
-                        <h2 class="text-4xl md:text-6xl font-light mb-6">3/25 - 3/26<br><span class="gold-text">雙日快閃體驗課</span></h2>
-                        <p class="text-lg opacity-80 mb-8 leading-relaxed">
-                            想在正式加入前先感受順勢拍攝的魔力嗎？我們特別開設為期兩天的實戰體驗課程。現場解盤、現場引導，並產出一支屬於您的 30 秒天賦影音。
-                        </p>
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-6 mb-10">
-                            <div class="flex items-center gap-3"><i data-lucide="calendar" class="gold-text"></i> <span>2026/03/25-26</span></div>
-                            <div class="flex items-center gap-3"><i data-lucide="map-pin" class="gold-text"></i> <span>RENATA 限定沙龍區</span></div>
-                            <div class="flex items-center gap-3"><i data-lucide="users" class="gold-text"></i> <span>限量 10 席</span></div>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">3/25-3/26<br><span class="gold-text">雙日快閃體驗課</span></h2>
+                        
+                        <!-- Marketing Addition: Scarcity Progress Bar -->
+                        <div class="mb-8">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold gold-text opacity-80">名額倒數中</span>
+                                <span class="text-xs font-black gold-text scarcity-pulse">僅剩最後 2 席</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-[#c9a67a] to-[#fff] w-[80%]"></div>
+                            </div>
                         </div>
-                        <button onclick="window.selectPlanAndScroll('event')" class="px-12 py-5 gold-bg text-[#3d332d] rounded-full font-black text-xl shadow-2xl hover:scale-105 transition-all">
-                            立即卡位 體驗價 $2,980
-                        </button>
+
+                        <p class="text-lg opacity-80 mb-8 leading-relaxed">親身體驗現場解盤與影音引導的魅力，產出屬於您的 30 秒天賦影音。限量名額預約中。</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full font-black text-xl shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap">立即卡位 $2,980</button>
+                            <button onclick="window.openModal('event')" class="w-full sm:w-auto px-12 py-5 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-xl hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">了解課程詳情</button>
+                        </div>
                     </div>
                     <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
-                        <!-- Placeholders for previous event photos -->
-                        <div class="event-photo rounded-3xl group">
-                            <div class="absolute inset-0 flex items-center justify-center opacity-40 text-xs italic">實戰側拍照片 01</div>
-                            <img src="https://images.unsplash.com/photo-1595475244012-2e924296ce67?auto=format&fit=crop&q=80&w=800" alt="課程現場照片 01">
-                        </div>
-                        <div class="event-photo rounded-3xl mt-8">
-                            <div class="absolute inset-0 flex items-center justify-center opacity-40 text-xs italic">實戰側拍照片 02</div>
-                            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800" alt="課程現場照片 02">
-                        </div>
-                        <div class="event-photo rounded-3xl">
-                            <div class="absolute inset-0 flex items-center justify-center opacity-40 text-xs italic">實戰側拍照片 03</div>
-                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800" alt="課程現場照片 03">
-                        </div>
-                        <div class="event-photo rounded-3xl mt-8">
-                            <div class="absolute inset-0 flex items-center justify-center opacity-40 text-xs italic">實戰側拍照片 04</div>
-                            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=800" alt="課程現場照片 04">
-                        </div>
+                        <div class="event-photo rounded-3xl"><img src="https://images.unsplash.com/photo-1595475244012-2e924296ce67?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
+                        <div class="event-photo rounded-3xl mt-8"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
                     </div>
                 </div>
             </div>
@@ -323,162 +268,137 @@
         </div>
     </section>
 
-    <!-- Pricing Tables -->
-    <section class="py-20 md:py-32 bg-[#3d332d]" id="plans">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase">光之沙龍：拍攝企劃</h2>
-                <p class="opacity-70 text-lg md:xl font-light">順流拍攝企劃，拍出屬於您的數位資產</p>
-                <div class="w-20 h-1 gold-bg mx-auto mt-8"></div>
+    <!-- Comparison Section -->
+    <section class="py-20 md:py-32 bg-[#3d332d]">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-light mb-6">為什麼選擇 <span class="gold-text">順勢影音</span>？</h2>
+                <p class="opacity-60 text-lg">別再走冤枉路，一次選對最適合你的創作方式</p>
             </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6">
-                <!-- Trial Plan -->
-                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col h-full">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-light mb-2">試拍方案</h3>
-                        <p class="text-4xl font-serif-italic gold-text font-bold mb-4">$8,800</p>
-                        <p class="text-sm gold-text opacity-90 font-bold leading-relaxed mb-6">解決「不敢拍」的心理障礙，跨出創作第一步。</p>
-                        <div class="w-full h-px bg-white/10 my-6"></div>
-                        <span class="target-label">建議對象</span>
-                        <p class="text-sm opacity-80 leading-relaxed">初次體驗影音製作、想以低門檻展開頻道的創作者。</p>
-                    </div>
+            <div class="overflow-x-auto">
+                <table class="w-full comparison-table min-w-[600px]">
+                    <thead>
+                        <tr>
+                            <th class="w-1/4">比較項目</th>
+                            <th class="w-1/4 opacity-60">一般攝影工作室</th>
+                            <th class="w-1/4 opacity-60">自己摸索拍攝</th>
+                            <th class="w-1/4 gold-text text-xl font-bold bg-[#c9a67a] bg-opacity-10 rounded-t-2xl">順勢影音沙龍</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold">核心技術</td>
+                            <td>單純攝影</td>
+                            <td>模仿他人</td>
+                            <td class="comparison-highlight font-bold gold-text">紫微斗數 + 影音企劃</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">鏡頭引導</td>
+                            <td>只顧畫面美感</td>
+                            <td>無（容易尷尬）</td>
+                            <td class="comparison-highlight font-bold gold-text">心理錨點引導（不需演技）</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">內容策略</td>
+                            <td>無（需自備腳本）</td>
+                            <td>無（想到什麼拍什麼）</td>
+                            <td class="comparison-highlight font-bold gold-text">全年度品牌營運思維</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold border-none">成效</td>
+                            <td class="border-none">有影片沒靈魂</td>
+                            <td class="border-none">有產出沒流量</td>
+                            <td class="comparison-highlight font-bold gold-text rounded-b-2xl border-none">打造個人 IP 數位資產</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Tables -->
+    <section class="py-20 md:py-32 bg-[#342c27]" id="plans">
+        <div class="container mx-auto px-6 max-w-7xl text-center">
+            <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-center">光之沙龍：拍攝企劃</h2>
+            <p class="opacity-70 text-lg md:xl font-light text-center">順流拍攝企劃，拍出屬於您的數位資產</p>
+            <div class="w-20 h-1 gold-bg mx-auto mt-8 mb-16"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
+                <!-- Trial -->
+                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
+                    <h3 class="text-2xl font-light mb-2">試拍方案</h3>
+                    <p class="text-4xl font-serif-italic gold-text font-bold mb-4">$8,800</p>
+                    <p class="text-sm gold-text font-bold leading-relaxed mb-6">解決「不敢拍」的心理障礙，跨出第一步。</p>
                     <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">贈送：紫微斗數報告書</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">消除鏡頭緊張感</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">掌握開場黃金 3 秒</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">建立頻道視覺調性</span></li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>消除鏡頭緊張感</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>掌握開場黃金 3 秒</li>
                     </ul>
                     <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('trial')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all">選擇方案</button>
-                        <button onclick="window.openModal('trial')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm">觀看範本</button>
+                        <button onclick="window.selectPlanAndScroll('trial')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('trial')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
                     </div>
                 </div>
-
-                <!-- Starter Plan (Featured) -->
-                <div class="plan-card featured rounded-[32px] p-8 md:p-10 flex flex-col h-full scale-105 z-10">
+                <!-- Starter -->
+                <div class="plan-card featured rounded-[32px] p-8 md:p-10 flex flex-col text-left shadow-2xl scale-105 z-10">
                     <div class="featured-badge">MOST POPULAR</div>
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-light mb-2">入門方案</h3>
-                        <p class="text-4xl font-serif-italic gold-text font-bold mb-4">$20,000</p>
-                        <p class="text-sm gold-text opacity-90 font-bold leading-relaxed mb-6">解決「拍不好」的品質焦慮，建立專業且穩定的品牌內容。</p>
-                        <div class="w-full h-px bg-white/10 my-6"></div>
-                        <span class="target-label">建議對象</span>
-                        <p class="text-sm opacity-80 leading-relaxed">已有初步創作方向、想建立穩定內容輸出的設計師。</p>
-                    </div>
+                    <h3 class="text-2xl font-light mb-2 text-left">入門方案</h3>
+                    <p class="text-4xl font-serif-italic gold-text font-bold mb-4 text-left">$20,000</p>
+                    <p class="text-sm gold-text font-bold leading-relaxed mb-6 text-left">解決「拍不好」的焦慮，建立專業品牌內容。</p>
                     <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90 font-bold text-[#c9a67a]">贈送：紫微斗數報告書</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">品牌專屬記憶點開發</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">專業內容視覺輔助</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">建立穩定創作節奏</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">視覺排版優化</span></li>
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>品牌專屬記憶點開發</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>專業內容視覺輔助</li>
                     </ul>
                     <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('starter')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all">選擇方案</button>
-                        <button onclick="window.openModal('starter')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm">觀看範本</button>
+                        <button onclick="window.selectPlanAndScroll('starter')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('starter')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
                     </div>
                 </div>
-
-                <!-- Subscription Plan -->
-                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col h-full">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-light mb-2">訂閱方案</h3>
-                        <p class="text-4xl font-serif-italic gold-text font-bold mb-4">$22,500</p>
-                        <p class="text-sm gold-text opacity-90 font-bold leading-relaxed mb-6">解決「沒主題」的成長瓶頸，打造高質感的領袖影響力。</p>
-                        <div class="w-full h-px bg-white/10 my-6"></div>
-                        <span class="target-label">建議對象</span>
-                        <p class="text-sm opacity-80 leading-relaxed">欲打造領袖品牌、需長期穩定產出的高階創作者。</p>
-                    </div>
+                <!-- Subscription -->
+                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
+                    <h3 class="text-2xl font-light mb-2">訂閱方案</h3>
+                    <p class="text-4xl font-serif-italic gold-text font-bold mb-4">$22,500</p>
+                    <p class="text-sm gold-text font-bold leading-relaxed mb-6 text-left">解決「沒主題」的瓶頸，打造權威影響力。</p>
                     <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">贈送：紫微斗數報告書</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">AI 動態素材製作</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">全年度營運策略建議</span></li>
-                        <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i><span class="text-sm opacity-90">極致質感形象工程</span></li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>AI 動態素材製作</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>全年度營運策略建議</li>
                     </ul>
                     <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all">選擇方案</button>
-                        <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm">觀看範本</button>
+                        <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Insights Section (Articles & Expert Videos) -->
-    <section class="py-20 md:py-32 bg-[#342c27]">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-light mb-4">專業 <span class="gold-text">內容專欄</span></h2>
-                <p class="opacity-60 text-lg">透過知識定錨，讓您的創作具備靈魂深度</p>
-                <div class="w-20 h-1 gold-bg mx-auto mt-8"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Expert Articles (Expandable) -->
+    <!-- Professional Column & Video -->
+    <section class="py-20 md:py-32 bg-[#342c27] border-y border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl text-center">
+            <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">專業 <span class="gold-text text-center">內容專欄</span></h2>
+            <p class="opacity-60 text-lg text-center">透過知識定錨，讓您的創作具備靈魂深度</p>
+            <div class="w-20 h-1 gold-bg mx-auto mt-8 mb-16 text-center"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
+                <!-- Expert Articles -->
                 <div class="space-y-4">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3"><i data-lucide="book-open" class="gold-text"></i> 影音深度專欄</h3>
-                    
-                    <div class="article-card rounded-2xl p-6 cursor-pointer" onclick="this.classList.toggle('active')">
-                        <div class="flex justify-between items-center">
-                            <h4 class="text-lg font-bold">天賦定錨：為何紫微斗數能幫你拍片？</h4>
-                            <i data-lucide="plus" class="gold-text transition-transform"></i>
-                        </div>
-                        <div class="article-content mt-4 opacity-80 text-sm leading-relaxed">
-                            <p>拍短影音最怕的是「模仿他人」。紫微斗數揭示了你與生俱來的能量場，是屬於權威感的導師，還是親和力十足的鄰家姐姐？當你順著天賦的性格去表達，觀眾感受到的是你的「真」，而「真」正是目前數位時代最稀缺的流量密碼。</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card rounded-2xl p-6 cursor-pointer" onclick="this.classList.toggle('active')">
-                        <div class="flex justify-between items-center">
-                            <h4 class="text-lg font-bold">數位遺產：每一支影片都是未來的資產</h4>
-                            <i data-lucide="plus" class="gold-text transition-transform"></i>
-                        </div>
-                        <div class="article-content mt-4 opacity-80 text-sm leading-relaxed">
-                            <p>我們不只是在拍影片，是在建立一套「自動化信任系統」。當你休息時，你的影音作品仍在網路上與潛在客戶溝通。我們協助您將專業技術轉化為具備長尾效應的數位資產，讓時間成為你品牌價值的助燃劑。</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card rounded-2xl p-6 cursor-pointer" onclick="this.classList.toggle('active')">
-                        <div class="flex justify-between items-center">
-                            <h4 class="text-lg font-bold">鏡頭引導：心理素質大於攝影器材</h4>
-                            <i data-lucide="plus" class="gold-text transition-transform"></i>
-                        </div>
-                        <div class="article-content mt-4 opacity-80 text-sm leading-relaxed">
-                            <p>許多人不敢拍是因為在意「長相」或「語速」。在順勢沙龍中，我們會透過專業的引導步驟，讓您遺忘鏡頭的存在。我們深知：動人的影像來自於情感的流動，而非死板的背稿。透過心理錨點，讓您的表達變得自在且具備感染力。</p>
-                        </div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-left"><i data-lucide="book-open" class="gold-text"></i> 影音深度專欄</h3>
+                    <div id="article-list" class="space-y-4 text-left">
+                        <!-- JS Populate -->
                     </div>
                 </div>
-
-                <!-- Expert Video Insights -->
+                <!-- Expert Videos -->
                 <div class="space-y-4">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3"><i data-lucide="play-circle" class="gold-text"></i> 專家實戰影音引導</h3>
-                    <div class="grid grid-cols-1 gap-6">
-                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl border border-white/10" onclick="window.openModal('starter')">
-                            <div class="aspect-video bg-black/40 flex items-center justify-center relative">
-                                <i data-lucide="play" class="w-16 h-16 gold-text opacity-40 group-hover:opacity-100 transition-all scale-90 group-hover:scale-100"></i>
-                                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                    <h4 class="text-lg font-bold">專家講堂：如何規劃第一支爆款腳本</h4>
-                                    <p class="text-xs gold-text mt-1">點擊播放實戰教學</p>
-                                </div>
-                            </div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-left"><i data-lucide="play-circle" class="gold-text"></i> 專家實戰引導</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl aspect-[9/16] border border-white/10" onclick="window.openInsightModal('https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview', '天賦影音引導實戰')">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all flex items-center justify-center"><i data-lucide="play" class="w-12 h-12 gold-text"></i></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-xs font-bold">天賦影音引導實戰</div>
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="relative group cursor-pointer overflow-hidden rounded-xl border border-white/10" onclick="window.openModal('trial')">
-                                <div class="aspect-video bg-black/40 flex items-center justify-center">
-                                    <i data-lucide="play" class="w-8 h-8 gold-text opacity-40"></i>
-                                    <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                                        <p class="text-xs font-bold">克服鏡頭恐懼小撇步</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="relative group cursor-pointer overflow-hidden rounded-xl border border-white/10" onclick="window.openModal('subscription')">
-                                <div class="aspect-video bg-black/40 flex items-center justify-center">
-                                    <i data-lucide="play" class="w-8 h-8 gold-text opacity-40"></i>
-                                    <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                                        <p class="text-xs font-bold">2026 數位影像趨勢解析</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl aspect-[9/16] border border-white/10" onclick="window.openInsightModal('https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview', '克服鏡頭焦慮教學')">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all flex items-center justify-center"><i data-lucide="play" class="w-12 h-12 gold-text"></i></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-xs font-bold">克服鏡頭焦慮教學</div>
                         </div>
                     </div>
                 </div>
@@ -487,302 +407,245 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-20 md:py-32 bg-[#3d332d] border-y border-white/5">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl font-light mb-4">創作者<span class="gold-text">真實見證</span></h2>
-                <p class="opacity-60 text-lg">聽聽那些已經開始「順勢拍攝」的聲音</p>
+    <section class="py-20 md:py-32 bg-[#3d332d]">
+        <div class="container mx-auto px-6 max-w-6xl text-center">
+            <div class="mb-20">
+                <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">創作者<span class="gold-text text-center">真實見證</span></h2>
+                <p class="opacity-60 text-lg text-center text-center">聽聽那些已經開始「順勢拍攝」的聲音</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl">
-                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4">Hair Stylist / A-Lin</p>
-                    <div class="mb-6">
-                        <p class="text-sm opacity-40 mb-2 italic">Before: 每次對鏡頭就像在背課文，很假。</p>
-                        <p class="text-lg font-bold">「解完盤才知道，我適合隨興聊而非演劇本，現在拍片超快！」</p>
-                    </div>
-                    <div class="flex items-center gap-2 gold-text"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left text-left">
+                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left">
+                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Hair Stylist / A-Lin</p>
+                    <p class="text-lg font-bold leading-relaxed text-left text-left">「解完盤才知道，我適合隨興聊而非演劇本，現在拍片超快！」</p>
                 </div>
-                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl">
-                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4">Salon Owner / Leo</p>
-                    <div class="mb-6">
-                        <p class="text-sm opacity-40 mb-2 italic">Before: 拍了很多，但沒有品牌的高級感。</p>
-                        <p class="text-lg font-bold">「入門方案幫我建立的視覺標準，讓我的店看起來價值翻倍。」</p>
-                    </div>
-                    <div class="flex items-center gap-2 gold-text"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left text-left">
+                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Salon Owner / Leo</p>
+                    <p class="text-lg font-bold leading-relaxed text-left">「入門方案幫我建立的視覺標準，讓我的店看起來價值翻倍。」</p>
                 </div>
-                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl">
-                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4">Entrepreneur / Sara</p>
-                    <div class="mb-6">
-                        <p class="text-sm opacity-40 mb-2 italic">Before: 每天都在煩惱要拍什麼，好累。</p>
-                        <p class="text-lg font-bold">「訂閱方案解決了我一整年的主題焦慮，團隊完全懂我的風格。」</p>
-                    </div>
-                    <div class="flex items-center gap-2 gold-text"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left">
+                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Sara / Entrepreneur</p>
+                    <p class="text-lg font-bold leading-relaxed text-left">「訂閱方案解決了我一整年的主題焦慮，團隊完全懂我的風格。」</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Wall -->
-    <section id="portfolio-wall" class="py-20 md:py-32 bg-[#342c27] overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-light mb-6 uppercase tracking-widest">影音作品<span class="gold-text">鏡像牆</span></h2>
-                <div class="w-20 h-1 gold-bg mx-auto mb-8"></div>
-                <p class="text-lg opacity-60 font-light">24 格縮圖牆：細微模糊美學處理（保護人像隱私）</p>
+    <!-- Portfolio Wall (Restored Restored Aesthetics) -->
+    <section id="portfolio-wall" class="py-20 md:py-32 bg-[#342c27] overflow-hidden text-center text-center">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-light mb-6 uppercase tracking-widest text-center text-center">影音作品<span class="gold-text text-center text-center">鏡像牆</span></h2>
+                <div class="w-20 h-1 gold-bg mx-auto mb-8 text-center text-center"></div>
+                <p class="text-lg opacity-60 font-light text-center text-center text-center text-center">24 格直式縮圖牆：保護人像隱私模糊美學（3px）</p>
             </div>
-            
-            <div id="image-grid" class="grid grid-cols-6 lg:grid-cols-12 gap-1 md:gap-1.5 mt-16 px-2">
-                <!-- 24 items cycled via JS -->
+            <div id="image-grid" class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-1 md:gap-2 text-center text-center text-center">
+                <!-- JS Populate with "RE 0xx" overlay -->
             </div>
-            
-            <div class="mt-16 text-center">
-                <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] font-black tracking-widest rounded-full hover:brightness-110 shadow-2xl transition-all active:scale-95">
-                    我也想拍出靈魂作品
-                </button>
-            </div>
+            <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="mt-16 px-12 py-5 gold-bg text-[#3d332d] font-black text-xl shadow-2xl active:scale-95 transition-all text-center text-center whitespace-nowrap">我也想拍出靈魂作品</button>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-20 md:py-32 bg-[#3d332d]">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-light mb-4">常見問題 <span class="gold-text">FAQ</span></h2>
-                <p class="opacity-60">我們已經為您準備好大部分問題的解答</p>
-            </div>
-            <div class="space-y-4">
-                <div class="faq-item p-6 cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h4 class="text-lg font-bold">我真的很害羞，這真的能解決嗎？</h4>
+    <section class="py-20 md:py-32 bg-[#3d332d] border-t border-white/5 text-center">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-5xl font-light mb-16 text-center text-center">常見問題 <span class="gold-text text-center">FAQ</span></h2>
+            <div class="space-y-4 text-left">
+                <div class="faq-item p-6 cursor-pointer bg-white/5 rounded-2xl text-left text-left" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center text-left">
+                        <h4 class="text-lg font-bold text-left">我真的很害羞，這真的能解決嗎？</h4>
                         <i data-lucide="chevron-down" class="gold-text transition-transform"></i>
                     </div>
-                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed">
-                        <p>這正是我們存在的意義。我們不要求你「演」，而是透過紫微斗數報告找到你能量最自然的表達方式，搭配現場引導，讓你就像跟朋友聊天一樣完成拍攝。</p>
+                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed text-left">
+                        這正是我們存在的意義。我們不要求你「演」，而是透過紫微斗數報告找到你能量最自然的表達方式。
                     </div>
                 </div>
-                <div class="faq-item p-6 cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h4 class="text-lg font-bold">需要自己準備專業攝影器材嗎？</h4>
+                <div class="faq-item p-6 cursor-pointer bg-white/5 rounded-2xl text-left" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center text-left text-left">
+                        <h4 class="text-lg font-bold text-left text-left">直式影音適合所有平台嗎？</h4>
                         <i data-lucide="chevron-down" class="gold-text transition-transform"></i>
                     </div>
-                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed">
-                        <p>完全不需要。我們會提供最適合短影音時代的專業拍攝工具與引導，你只需要帶著一顆放鬆的心與日常工作配備前來即可。</p>
-                    </div>
-                </div>
-                <div class="faq-item p-6 cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h4 class="text-lg font-bold">紫微斗數報告跟拍片有什麼關係？</h4>
-                        <i data-lucide="chevron-down" class="gold-text transition-transform"></i>
-                    </div>
-                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed">
-                        <p>命盤揭示了你的個人特質（是權威型、親和型還是創意型）。我們依據此特質定錨影音定位，避免讓你嘗試不適合你的風格，從而降低拍片時的心理阻力。</p>
+                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed text-left text-left">
+                        是的，目前主流的 Reels, TikTok, Shorts 皆為 9:16 直式比例。我們的拍攝企劃能確保您的作品在這些高流量平台上有最佳視覺呈現。
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Booking Form -->
+    <!-- Booking Form (Restored Restored Layout) -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="booking">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl gold-text font-light mb-4">預約您的創作旅程</h2>
-                <p class="opacity-60 font-light text-lg md:text-xl">填寫基本資料，我們將儘快為您安排</p>
-            </div>
-            <form id="booking-form" class="bg-[#3d332d] p-6 md:p-16 rounded-[32px] md:rounded-[48px] border border-white/10 shadow-2xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-light">
-                    <div class="flex flex-col gap-3">
-                        <label class="text-sm gold-text font-bold uppercase tracking-widest">姓名 (必填)</label>
-                        <input type="text" name="name" id="form_name" required placeholder="您的姓名" class="p-4 rounded-xl">
+        <div class="container mx-auto px-6 max-w-5xl text-center">
+            <h2 class="text-4xl gold-text font-light mb-4 text-center">預約您的創作旅程</h2>
+            <p class="opacity-60 font-light mb-16 text-center">填寫基本資料，我們將儘快為您安排</p>
+            <form id="booking-form" class="bg-[#3d332d] p-8 md:p-16 rounded-[48px] border border-white/10 shadow-2xl text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="flex flex-col gap-3 text-left">
+                        <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">姓名 (必填)</label>
+                        <input type="text" name="name" id="form_name" required placeholder="您的姓名" class="p-4 rounded-xl text-left">
                     </div>
-                    <div class="flex flex-col gap-3">
-                        <label class="text-sm gold-text font-bold uppercase tracking-widest">Line ID (必填)</label>
-                        <input type="text" name="line_id" id="form_line" required placeholder="ID" class="p-4 rounded-xl">
+                    <div class="flex flex-col gap-3 text-left">
+                        <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">Line ID (必填)</label>
+                        <input type="text" name="line_id" id="form_line" required placeholder="您的 LINE ID" class="p-4 rounded-xl text-left">
                     </div>
-                    <div class="flex flex-col gap-3">
-                        <label class="text-sm gold-text font-bold uppercase tracking-widest">店家名稱</label>
-                        <input type="text" name="shop_name" placeholder="所屬店家" class="p-4 rounded-xl">
+                    <div class="flex flex-col gap-3 text-left">
+                        <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">店家名稱</label>
+                        <input type="text" name="shop_name" placeholder="所屬店家" class="p-4 rounded-xl text-left text-left">
                     </div>
-                    <div class="flex flex-col gap-3">
-                        <label class="text-sm gold-text font-bold uppercase tracking-widest">所在地區</label>
-                        <select name="location" class="p-4 rounded-xl font-bold gold-text">
+                    <div class="flex flex-col gap-3 text-left">
+                        <label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left text-left">所在地區</label>
+                        <select name="location" class="p-4 rounded-xl font-bold gold-text text-left">
                             <option value="" disabled selected>請選擇地區</option>
                             <option value="北">新竹以北 (車資+$1,000)</option>
                             <option value="中">新竹以南 (車資+$3,000)</option>
                             <option value="南">嘉義以南 (車資+$5,000)</option>
                         </select>
                     </div>
-                    <div class="flex flex-col gap-3 md:col-span-2">
-                        <label class="text-sm gold-text font-bold uppercase tracking-widest">所選方案</label>
-                        <input type="text" id="selected_plan_display" name="plan" readonly value="試拍方案 ($8,800)" class="p-4 rounded-xl opacity-60">
+                    <div class="flex flex-col gap-3 md:col-span-2 text-left">
+                        <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">所選方案</label>
+                        <input type="text" id="selected_plan_display" name="plan" readonly value="試拍方案 ($8,800)" class="p-4 rounded-xl opacity-60 text-left">
                     </div>
                     
-                    <div class="flex flex-col gap-6 md:col-span-2 mt-4">
-                        <div class="notice-box p-6 md:p-8 rounded-2xl md:rounded-3xl flex flex-col sm:flex-row items-start gap-4">
-                            <i data-lucide="info" class="w-8 h-8 gold-text shrink-0 mt-1"></i>
-                            <div>
-                                <p class="gold-text font-black text-xl mb-2">紫微斗數報告必填提醒</p>
-                                <p class="opacity-80 text-sm leading-loose">請提供正確的<span class="font-black underline decoration-[#c9a67a] underline-offset-8">出生年月日與精確時間</span>以便解析報告。</p>
+                    <div class="flex flex-col gap-6 md:col-span-2 mt-4 text-left">
+                        <div class="notice-box p-6 md:p-8 rounded-3xl flex flex-col sm:flex-row items-start gap-4 shadow-inner text-left">
+                            <i data-lucide="lock" class="w-8 h-8 gold-text shrink-0 mt-1 text-left"></i>
+                            <div class="text-left text-left">
+                                <p class="gold-text font-black text-xl mb-2 text-left">隱私與資料承諾</p>
+                                <p class="opacity-80 text-sm leading-loose text-left text-left">您的資料將由專人審核，絕對保密。請提供正確的出生年月日以便我們為您準備初步解析。</p>
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-2">
-                            <div class="flex flex-col gap-3">
-                                <label class="text-sm gold-text font-bold uppercase tracking-widest">出生日期</label>
-                                <input type="date" name="birth_date" class="p-4 rounded-xl">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-2 text-left">
+                            <div class="flex flex-col gap-3 text-left text-left">
+                                <label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left">出生日期</label>
+                                <input type="date" name="birth_date" class="p-4 rounded-xl text-left">
                             </div>
-                            <div class="flex flex-col gap-3">
-                                <label class="text-sm gold-text font-bold uppercase tracking-widest">出生時間</label>
-                                <div class="flex gap-2">
-                                    <select name="birth_period" class="flex-1 p-4 rounded-xl font-bold gold-text">
-                                        <option value="AM">上午</option>
-                                        <option value="PM">下午</option>
+                            <div class="flex flex-col gap-3 text-left text-left">
+                                <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">出生時間</label>
+                                <div class="flex gap-2 text-left">
+                                    <select name="birth_hour" id="birth_hour" class="flex-1 p-4 rounded-xl text-center text-left">
+                                        <!-- Populated via JS -->
                                     </select>
-                                    <select name="birth_hour" class="flex-1 p-4 rounded-xl text-center">
-                                        <script>for(let i=1;i<=12;i++)document.write(`<option value="${i}">${i}點</option>`)</script>
-                                    </select>
-                                    <select name="birth_minute" class="flex-1 p-4 rounded-xl text-center">
-                                        <script>for(let i=0;i<60;i++)document.write(`<option value="${i}">${i.toString().padStart(2,'0')}分</option>`)</script>
+                                    <select name="birth_minute" id="birth_minute" class="flex-1 p-4 rounded-xl text-center text-left">
+                                        <!-- Populated via JS -->
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-12 text-center">
-                    <button type="submit" id="submit-btn" class="w-full sm:w-auto px-16 py-6 gold-bg text-[#3d332d] rounded-full text-xl md:text-2xl font-black tracking-widest hover:brightness-110 shadow-xl transition-all active:scale-95">確認資料並送出</button>
-                    <p id="form-status" class="mt-6 text-base font-bold transition-all"></p>
+                <div class="mt-12 text-center text-center">
+                    <button type="submit" id="submit-btn" class="w-full sm:w-auto px-16 py-6 gold-bg text-[#3d332d] rounded-full text-xl md:text-2xl font-black tracking-widest hover:brightness-110 shadow-xl transition-all active:scale-95 text-center text-center whitespace-nowrap">確認資料並開啟旅程</button>
+                    <p id="form-status" class="mt-6 text-sm font-bold transition-all text-center text-center"></p>
                 </div>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 container mx-auto px-6 text-center border-t border-white/5">
-        <h2 class="text-2xl font-light mb-4 tracking-[0.4em] uppercase">RENATA</h2>
-        <div class="opacity-30 text-[10px] tracking-[0.2em] uppercase">© 2026 RENATA SALON. BORN WITH TALENT, FLOW WITH ART.</div>
+    <footer class="py-12 container mx-auto px-6 text-center border-t border-white/5 uppercase opacity-30 text-[10px] tracking-[0.3em] text-center">
+        RENATA © 2026 SALON. BORN WITH TALENT, FLOW WITH ART.
     </footer>
 
-    <!-- Modal for Videos -->
-    <div id="sample-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center">
-        <div class="modal-content bg-[#3d332d] rounded-[32px] md:rounded-[48px] shadow-2xl relative w-full max-w-5xl">
-            <button onclick="window.closeModal()" class="absolute top-6 right-6 text-white opacity-40 hover:opacity-100 z-50 p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
-            <div class="p-6 md:p-16">
-                <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 lg:items-start">
-                    <div class="w-full max-w-[280px] sm:max-w-[320px] lg:w-[400px] mx-auto lg:mx-0 shrink-0">
-                        <div class="aspect-[9/16] bg-black rounded-2xl md:rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl relative">
-                            <div id="modal-video-container" class="absolute inset-0 w-full h-full flex items-center justify-center"></div>
-                        </div>
-                    </div>
-                    <div class="flex-1 flex flex-col justify-center">
-                        <h2 id="modal-title" class="text-3xl md:text-4xl gold-text font-light mb-4">方案範本</h2>
-                        <div class="mb-6"><span class="target-label">建議對象</span><p id="modal-target" class="text-lg md:text-xl font-bold opacity-95"></p></div>
-                        <div class="space-y-6 text-left font-light">
-                            <div class="p-6 bg-black/20 rounded-2xl md:rounded-[32px] border border-white/5">
-                                <h4 class="gold-text font-bold mb-3 flex items-center gap-3 text-lg"><i data-lucide="info" class="w-5 h-5"></i> 企劃重點</h4>
-                                <p id="modal-desc" class="opacity-80 text-base md:text-lg leading-relaxed"></p>
-                            </div>
-                            <div class="p-6 bg-black/20 rounded-2xl md:rounded-[32px] border border-white/5">
-                                <h4 class="gold-text font-bold mb-3 flex items-center gap-3 text-lg"><i data-lucide="sparkles" class="w-5 h-5"></i> 預期成果</h4>
-                                <ul id="modal-features" class="opacity-80 text-base md:text-lg space-y-2"></ul>
-                            </div>
-                        </div>
-                        <div class="mt-10 text-center lg:text-left">
-                            <button onclick="window.closeModalAndScrollToBooking()" class="px-10 py-5 gold-bg text-[#3d332d] rounded-full text-lg font-black tracking-widest shadow-xl active:scale-95">我想預約此方案</button>
-                        </div>
-                    </div>
+    <!-- Article Modal -->
+    <div id="article-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left">
+        <div class="modal-content bg-[#3d332d] rounded-[32px] md:rounded-[48px] shadow-2xl relative w-full max-w-3xl p-8 md:p-16 text-left">
+            <button onclick="window.closeArticleModal()" class="absolute top-8 right-8 text-white opacity-40 hover:opacity-100 z-50 p-2 text-left"><i data-lucide="x" class="w-8 h-8 text-left"></i></button>
+            <div id="article-modal-body" class="text-left text-left"></div>
+            <div class="mt-12 text-center text-center text-center"><button onclick="window.closeArticleModal()" class="px-8 py-3 border border-white/20 text-white rounded-full font-bold text-center text-center">返回首頁</button></div>
+        </div>
+    </div>
+
+    <!-- Plan Modal -->
+    <div id="sample-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left">
+        <div class="modal-content bg-[#3d332d] rounded-[32px] relative w-full max-w-4xl p-6 md:p-12 flex flex-col lg:flex-row gap-10 text-left">
+            <button onclick="window.closeModal()" class="absolute top-6 right-6 text-white opacity-40 text-left"><i data-lucide="x" class="w-8 h-8 text-left"></i></button>
+            <div class="w-full max-w-[260px] mx-auto shrink-0 aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl text-left">
+                <div id="modal-video-container" class="vertical-video-wrapper text-left"></div>
+            </div>
+            <div class="flex-1 text-left flex flex-col justify-center text-left">
+                <h2 id="modal-title" class="text-3xl gold-text font-light mb-6 text-left">方案範本</h2>
+                <div id="modal-features-box" class="p-6 bg-black/20 rounded-3xl border border-white/5 space-y-4 mb-8 text-left">
+                    <!-- JS Injected Features -->
                 </div>
+                <button onclick="window.closeModalAndScrollToBooking()" class="w-full py-5 gold-bg text-[#3d332d] rounded-full font-black shadow-xl text-center whitespace-nowrap">我想預約此方案</button>
             </div>
         </div>
     </div>
 
+    <!-- Insight Video Modal -->
+    <div id="insight-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-center text-center">
+        <div class="modal-content bg-[#3d332d] rounded-[32px] relative w-full max-w-[400px] p-8 text-center text-center">
+            <button onclick="window.closeInsightModal()" class="absolute top-4 right-4 text-white opacity-40 text-center"><i data-lucide="x" class="w-6 h-6 text-center"></i></button>
+            <h2 id="insight-modal-title" class="text-xl gold-text font-light mb-6 text-center text-center">實戰教學</h2>
+            <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl mb-6 text-center text-center">
+                <div id="insight-video-container" class="vertical-video-wrapper text-center text-center"></div>
+            </div>
+            <button onclick="window.closeInsightModal()" class="px-8 py-3 border border-white/10 text-white rounded-full text-xs text-center text-center">關閉觀看</button>
+        </div>
+    </div>
+
     <script>
-        const rawIds = [
-            '1Af8ultZpsr2pe-rWNP4TrU72P8JrV0jg', '1fWlkcP4gbB_aWyNMKveFlzYLLhDob-bP', '1TBirZHyi8r7W3fdmJzu8RN6fPVd-dZ1H',
-            '16hndIjvdRlp58yY_UM5NrzL0zgJsnkYp', '1XCItzHeBkOFkaOWryWET-c0Yw9Ksz8w_', '1rLr28Cbm94yBOXdUBN9udE0MdtHOvO69',
-            '1njXDcyBL6EyUxgR53xYJDeCJibMJe_pX', '1t8NQO0kMiu54RWFOtMYKeuk4yD4GdOoJ', '19xjO9JIBWkgcUU107M4rmXQ_cP_PcgQT',
-            '1wkPbElEVD8fyu7ObX56bh7owPAViEooJ', '1G1bdpLkMV0bspyRG2jkjGtEdWwe-rJIb', '1tZ-Nd4V4G7mtT6NvqiBIVyMKTbJ0o6Mg',
-            '11lE6Q4upyR8gP4RumJUYJfOUMwj7lTL-', '14Puq00ZTHwvh8iStwyRPAhlvK6ku4xuP', '1nMDDf3v5Uqx926yjDe-1VhpOWRCnrcdK',
-            '1ROOwHlME5l1OCUWyYRwOvlKh4_vUmEZD', '1FmzvaIq4p84s7eZC96YedESsEUZJ8jHt', '1zDRCBlG4EmAwrKWeShF8TYBxGCKjQgxA',
-            '18P4W6jerbx1hqgp4LiNESOSfyWzX0vEq', '1Zor9FHF0RwmcLK0qRt0xgqnvsM62CeqG', '1_6vbUA0Gos80_METisUIA1wyH3_m3xhb',
-            '1AwmXoQdwTx9o0TOhCOf5ovqWpXJ0pNyx', '1LwlcQin0Wynxn_IXO3bshEv9fPznPFy6', '1lYKoWRzqvFVHn-7rSWBmxa1axo_VxoIU',
-            '1kxBYYHorrz11i4wA-6AuNu71r7gzftBi', '169oOWPmKF6VpDi0uTaq_NFGk6cD_DvoL', '1PflD7zSVG-PgL4wf-2zLEmwVLs_iUCdy',
-            '1-OsToS8-SDwQYybaFIuFBeiWiBzKybUA'
+        // Data & Raw IDs
+        const rawIds = ['1Af8ultZpsr2pe-rWNP4TrU72P8JrV0jg', '1fWlkcP4gbB_aWyNMKveFlzYLLhDob-bP', '1TBirZHyi8r7W3fdmJzu8RN6fPVd-dZ1H', '16hndIjvdRlp58yY_UM5NrzL0zgJsnkYp', '1XCItzHeBkOFkaOWryWET-c0Yw9Ksz8w_', '1rLr28Cbm94yBOXdUBN9udE0MdtHOvO69', '1njXDcyBL6EyUxgR53xYJDeCJibMJe_pX', '1t8NQO0kMiu54RWFOtMYKeuk4yD4GdOoJ', '19xjO9JIBWkgcUU107M4rmXQ_cP_PcgQT', '1wkPbElEVD8fyu7ObX56bh7owPAViEooJ'];
+
+        const articles = [
+            {
+                title: "天賦定錨：為何紫微斗數能幫你拍片？",
+                summary: "拍短影音最怕模仿。透過命盤定錨個人能量場，找出適合您的表達方式，讓「真」成為流量密碼。",
+                content: `<h2 class="text-3xl gold-text mb-6">天賦，才是最持久的競爭力</h2><p class="opacity-80 leading-loose">在短影音泛濫的時代，模仿是最大的陷阱。紫微斗數能揭示您的天生能量場——是威權型的領袖，還是親和型的鄰家姐姐？順著特質表達，您在鏡頭前的真誠是無法模仿的，這也是現今演算法最推崇的稀缺資源。</p>`
+            },
+            {
+                title: "數位遺產：每一支影片都是未來的資產",
+                summary: "我們不只在拍片，而是在建立一套自動化信任系統。將專業轉化為具備長尾效應的數位資產。",
+                content: `<h2 class="text-3xl gold-text mb-6">讓影音成為您的 24 小時銷售員</h2><p class="opacity-80 leading-loose">當您休息時，影片仍在網路上為您與潛在客戶溝通。我們協助您佈局具備長尾效應的內容，讓時間成為品牌的助燃劑。每一支具備靈魂的影片，都在持續傳遞品牌的價值與溫度。</p>`
+            },
+            {
+                title: "鏡頭引導：心理素質大於攝影器材",
+                summary: "害羞與焦慮是大多數人的門檻。我們透過專業心理引導，讓您遺忘鏡頭，回歸最自然的情感流動。",
+                content: `<h2 class="text-3xl gold-text mb-6">忘記鏡頭，記住專業</h2><p class="opacity-80 leading-loose">我們深信動人的影像來自情感的流動。我們會教您簡單的心理錨點與呼吸法，將鏡頭轉化為好友或學生。這不需要演技，只需要您回歸專業，捕捉眼神發光的瞬間。</p>`
+            }
         ];
 
-        const planData = {
-            'event': { 
-                name: '體驗課程 ($2,980)', 
-                coreValue: '3/25-26 快閃活動：親身體驗天賦影音的引導力。' 
-            },
-            'trial': { 
-                name: '試拍方案 ($8,800)', 
-                coreValue: '解決「不敢拍」的心理障礙，跨出創作第一步。',
-                videoURL: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview', 
-                target: '初次體驗影音製作、想以低門檻展開頻道的創作者。', 
-                desc: '熟悉拍攝節奏，產出具備基本美感的原創影片。', 
-                features: ['消除鏡頭緊張感', '掌握開場黃金 3 秒', '建立頻道視覺調性'] 
-            },
-            'starter': { 
-                name: '入門方案 ($20,000)', 
-                coreValue: '解決「拍不好」的品質焦慮，建立專業且穩定的品牌內容。',
-                videoURL: 'https://www.youtube.com/embed/dQw4w9WgXcQ', 
-                target: '已有初步創作方向、想建立穩定內容輸出的設計師。', 
-                desc: '導入輔助元素與優化視覺排版，提升完播率。', 
-                features: ['品牌專屬記憶點開發', '專業內容視覺輔助', '建立穩定創作節奏'] 
-            },
-            'subscription': { 
-                name: '訂閱方案 ($22,500)', 
-                coreValue: '解決「沒主題」的成長瓶頸，打造高質感的領袖影響力。',
-                videoURL: 'https://www.youtube.com/embed/dQw4w9WgXcQ', 
-                target: '欲打造領袖品牌、需長期穩定產出的高階創作者。', 
-                desc: '打造不可取代的權威質感影音形象。', 
-                features: ['AI 動態素材製作', '全年度營運策略建議', '建立極致質感形象'] 
-            }
+        const planDetails = {
+            'trial': { name: '試拍方案 ($8,800)', features: ['紫微斗數報告', '鏡頭緊張感消除', '開場黃金3秒掌握'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
+            'starter': { name: '入門方案 ($20,000)', features: ['品牌記憶點開發', '專業視覺輔助', '穩定創作節奏'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
+            'subscription': { name: '訂閱方案 ($22,500)', features: ['AI動態素材', '年度營運策略', '極致質感工程'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
+            'event': { name: '體驗課程 ($2,980)', features: ['現場天賦解盤', '30秒影音產出', '引導式對談體驗'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' }
         };
 
-        window.selectPlanAndScroll = function(tabId) { 
-            const data = planData[tabId];
-            document.getElementById('selected_plan_display').value = data.name;
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' }); 
-            setTimeout(() => document.getElementById('form_name').focus(), 800);
-        };
-
-        window.openModal = function(tabId) {
-            const data = planData[tabId];
-            document.getElementById('modal-title').innerText = data.name;
-            document.getElementById('modal-target').innerText = data.target;
-            document.getElementById('modal-desc').innerText = data.desc;
-            const featureList = document.getElementById('modal-features');
-            featureList.innerHTML = '';
-            data.features.forEach(f => {
-                const li = document.createElement('li');
-                li.className = "flex items-center gap-3";
-                li.innerHTML = `<i data-lucide="check" class="w-5 h-5 gold-text shrink-0"></i> <span>${f}</span>`;
-                featureList.appendChild(li);
-            });
+        // Utility Functions
+        window.populateArticles = () => {
+            const list = document.getElementById('article-list');
+            if(!list) return;
+            list.innerHTML = articles.map((a, i) => `
+                <div class="article-card p-6 rounded-2xl cursor-pointer" onclick="window.openArticleModal(${i})">
+                    <h4 class="text-lg font-bold gold-text mb-2">${a.title}</h4>
+                    <p class="text-sm opacity-60 line-clamp-1 leading-relaxed mb-4">${a.summary}</p>
+                    <div class="text-xs font-black uppercase gold-text opacity-50 flex items-center gap-1">Read Full <i data-lucide="arrow-right" class="w-3 h-3"></i></div>
+                </div>
+            `).join('');
             lucide.createIcons();
-            document.getElementById('modal-video-container').innerHTML = `<iframe class="absolute inset-0 w-full h-full" src="${data.videoURL}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            document.getElementById('sample-modal').classList.remove('hidden');
+        };
+
+        window.openArticleModal = (i) => {
+            const a = articles[i];
+            document.getElementById('article-modal-body').innerHTML = `
+                <h2 class="text-3xl gold-text font-light mb-8">${a.title}</h2>
+                <div class="text-white/80 space-y-6 text-lg leading-relaxed">${a.content}</div>
+            `;
+            document.getElementById('article-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         };
 
-        window.closeModal = function() { document.getElementById('sample-modal').classList.add('hidden'); document.getElementById('modal-video-container').innerHTML = ''; document.body.style.overflow = ''; };
-        window.closeModalAndScrollToBooking = function() { 
-            const title = document.getElementById('modal-title').innerText;
-            document.getElementById('selected_plan_display').value = title;
-            window.closeModal(); 
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' }); 
-        };
+        window.closeArticleModal = () => { document.getElementById('article-modal').classList.add('hidden'); document.body.style.overflow = ''; };
 
-        window.generatePortfolio = function() {
+        window.generatePortfolio = () => {
             const grid = document.getElementById('image-grid');
             if(!grid) return;
             grid.innerHTML = '';
-            
             for(let i=0; i<24; i++) {
                 const id = rawIds[i % rawIds.length];
                 const item = document.createElement('div');
-                item.className = 'portfolio-grid-item rounded-[2px]';
+                item.className = 'portfolio-grid-item';
                 const thumbUrl = `https://lh3.googleusercontent.com/d/${id}`;
                 item.innerHTML = `
                     <div class="portfolio-blur-content" style="background-image: url('${thumbUrl}');"></div>
@@ -794,28 +657,89 @@
             }
         };
 
-        window.onclick = function(e) {
-            if (e.target.id === 'sample-modal') window.closeModal();
+        // Form Select Population (FIX FOR SYNTAX ERROR)
+        window.initFormSelects = () => {
+            const hourSelect = document.getElementById('birth_hour');
+            const minuteSelect = document.getElementById('birth_minute');
+            
+            if(hourSelect) {
+                let hoursHtml = '<option value="" disabled selected>時</option>';
+                for(let i=0; i<24; i++) hoursHtml += `<option value="${i}">${i} 點</option>`;
+                hourSelect.innerHTML = hoursHtml;
+            }
+            
+            if(minuteSelect) {
+                let minsHtml = '<option value="" disabled selected>分</option>';
+                for(let i=0; i<60; i+=10) minsHtml += `<option value="${i}">${i.toString().padStart(2,'0')} 分</option>`;
+                minuteSelect.innerHTML = minsHtml;
+            }
         };
 
-        window.onload = () => {
+        // Modal Logic
+        window.openModal = (tabId) => {
+            const d = planDetails[tabId];
+            document.getElementById('modal-title').innerText = d.name;
+            const box = document.getElementById('modal-features-box');
+            box.innerHTML = (d.features || []).map(f => `<div class="flex items-center gap-3 text-left"><i data-lucide="check" class="w-5 h-5 gold-text shrink-0"></i><span class="opacity-80">${f}</span></div>`).join('');
+            document.getElementById('modal-video-container').innerHTML = `<iframe class="w-full h-full" src="${d.video || ''}" frameborder="0" allowfullscreen></iframe>`;
+            document.getElementById('sample-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
             lucide.createIcons();
-            window.generatePortfolio();
+        };
+
+        window.closeModal = () => { document.getElementById('sample-modal').classList.add('hidden'); document.getElementById('modal-video-container').innerHTML = ''; document.body.style.overflow = ''; };
+        
+        window.openInsightModal = (u, t) => {
+            document.getElementById('insight-modal-title').innerText = t;
+            document.getElementById('insight-video-container').innerHTML = `<iframe class="w-full h-full" src="${u}" frameborder="0" allowfullscreen></iframe>`;
+            document.getElementById('insight-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+        
+        window.closeInsightModal = () => { document.getElementById('insight-modal').classList.add('hidden'); document.getElementById('insight-video-container').innerHTML = ''; document.body.style.overflow = ''; };
+        
+        window.selectPlanAndScroll = (id) => { 
+            const d = planDetails[id];
+            document.getElementById('selected_plan_display').value = d.name;
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => document.getElementById('form_name').focus(), 800);
+        };
+        
+        window.closeModalAndScrollToBooking = () => { 
+            const title = document.getElementById('modal-title').innerText;
+            document.getElementById('selected_plan_display').value = title;
+            window.closeModal(); 
+            document.getElementById('booking').scrollIntoView({behavior:'smooth'}); 
+        };
+
+        window.onclick = (e) => { 
+            if(e.target.id === 'sample-modal') window.closeModal();
+            if(e.target.id === 'insight-modal') window.closeInsightModal();
+            if(e.target.id === 'article-modal') window.closeArticleModal();
+        };
+
+        // Initialize everything on load
+        window.onload = () => { 
+            lucide.createIcons(); 
+            window.generatePortfolio(); 
+            window.populateArticles(); 
+            window.initFormSelects();
             
+            // Form Submit Simulation
             const form = document.getElementById('booking-form');
             if(form) {
-                form.addEventListener('submit', function(e) {
+                form.onsubmit = (e) => {
                     e.preventDefault();
                     const btn = document.getElementById('submit-btn');
-                    const status = document.getElementById('form-status');
-                    btn.disabled = true; btn.innerHTML = "傳送中...";
+                    const st = document.getElementById('form-status');
+                    btn.disabled = true; btn.innerText = "傳送中...";
                     setTimeout(() => {
-                        status.style.color = "#c9a67a";
-                        status.innerHTML = `✓ 感謝您的預約！我們將儘快聯繫您。`;
-                        btn.innerHTML = "確認預約並送出"; btn.disabled = false;
+                        st.innerText = "✓ 預約成功！我們將儘快與您聯繫。";
+                        st.style.color = "#c9a67a";
+                        btn.innerText = "確認預約並送出"; btn.disabled = false;
                         form.reset();
                     }, 1500);
-                });
+                };
             }
         };
     </script>
