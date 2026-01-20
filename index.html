@@ -35,12 +35,12 @@
         .gold-bg { background-color: var(--bronze-gold); }
         .gold-bg-soft { background-color: rgba(201, 166, 122, 0.1); }
 
-        /* Scrollbar styling */
+        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--dark-wood); }
         ::-webkit-scrollbar-thumb { background: var(--bronze-gold); border-radius: 3px; }
 
-        /* Animation */
+        /* Tab content animation */
         .tab-content { display: none; }
         .tab-content.active { display: flex; animation: fadeIn 0.4s ease-out forwards; }
 
@@ -49,57 +49,59 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Timeline connection lines */
         .timeline-line {
             width: 2px;
             background: linear-gradient(to bottom, transparent, var(--bronze-gold), transparent);
         }
 
-        /* Input overrides */
+        /* Form Inputs */
         input, textarea, select {
             background-color: rgba(255, 255, 255, 0.05) !important;
             border: 1px solid rgba(201, 166, 122, 0.2) !important;
             color: var(--cream-white) !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            appearance: none;
-            font-size: 16px !important; /* Prevent iOS zoom */
-        }
-        input:focus, textarea:focus, select:focus {
-            outline: none !important;
-            border-color: var(--bronze-gold) !important;
-            background-color: rgba(255, 255, 255, 0.08) !important;
-            box-shadow: 0 0 12px rgba(201, 166, 122, 0.2);
+            transition: all 0.3s ease;
+            appearance: none; 
+            font-size: 16px !important;
         }
 
-        /* Portfolio Privacy Blur */
+        /* Portfolio Grid with FIXED Privacy Blur */
         .portfolio-grid-item {
             aspect-ratio: 9/16;
             background: rgba(0,0,0,0.4);
             border: 1px solid rgba(201, 166, 122, 0.1);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
+            cursor: default; /* 改為不可點擊/預覽感 */
+            transition: border-color 0.4s ease;
         }
+        
         .portfolio-blur-content {
             width: 100%;
             height: 100%;
-            filter: blur(4px);
-            transition: filter 0.4s ease, transform 0.6s ease;
+            filter: blur(8px); /* 強化模糊效果，確保絕對隱私 */
+            transition: transform 0.6s ease;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7; /* 稍微降透明度增加質感 */
         }
+
+        /* 懸停時維持模糊，僅做縮放與亮度變化作為回饋 */
         .portfolio-grid-item:hover .portfolio-blur-content {
-            filter: blur(1.5px);
-            transform: scale(1.1);
+            filter: blur(8px); /* 維持模糊，不變清晰 */
+            transform: scale(1.15);
+            opacity: 0.9;
         }
+
         .portfolio-grid-item:hover {
             border-color: var(--bronze-gold);
             z-index: 10;
+            box-shadow: 0 0 20px rgba(201, 166, 122, 0.2);
         }
 
-        /* Modal Overlay Responsive */
+        /* Modal & UI Elements */
         .modal-overlay {
             background-color: rgba(61, 51, 45, 0.98);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
             z-index: 100;
             padding: 1rem;
         }
@@ -107,8 +109,17 @@
             border: 1px solid rgba(201, 166, 122, 0.3);
             max-height: 92vh;
             overflow-y: auto;
-            width: 100%;
-            max-width: 64rem;
+        }
+
+        .target-label {
+            background: rgba(201, 166, 122, 0.15);
+            color: var(--bronze-gold);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 8px;
         }
 
         .notice-box {
@@ -120,265 +131,201 @@
 <body class="antialiased">
 
     <!-- Hero Section -->
-    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#c9a67a33] px-4">
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#c9a67a33] px-6">
         <div class="absolute inset-0 opacity-20 pointer-events-none" 
              style="background: radial-gradient(circle at center, var(--bronze-gold) 0%, transparent 75%);"></div>
         <div class="container mx-auto text-center relative z-10 py-20">
-            <p class="gold-text tracking-[0.3em] md:tracking-[0.5em] mb-6 text-sm md:text-lg font-medium uppercase">2026 RENATA 蕾娜塔髮品 全新企劃</p>
-            <h1 class="text-5xl md:text-8xl font-light mb-8 tracking-tight">
+            <p class="gold-text tracking-[0.4em] mb-6 text-sm md:text-lg font-medium uppercase text-center">2026 RENATA 蕾娜塔髮品 全新企劃</p>
+            <h1 class="text-5xl md:text-8xl font-light mb-8 tracking-tight text-center">
                 順勢影音<span class="gold-text">沙龍</span>
             </h1>
-            <p class="text-xl md:text-3xl font-serif-italic mb-12 opacity-90 leading-relaxed">
+            <p class="text-xl md:text-3xl font-serif-italic mb-12 opacity-90 leading-relaxed text-center">
                 「順著天賦拍，流量自然來」
             </p>
-            <div class="flex justify-center">
-                <a href="#pain-points" class="w-full sm:w-auto px-8 md:px-12 py-5 rounded-full text-base md:text-lg tracking-widest border border-[#c9a67a] gold-text hover:bg-[#c9a67a] hover:text-[#3d332d] transition-all duration-500 font-black shadow-xl active:scale-95">
+            <div class="flex justify-center text-center">
+                <a href="#pain-points" class="w-full sm:w-auto px-10 md:px-12 py-5 rounded-full text-base md:text-lg tracking-widest border border-[#c9a67a] gold-text hover:bg-[#c9a67a] hover:text-[#3d332d] transition-all duration-500 font-black shadow-xl active:scale-95 text-center">
                     降低你拍片阻力 │ 持續累積影響力
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Pain Points Section -->
+    <!-- Pain Points -->
     <section id="pain-points" class="py-20 md:py-32 bg-[#342c27] border-b border-[#c9a67a1a]">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-light mb-6">為什麼拍短影音<br class="md:hidden"><span class="gold-text">總是這麼難？</span></h2>
+                <h2 class="text-3xl md:text-5xl font-light mb-6">為什麼拍短影音<br class="md:hidden"><span class="gold-text text-center">總是這麼難？</span></h2>
                 <div class="w-20 h-1 gold-bg mx-auto mb-8"></div>
-                <p class="text-lg md:text-xl opacity-60 font-light max-w-2xl mx-auto">我們看見美業創作者在鏡頭前的掙扎與迷惘</p>
+                <p class="text-lg md:text-xl opacity-60 font-light max-w-2xl mx-auto text-center">我們看見美業創作者在鏡頭前的掙扎與迷惘</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 hover:border-[#c9a67a33] transition-colors">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 shadow-xl">
                     <div class="w-16 h-16 gold-bg-soft rounded-full flex items-center justify-center gold-text mx-auto mb-6"><i data-lucide="eye-off" class="w-8 h-8"></i></div>
                     <h4 class="text-xl font-bold mb-3">鏡頭恐懼</h4>
                     <p class="text-sm opacity-60 leading-relaxed font-light">面對鏡頭就僵硬，無法自然展現魅力。</p>
                 </div>
-                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 hover:border-[#c9a67a33] transition-colors">
+                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 shadow-xl">
                     <div class="w-16 h-16 gold-bg-soft rounded-full flex items-center justify-center gold-text mx-auto mb-6"><i data-lucide="pen-tool" class="w-8 h-8"></i></div>
                     <h4 class="text-xl font-bold mb-3">靈感枯竭</h4>
-                    <p class="text-sm opacity-60 leading-relaxed font-light">不知道拍什麼，每天都在苦思腳本。</p>
+                    <p class="text-sm opacity-60 leading-relaxed font-light">不知道拍什麼，每天都在苦思腳本內容。</p>
                 </div>
-                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 hover:border-[#c9a67a33] transition-colors">
+                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 shadow-xl">
                     <div class="w-16 h-16 gold-bg-soft rounded-full flex items-center justify-center gold-text mx-auto mb-6"><i data-lucide="target" class="w-8 h-8"></i></div>
                     <h4 class="text-xl font-bold mb-3">定位模糊</h4>
-                    <p class="text-sm opacity-60 leading-relaxed font-light">跟風拍攝，卻拍不出獨特的差異化。</p>
+                    <p class="text-sm opacity-60 leading-relaxed font-light">跟風拍攝，卻拍不出獨特的差異化價值。</p>
                 </div>
-                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 hover:border-[#c9a67a33] transition-colors">
+                <div class="p-8 rounded-[32px] text-center border border-white/5 bg-white/5 shadow-xl">
                     <div class="w-16 h-16 gold-bg-soft rounded-full flex items-center justify-center gold-text mx-auto mb-6"><i data-lucide="bar-chart-3" class="w-8 h-8"></i></div>
                     <h4 class="text-xl font-bold mb-3">無效流量</h4>
-                    <p class="text-sm opacity-60 leading-relaxed font-light">影片不少卻無法轉換為實質品牌價值。</p>
+                    <p class="text-sm opacity-60 leading-relaxed font-light">影片不少卻無法轉換為實質的數位資產。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Astrology Section -->
-    <section id="astrology-trigger" class="py-20 md:py-24 container mx-auto px-6 max-w-5xl text-center">
-        <div class="text-center mb-16 space-y-6">
-            <h2 class="text-2xl md:text-4xl font-medium gold-text uppercase tracking-widest">宇宙法則與自我連結</h2>
-            <div class="space-y-4 max-w-3xl mx-auto">
-                <p class="leading-relaxed text-lg md:text-2xl opacity-90 font-light">在宇宙法則的定律中，每一個靈魂都有屬於自己獨特魅力。</p>
-                <p class="leading-relaxed text-xl md:text-3xl opacity-90 font-bold gold-text py-2">短影音是一場自我認識的旅程</p>
-                <p class="leading-relaxed text-lg md:text-2xl opacity-90 font-light">也是我們專注價值後擴散影響力的最適路徑</p>
-            </div>
-        </div>
-        <div class="mt-12 flex flex-col items-center">
-            <button onclick="window.openAstrologyModal()" class="w-full sm:w-auto group relative px-8 md:px-12 py-6 rounded-full border border-[#c9a67a] gold-text hover:bg-[#c9a67a] hover:text-[#3d332d] transition-all duration-500 shadow-2xl flex items-center justify-center gap-4 active:scale-95">
-                <i data-lucide="compass" class="w-8 h-8 group-hover:rotate-45 transition-transform duration-700"></i>
-                <span class="text-xl md:text-2xl font-black tracking-[0.2em]">透過紫微斗數找回連結</span>
-            </button>
-            <p class="mt-8 opacity-40 text-sm italic tracking-widest">協助您找到在世界上的個人使用導航方向</p>
-        </div>
-    </section>
-
-    <!-- Services Overview -->
-    <section class="py-20 md:py-32 bg-[#342c27]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-light mb-6">核心服務項目</h2>
-                <div class="w-20 h-1 gold-bg mx-auto"></div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
-                <div class="group p-8 md:p-10 rounded-[32px] border border-white/5 bg-[#3d332d] shadow-lg flex flex-col h-full">
-                    <div class="mb-8 gold-text group-hover:scale-110 transition-all duration-500"><i data-lucide="compass" class="w-10 h-10"></i></div>
-                    <h3 class="text-2xl font-bold mb-3">紫微斗數：柔性解盤</h3>
-                    <p class="text-base opacity-80 mb-8 leading-relaxed flex-grow">解析天賦找到個人導航方向與靈魂腳本。</p>
-                    <button onclick="window.openAstrologyModal()" class="text-sm gold-text font-bold underline underline-offset-4 flex items-center gap-1 hover:opacity-70 transition-opacity">了解詳情 <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                </div>
-                <!-- Card 2 -->
-                <div class="group p-8 md:p-10 rounded-[32px] border border-white/5 bg-[#3d332d] shadow-lg flex flex-col h-full">
-                    <div class="mb-8 gold-text group-hover:scale-110 transition-all duration-500"><i data-lucide="camera" class="w-10 h-10"></i></div>
-                    <h3 class="text-2xl font-bold mb-3">光之沙龍：拍攝企劃</h3>
-                    <p class="text-base opacity-80 mb-8 leading-relaxed flex-grow">三種方案，讓數位資產具備生命力。</p>
-                    <a href="#plans" class="text-sm gold-text font-bold underline underline-offset-4 flex items-center gap-1 hover:opacity-70 transition-opacity">選擇方案 <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
-                </div>
-                <!-- Card 3 -->
-                <div class="group p-8 md:p-10 rounded-[32px] border border-white/5 bg-[#3d332d] shadow-lg flex flex-col h-full text-left">
-                    <div class="mb-8 gold-text group-hover:scale-110 transition-all duration-500"><i data-lucide="layers" class="w-10 h-10"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-left">天賦綻放：實戰課</h3>
-                    <p class="text-base opacity-80 mb-8 leading-relaxed flex-grow text-left">帶你從定位到拍攝的全流程實戰訓練課程。</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="group p-8 md:p-10 rounded-[32px] border border-white/5 bg-[#3d332d] shadow-lg flex flex-col h-full text-left">
-                    <div class="mb-8 gold-text group-hover:scale-110 transition-all duration-500"><i data-lucide="sparkles" class="w-10 h-10"></i></div>
-                    <h3 class="text-2xl font-bold mb-3 text-left">天賦錦囊：靈感包</h3>
-                    <p class="text-base opacity-80 mb-8 leading-relaxed flex-grow text-left">提供腳本組合，解決創作路上的瓶頸。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Tabs Section -->
+    <!-- Pricing Section -->
     <section class="py-20 md:py-32 bg-[#3d332d]" id="plans">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-16 gap-8 text-center lg:text-left">
-                <div>
-                    <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase">光之沙龍：拍攝企劃</h2>
-                    <p class="opacity-70 text-lg md:xl font-light">順流拍攝企劃，拍出屬於您的數位資產</p>
+                <div class="text-left text-left">
+                    <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-left">光之沙龍：拍攝企劃</h2>
+                    <p class="opacity-70 text-lg md:xl font-light text-left">順流拍攝企劃，拍出屬於您的數位資產</p>
                 </div>
                 <div class="w-full lg:w-auto flex flex-col sm:flex-row bg-white/5 p-1.5 rounded-3xl sm:rounded-full border border-white/10 shadow-inner">
                     <button onclick="window.switchTab('trial')" id="btn-trial" class="tab-btn px-6 md:px-8 py-3 rounded-full text-sm font-bold transition-all bg-[#c9a67a] text-[#3d332d] mb-1 sm:mb-0">試拍方案</button>
-                    <button onclick="window.switchTab('starter')" id="btn-starter" class="tab-btn px-6 md:px-8 py-3 rounded-full text-sm font-bold transition-all text-white opacity-60 mb-1 sm:mb-0 hover:opacity-100">入門方案</button>
-                    <button onclick="window.switchTab('subscription')" id="btn-subscription" class="tab-btn px-6 md:px-8 py-3 rounded-full text-sm font-bold transition-all text-white opacity-60 hover:opacity-100">訂閱方案</button>
+                    <button onclick="window.switchTab('starter')" id="btn-starter" class="tab-btn px-6 md:px-8 py-3 rounded-full text-sm font-bold transition-all text-white opacity-60 mb-1 sm:mb-0 hover:opacity-100 text-center">入門方案</button>
+                    <button onclick="window.switchTab('subscription')" id="btn-subscription" class="tab-btn px-6 md:px-8 py-3 rounded-full text-sm font-bold transition-all text-white opacity-60 hover:opacity-100 text-center">訂閱方案</button>
                 </div>
             </div>
-
-            <!-- Content Area for Plan Switcher -->
             <div id="content-display" class="tab-content active bg-[#3d332d] border border-white/10 rounded-[32px] md:rounded-[48px] p-8 md:p-16 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center shadow-2xl relative text-left">
-                <!-- Injected via switchTab -->
+                <!-- Content injected by JS -->
             </div>
         </div>
     </section>
 
-    <!-- Micro Portfolio Wall (RWD Optimized) -->
-    <section id="portfolio-wall" class="py-20 md:py-32 bg-[#342c27] overflow-hidden">
+    <!-- Portfolio Wall (Privacy Blur Always On) -->
+    <section id="portfolio-wall" class="py-20 md:py-32 bg-[#342c27] overflow-hidden text-center">
         <div class="container mx-auto px-4 text-center">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-light mb-6 uppercase tracking-widest">靈魂影音<span class="gold-text">鏡像</span></h2>
-                <div class="w-20 h-1 gold-bg mx-auto mb-8"></div>
-                <p class="text-lg opacity-60 font-light">看見創作者綻放時刻（人像隱私保護）</p>
+                <h2 class="text-3xl md:text-5xl font-light mb-6 uppercase tracking-widest text-center">靈魂影音<span class="gold-text">鏡像</span></h2>
+                <div class="w-20 h-1 gold-bg mx-auto mb-8 text-center"></div>
+                <p class="text-lg opacity-60 font-light text-center">36 格縮圖牆：保護客戶隱私，僅呈現美學色調氛圍</p>
             </div>
             
-            <!-- Mobile: 6 cols, Desktop: 12 cols. Total 36 items -->
-            <div id="image-grid" class="grid grid-cols-6 lg:grid-cols-12 gap-1 md:gap-1.5 mt-10">
-                <!-- 36 items generated via JS -->
+            <div id="image-grid" class="grid grid-cols-6 lg:grid-cols-12 gap-1 md:gap-1.5 mt-16 px-2">
+                <!-- 36 items cycled from your 28 IDs via JS -->
             </div>
             
-            <div class="mt-16">
-                <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-auto px-10 py-5 gold-bg text-[#3d332d] font-black tracking-widest rounded-full hover:brightness-110 shadow-2xl transition-all active:scale-95">
+            <div class="mt-16 text-center">
+                <button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] font-black tracking-widest rounded-full hover:brightness-110 shadow-2xl transition-all active:scale-95 text-center text-center">
                     我也想拍出靈魂作品
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Five Stages Section -->
+    <!-- Five Stages -->
     <section id="stages" class="py-20 md:py-32 bg-[#3d332d] border-y border-white/5">
-        <div class="container mx-auto px-6 overflow-hidden">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl font-light mb-6 gold-text">天賦綻放：五大成長階段</h2>
-                <p class="text-lg md:text-xl opacity-70 font-light max-w-2xl mx-auto">從種子到開花的實戰全過程</p>
+        <div class="container mx-auto px-6 overflow-hidden text-center">
+            <div class="text-center mb-20 text-center">
+                <h2 class="text-3xl md:text-5xl font-light mb-6 gold-text text-center text-center">天賦綻放：五大成長階段</h2>
+                <p class="text-lg md:text-xl opacity-70 font-light max-w-2xl mx-auto text-center">從種子到開花的實戰全過程</p>
             </div>
-            <div class="relative flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-4 mt-10">
-                <!-- Responsive Connection Line -->
+            <div class="relative flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-4 mt-20 text-left">
                 <div class="absolute top-0 bottom-0 left-8 lg:left-0 lg:top-10 lg:bottom-auto lg:w-full h-auto lg:h-px bg-[#c9a67a4d]"></div>
                 
-                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group">
+                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group text-left">
                     <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 text-xl font-black shrink-0">1</div>
-                    <div class="text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase">扎根</p><h4 class="text-xl md:text-2xl font-bold mb-2">定位</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light">深入命盤特質，建立品牌根基</p></div>
+                    <div class="text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase text-left">扎根</p><h4 class="text-xl md:text-2xl font-bold mb-2 text-left">定位</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light text-left">深入命盤特質，建立品牌根基</p></div>
                 </div>
-                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group">
+                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group text-left">
                     <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 text-xl font-black shrink-0">2</div>
                     <div class="text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase">萌芽</p><h4 class="text-xl md:text-2xl font-bold mb-2">主題</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light">創建適合您的核心主題方向</p></div>
                 </div>
-                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group">
+                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group text-left">
                     <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 text-xl font-black shrink-0">3</div>
                     <div class="text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase">枝葉</p><h4 class="text-xl md:text-2xl font-bold mb-2">內容</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light">產出豐富具備生命力的腳本</p></div>
                 </div>
-                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 text-xl font-black shrink-0">4</div>
-                    <div class="text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase">獨特花色</p><h4 class="text-xl md:text-2xl font-bold mb-2">差異化</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light">調配專屬性格與情感美學</p></div>
+                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group text-left">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 text-xl font-black shrink-0 text-left">4</div>
+                    <div class="text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase text-left">獨特花色</p><h4 class="text-xl md:text-2xl font-bold mb-2 text-left">差異化</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light text-left">調配專屬性格與情感美學</p></div>
                 </div>
-                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group">
-                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 text-xl font-black shrink-0">5</div>
-                    <div class="text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase">綻放顯現</p><h4 class="text-xl md:text-2xl font-bold mb-2">拍攝剪輯</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light">透過技術將積累轉化為動人影像</p></div>
+                <div class="relative z-10 flex lg:flex-col items-center lg:items-start gap-6 lg:w-1/5 group text-left text-left">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center bg-[#3d332d] border-2 border-[#c9a67a] group-hover:gold-bg group-hover:text-[#3d332d] transition-all duration-300 text-xl font-black shrink-0 text-left text-left text-left text-left text-left">5</div>
+                    <div class="text-left text-left"><p class="text-xs gold-text font-black tracking-widest mb-1 uppercase text-left text-left text-left text-left text-left">綻放顯現</p><h4 class="text-xl md:text-2xl font-bold mb-2 text-left text-left text-left text-left">拍攝剪輯</h4><p class="text-sm md:text-base opacity-60 leading-relaxed font-light text-left text-left text-left text-left">透過技術將積累轉化為動人影像</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Booking Form Section -->
+    <!-- Booking Form -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="booking">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl gold-text font-light mb-4">預約您的創作旅程</h2>
-                <p class="opacity-60 font-light text-lg md:text-xl">填寫基本資料，我們將儘快為您安排</p>
+        <div class="container mx-auto px-6 max-w-5xl text-center text-center">
+            <div class="text-center mb-16 text-center text-center text-center">
+                <h2 class="text-4xl gold-text font-light mb-4 text-center">預約您的創作旅程</h2>
+                <p class="opacity-60 font-light text-lg md:text-xl text-center">填寫基本資料，我們將儘快為您安排</p>
             </div>
             <form id="booking-form" class="bg-[#3d332d] p-6 md:p-16 rounded-[32px] md:rounded-[48px] border border-white/10 shadow-2xl text-left">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-light">
-                    <div class="flex flex-col gap-3"><label class="text-sm gold-text font-bold uppercase tracking-widest">姓名 (必填)</label><input type="text" name="name" required placeholder="您的姓名" class="p-4 rounded-xl md:rounded-2xl"></div>
-                    <div class="flex flex-col gap-3"><label class="text-sm gold-text font-bold uppercase tracking-widest">Line ID (必填)</label><input type="text" name="line_id" required placeholder="方便聯繫的 ID" class="p-4 rounded-xl md:rounded-2xl"></div>
-                    <div class="flex flex-col gap-3"><label class="text-sm gold-text font-bold uppercase tracking-widest">店家名稱</label><input type="text" name="shop_name" placeholder="所屬店家" class="p-4 rounded-xl md:rounded-2xl"></div>
-                    <div class="flex flex-col gap-3"><label class="text-sm gold-text font-bold uppercase tracking-widest">所在地區</label>
-                        <select name="location" class="p-4 rounded-xl md:rounded-2xl font-bold gold-text">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-light text-left text-left">
+                    <div class="flex flex-col gap-3 text-left text-left text-left"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left">姓名 (必填)</label><input type="text" name="name" required placeholder="您的姓名" class="p-4 rounded-xl text-left text-left"></div>
+                    <div class="flex flex-col gap-3 text-left text-left text-left text-left"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left">Line ID (必填)</label><input type="text" name="line_id" required placeholder="方便聯繫的 ID" class="p-4 rounded-xl text-left"></div>
+                    <div class="flex flex-col gap-3 text-left text-left text-left text-left"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left">店家名稱</label><input type="text" name="shop_name" placeholder="所屬店家" class="p-4 rounded-xl text-left text-left text-left"></div>
+                    <div class="flex flex-col gap-3 text-left text-left text-left text-left"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left">所在地區</label>
+                        <select name="location" class="p-4 rounded-xl font-bold gold-text text-left text-left text-left">
                             <option value="" disabled selected>請選擇地區</option>
                             <option value="北">新竹以北 (車資+$1,000)</option>
                             <option value="中">新竹以南 (車資+$3,000)</option>
                             <option value="南">嘉義以南 (車資+$5,000)</option>
                         </select>
                     </div>
-                    <div class="flex flex-col gap-3"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left">推薦人</label><input type="text" name="referrer" placeholder="推薦人姓名" class="p-4 rounded-xl md:rounded-2xl text-left"></div>
-                    <div class="flex flex-col gap-3"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left">IG 帳號</label><input type="text" name="ig_account" placeholder="@your_account" class="p-4 rounded-xl md:rounded-2xl"></div>
-                    <div class="flex flex-col gap-3 md:col-span-2"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left">所選方案</label><input type="text" id="selected_plan_display" name="plan" readonly value="試拍方案 ($8,800)" class="p-4 rounded-xl md:rounded-2xl opacity-60"></div>
+                    <div class="flex flex-col gap-3 md:col-span-2 text-left text-left text-left text-left"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left text-left text-left">所選方案</label><input type="text" id="selected_plan_display" name="plan" readonly value="試拍方案 ($8,800)" class="p-4 rounded-xl opacity-60 text-left text-left text-left text-left text-left"></div>
                     
-                    <div class="flex flex-col gap-6 md:col-span-2 mt-4 text-left">
-                        <div class="notice-box p-6 md:p-8 rounded-2xl md:rounded-3xl flex flex-col sm:flex-row items-start gap-4">
-                            <i data-lucide="info" class="w-8 h-8 gold-text shrink-0 mt-1"></i>
-                            <div><p class="gold-text font-black text-xl mb-2 text-left">紫微斗數報告必填提醒</p><p class="opacity-80 text-sm leading-loose">請提供正確的<span class="font-black underline decoration-[#c9a67a] underline-offset-8">出生年月日與精確時間</span>以便解析報告。</p></div>
+                    <div class="flex flex-col gap-6 md:col-span-2 mt-4 text-left text-left">
+                        <div class="notice-box p-6 md:p-8 rounded-2xl md:rounded-3xl flex flex-col sm:flex-row items-start gap-4 text-left text-left">
+                            <i data-lucide="info" class="w-8 h-8 gold-text shrink-0 mt-1 text-left text-left"></i>
+                            <div><p class="gold-text font-black text-xl mb-2 text-left text-left">紫微斗數報告必填提醒</p><p class="opacity-80 text-sm leading-loose text-left text-left">請提供正確的<span class="font-black underline decoration-[#c9a67a] underline-offset-8 text-left text-left">出生年月日與精確時間</span>以便解析報告。</p></div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-2">
-                            <div class="flex flex-col gap-3"><label class="text-sm gold-text font-bold uppercase tracking-widest">出生日期</label><input type="date" name="birth_date" class="p-4 rounded-xl md:rounded-2xl"></div>
-                            <div class="flex flex-col gap-3">
-                                <label class="text-sm gold-text font-bold uppercase tracking-widest">出生時間</label>
-                                <div class="flex gap-2"><select name="birth_period" class="flex-1 p-4 rounded-xl md:rounded-2xl font-bold gold-text"><option value="AM">上午</option><option value="PM">下午</option></select>
-                                <select name="birth_hour" class="flex-1 p-4 rounded-xl md:rounded-2xl text-center"><script>for(let i=1;i<=12;i++)document.write(`<option value="${i}">${i}點</option>`)</script></select>
-                                <select name="birth_minute" class="flex-1 p-4 rounded-xl md:rounded-2xl text-center"><script>for(let i=0;i<60;i++)document.write(`<option value="${i}">${i.toString().padStart(2,'0')}分</option>`)</script></select></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-2 text-left text-left">
+                            <div class="flex flex-col gap-3 text-left text-left text-left text-left text-left"><label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left text-left text-left">出生日期</label><input type="date" name="birth_date" class="p-4 rounded-xl text-left text-left text-left text-left text-left"></div>
+                            <div class="flex flex-col gap-3 text-left text-left text-left text-left text-left">
+                                <label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left text-left text-left text-left">出生時間</label>
+                                <div class="flex gap-2 text-left text-left text-left text-left text-left text-left text-left text-left"><select name="birth_period" class="flex-1 p-4 rounded-xl font-bold gold-text text-left text-left text-left text-left text-left text-left text-left"><option value="AM">上午</option><option value="PM">下午</option></select>
+                                <select name="birth_hour" class="flex-1 p-4 rounded-xl text-center text-left text-left text-left text-left text-left text-left"><script>for(let i=1;i<=12;i++)document.write(`<option value="${i}">${i}點</option>`)</script></select>
+                                <select name="birth_minute" class="flex-1 p-4 rounded-xl text-center text-left text-left text-left text-left text-left text-left"><script>for(let i=0;i<60;i++)document.write(`<option value="${i}">${i.toString().padStart(2,'0')}分</option>`)</script></select></div>
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col gap-3 md:col-span-2"><label class="text-sm gold-text font-bold uppercase tracking-widest">拍攝目標與風格期望</label><textarea name="filming_goals" rows="4" placeholder="例如：建立專業形象、拍出某種氛圍..." class="p-4 rounded-xl md:rounded-2xl resize-none"></textarea></div>
                 </div>
-                <div class="mt-12 text-center">
-                    <button type="submit" id="submit-btn" class="w-full sm:w-auto px-16 py-6 gold-bg text-[#3d332d] rounded-full text-xl md:text-2xl font-black tracking-widest hover:brightness-110 shadow-xl transition-all active:scale-95">確認預約資料並送出</button>
+                <div class="mt-12 text-center text-center text-center text-center text-center text-center text-center">
+                    <button type="submit" id="submit-btn" class="w-full sm:w-auto px-16 py-6 gold-bg text-[#3d332d] rounded-full text-xl md:text-2xl font-black tracking-widest hover:brightness-110 shadow-xl transition-all active:scale-95 text-center text-center">確認預約資料並送出</button>
                     <p id="form-status" class="mt-6 text-base font-bold transition-all text-center"></p>
                 </div>
             </form>
         </div>
     </section>
 
-    <!-- Brand Footprint -->
+    <!-- Brand Footprint (置底) -->
     <section id="brand-story" class="py-20 md:py-32 bg-[#3d332d] border-t border-white/5 px-6">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-3xl md:text-4xl font-light mb-4 gold-text uppercase tracking-widest">品牌足跡</h2>
-            <p class="opacity-60 text-lg font-light text-center mb-20">一段從髮品深耕到影音賦能的旅程</p>
-            <div class="relative text-left">
-                <div class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 timeline-line h-full"></div>
-                <div class="space-y-16 md:space-y-24">
-                    <div class="relative flex items-center group">
-                        <div class="hidden lg:block w-1/2 pr-12 text-right"><h4 class="text-4xl font-serif-italic gold-text mb-2 opacity-30 group-hover:opacity-100 transition-opacity">2007</h4></div>
-                        <div class="absolute left-4 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full gold-bg border-4 border-[#3d332d] z-10 shadow-[0_0_15px_rgba(201,166,122,0.5)]"></div>
-                        <div class="w-full lg:w-1/2 pl-12 lg:pl-12 text-left"><span class="lg:hidden text-2xl font-serif-italic gold-text block mb-1">2007</span><h3 class="text-xl font-bold mb-2">品牌創立</h3><p class="opacity-70 text-base leading-relaxed">RENATA 蕾娜塔髮品誕生，深耕美髮產業，奠定專業品牌根基。</p></div>
+        <div class="container mx-auto max-w-4xl text-center text-center text-center text-center text-center text-center">
+            <h2 class="text-3xl md:text-4xl font-light mb-4 gold-text uppercase tracking-widest text-center text-center text-center">品牌足跡</h2>
+            <p class="opacity-60 text-lg font-light text-center mb-20 text-center text-center text-center text-center">一段從髮品深耕到影音賦能的旅程</p>
+            <div class="relative text-left text-left text-left text-left text-left">
+                <div class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 timeline-line h-full text-left text-left text-left text-left"></div>
+                <div class="space-y-16 md:space-y-24 text-left text-left text-left text-left">
+                    <div class="relative flex items-center group text-left text-left text-left text-left">
+                        <div class="hidden lg:block w-1/2 pr-12 text-right text-left text-left text-left text-left"><h4 class="text-4xl font-serif-italic gold-text mb-2 opacity-30 group-hover:opacity-100 transition-opacity text-left text-left text-left">2007</h4></div>
+                        <div class="absolute left-4 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full gold-bg border-4 border-[#3d332d] z-10 text-left text-left text-left text-left text-left"></div>
+                        <div class="w-full lg:w-1/2 pl-12 lg:pl-12 text-left text-left text-left text-left text-left text-left"><span class="lg:hidden text-2xl font-serif-italic gold-text block mb-1 text-left text-left text-left">2007</span><h3 class="text-xl font-bold mb-2 text-left text-left text-left text-left">品牌創立</h3><p class="opacity-70 text-base leading-relaxed text-left text-left text-left text-left text-left">蕾娜塔髮品誕生，深耕美髮產業，奠定專業品牌根基。</p></div>
                     </div>
-                    <div class="relative flex items-center flex-row-reverse group">
-                        <div class="hidden lg:block w-1/2 pl-12 text-left"><h4 class="text-4xl font-serif-italic gold-text mb-2 opacity-30 group-hover:opacity-100 transition-opacity text-left">2022</h4></div>
-                        <div class="absolute left-4 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full gold-bg border-4 border-[#3d332d] z-10"></div>
-                        <div class="w-full lg:w-1/2 pl-12 lg:pl-0 lg:pr-12 text-left lg:text-right"><span class="lg:hidden text-2xl font-serif-italic gold-text block mb-1">2022</span><h3 class="text-xl font-bold mb-2">影音賦能</h3><p class="opacity-70 text-base leading-relaxed">啟動專業影片內容經營，透過影像傳遞美髮美學。</p></div>
+                    <div class="relative flex items-center flex-row-reverse group text-left text-left text-left text-left text-left">
+                        <div class="hidden lg:block w-1/2 pl-12 text-left text-left text-left text-left text-left text-left"><h4 class="text-4xl font-serif-italic gold-text mb-2 opacity-30 group-hover:opacity-100 transition-opacity text-left text-left text-left text-left">2022</h4></div>
+                        <div class="absolute left-4 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full gold-bg border-4 border-[#3d332d] z-10 text-left text-left text-left text-left text-left"></div>
+                        <div class="w-full lg:w-1/2 pl-12 lg:pl-0 md:pr-12 text-left lg:text-right text-left text-left text-left text-left text-left text-left text-left text-left"><span class="lg:hidden text-2xl font-serif-italic gold-text block mb-1 text-left text-left text-left text-left text-left">2022</span><h3 class="text-xl font-bold mb-2 lg:text-right text-left text-left text-left text-left text-left">影音賦能</h3><p class="opacity-70 text-base leading-relaxed lg:text-right text-left text-left text-left text-left text-left">啟動專業影片經營，透過影像傳遞美髮美學。</p></div>
                     </div>
-                    <div class="relative flex items-center flex-row-reverse group font-bold">
-                        <div class="hidden lg:block w-1/2 pl-12 text-left"><h4 class="text-4xl font-serif-italic gold-text mb-2 opacity-30 group-hover:opacity-100 transition-opacity text-left">2026</h4></div>
-                        <div class="absolute left-4 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full gold-bg border-4 border-[#3d332d] z-10"></div>
-                        <div class="w-full lg:w-1/2 pl-12 lg:pl-0 lg:pr-12 text-left lg:text-right"><span class="lg:hidden text-2xl font-serif-italic gold-text block mb-1">2026</span><h3 class="text-xl font-bold mb-2">全新企劃：順勢沙龍</h3><p class="opacity-70 text-base leading-relaxed font-bold">深耕美髮產業，進而提供美業創作者能順應天賦綻放，累積價值資產。</p></div>
+                    <div class="relative flex items-center flex-row-reverse group font-bold text-left text-right text-right text-right text-right text-right text-right">
+                        <div class="hidden lg:block w-1/2 pl-12 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><h4 class="text-4xl font-serif-italic gold-text mb-2 opacity-30 group-hover:opacity-100 transition-opacity text-left text-left text-left text-left text-left text-left">2026</h4></div>
+                        <div class="absolute left-4 lg:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full gold-bg border-4 border-[#3d332d] z-10 text-left text-left text-left text-left text-left text-left"></div>
+                        <div class="w-full lg:w-1/2 pl-12 lg:pl-0 md:pr-12 text-left lg:text-right text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><span class="lg:hidden text-2xl font-serif-italic gold-text block mb-1 text-left text-left text-left text-left text-left text-left">2026</span><h3 class="text-xl font-bold mb-2 lg:text-right text-left text-left text-left text-left text-left text-left">全新企劃：順勢沙龍</h3><p class="opacity-70 text-base leading-relaxed font-bold lg:text-right text-left text-left text-left text-left text-left text-left">深耕美髮產業，協助美業創作者順應天賦綻放。</p></div>
                     </div>
                 </div>
             </div>
@@ -386,32 +333,30 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 container mx-auto px-6 text-center border-t border-white/5">
-        <h2 class="text-2xl font-light mb-4 tracking-[0.4em] uppercase text-center">RENATA</h2>
-        <div class="opacity-30 text-[10px] tracking-[0.2em] text-center uppercase">© 2026 RENATA SALON. BORN WITH TALENT, FLOW WITH ART.</div>
+    <footer class="py-12 container mx-auto px-6 text-center border-t border-white/5 text-center text-center text-center text-center text-center">
+        <h2 class="text-2xl font-light mb-4 tracking-[0.4em] uppercase text-center text-center text-center text-center text-center">RENATA</h2>
+        <div class="opacity-30 text-[10px] tracking-[0.2em] text-center uppercase text-center text-center text-center text-center text-center">© 2026 RENATA SALON. FLOW WITH ART.</div>
     </footer>
 
     <!-- Modals -->
-    <!-- Plan Detail Modal (Responsive Optimized) -->
-    <div id="sample-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center">
-        <div class="modal-content bg-[#3d332d] rounded-[32px] md:rounded-[48px] shadow-2xl relative text-left">
-            <button onclick="window.closeModal()" class="absolute top-6 right-6 text-white opacity-40 hover:opacity-100 z-50 p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
+    <div id="sample-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left text-left text-left text-left">
+        <div class="modal-content bg-[#3d332d] rounded-[32px] md:rounded-[48px] shadow-2xl relative text-left text-left text-left text-left">
+            <button onclick="window.closeModal()" class="absolute top-6 right-6 text-white opacity-40 hover:opacity-100 z-50 p-2 text-left text-left text-left text-left text-left"><i data-lucide="x" class="w-8 h-8 text-left text-left text-left text-left text-left text-left"></i></button>
             <div class="p-6 md:p-16">
-                <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 lg:items-start text-left">
-                    <!-- Video Container -->
-                    <div class="w-full max-w-[280px] sm:max-w-[320px] lg:w-[400px] mx-auto lg:mx-0 shrink-0">
-                        <div class="aspect-[9/16] bg-black rounded-2xl md:rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl relative">
-                            <div id="modal-video-container" class="absolute inset-0 w-full h-full flex items-center justify-center"></div>
+                <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 lg:items-start text-left text-left text-left text-left">
+                    <div class="w-full max-w-[280px] sm:max-w-[320px] lg:w-[400px] mx-auto lg:mx-0 shrink-0 text-left text-left text-left text-left text-left text-left">
+                        <div class="aspect-[9/16] bg-black rounded-2xl md:rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl relative text-left text-left text-left text-left">
+                            <div id="modal-video-container" class="absolute inset-0 w-full h-full flex items-center justify-center text-left text-left text-left text-left text-left"></div>
                         </div>
                     </div>
-                    <div class="flex-1 flex flex-col justify-center h-full text-left">
-                        <h2 id="modal-title" class="text-3xl md:text-4xl gold-text font-light mb-4 text-left">方案範本</h2>
-                        <div class="mb-6"><span class="target-label">建議對象</span><p id="modal-target" class="text-lg md:text-xl font-bold opacity-95 text-left"></p></div>
-                        <div class="space-y-6 text-left font-light">
-                            <div class="p-6 bg-black/20 rounded-2xl md:rounded-[32px] border border-white/5"><h4 class="gold-text font-bold mb-3 flex items-center gap-3 text-lg"><i data-lucide="info" class="w-5 h-5"></i> 企劃重點</h4><p id="modal-desc" class="opacity-80 text-base md:text-lg leading-relaxed"></p></div>
-                            <div class="p-6 bg-black/20 rounded-2xl md:rounded-[32px] border border-white/5"><h4 class="gold-text font-bold mb-3 flex items-center gap-3 text-lg"><i data-lucide="sparkles" class="w-5 h-5"></i> 預期成果</h4><ul id="modal-features" class="opacity-80 text-base md:text-lg space-y-2"></ul></div>
+                    <div class="flex-1 flex flex-col justify-center h-full text-left text-left text-left text-left">
+                        <h2 id="modal-title" class="text-3xl md:text-4xl gold-text font-light mb-4 text-left text-left text-left text-left text-left text-left">方案範本</h2>
+                        <div class="mb-6 text-left text-left text-left text-left text-left text-left text-left"><span class="target-label text-left text-left text-left text-left text-left">建議對象</span><p id="modal-target" class="text-lg md:text-xl font-bold opacity-95 text-left text-left text-left text-left text-left text-left"></p></div>
+                        <div class="space-y-6 text-left font-light text-left text-left text-left text-left text-left">
+                            <div class="p-6 bg-black/20 rounded-2xl md:rounded-[32px] border border-white/5 text-left text-left text-left text-left text-left text-left"><h4 class="gold-text font-bold mb-3 flex items-center gap-3 text-lg text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="info" class="w-5 h-5 text-left text-left text-left text-left text-left text-left"></i> 企劃重點</h4><p id="modal-desc" class="opacity-80 text-base md:text-lg leading-relaxed text-left text-left text-left text-left text-left text-left text-left text-left"></p></div>
+                            <div class="p-6 bg-black/20 rounded-2xl md:rounded-[32px] border border-white/5 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><h4 class="gold-text font-bold mb-3 flex items-center gap-3 text-lg text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="sparkles" class="w-5 h-5 text-left text-left text-left text-left text-left text-left text-left text-left"></i> 預期成果</h4><ul id="modal-features" class="opacity-80 text-base md:text-lg space-y-2 text-left text-left text-left text-left text-left text-left text-left text-left"></ul></div>
                         </div>
-                        <div class="mt-10 text-center lg:text-left"><button onclick="window.closeModalAndScrollToBooking()" class="w-full sm:w-auto px-10 py-5 gold-bg text-[#3d332d] rounded-full text-lg font-black tracking-widest shadow-xl active:scale-95">我想預約此方案</button></div>
+                        <div class="mt-10 text-center lg:text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><button onclick="window.closeModalAndScrollToBooking()" class="px-10 py-5 gold-bg text-[#3d332d] rounded-full text-lg font-black tracking-widest shadow-xl active:scale-95 text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center">我想預約此方案</button></div>
                     </div>
                 </div>
             </div>
@@ -419,26 +364,39 @@
     </div>
 
     <!-- Astrology Modal -->
-    <div id="astrology-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center">
-        <div class="modal-content bg-[#3d332d] max-w-4xl rounded-[32px] md:rounded-[48px] shadow-2xl relative text-left">
-            <button onclick="window.closeAstrologyModal()" class="absolute top-6 right-6 text-white opacity-40 hover:opacity-100 z-50 p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
-            <div class="p-8 md:p-16 text-center">
-                <h2 class="text-3xl md:text-4xl gold-text font-light mb-10 uppercase tracking-widest">紫微斗數柔性解盤</h2>
-                <div class="space-y-10">
-                    <div class="notice-box p-6 md:p-8 rounded-2xl md:rounded-[32px] border-[#c9a67a80]"><p class="text-lg md:text-xl leading-relaxed italic opacity-90">透過最貼近真實的特質分析，找到您的個人使用導航方向。</p></div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="p-6 bg-black/20 rounded-2xl border border-white/5"><i data-lucide="book-open" class="w-10 h-10 gold-text mx-auto mb-4"></i><h4 class="font-bold gold-text mb-2 text-center">個人導航報告書</h4><p class="text-sm opacity-60">解析天賦與定位。</p></div>
-                        <div class="p-6 bg-black/20 rounded-2xl border border-white/5"><i data-lucide="scroll" class="w-10 h-10 gold-text mx-auto mb-4"></i><h4 class="font-bold gold-text mb-2 text-center">專屬靈魂腳本</h4><p class="text-sm opacity-60">提供主題方向建議。</p></div>
-                        <div class="p-6 bg-black/20 rounded-2xl border border-white/5"><i data-lucide="zap" class="w-10 h-10 gold-text mx-auto mb-4"></i><h4 class="font-bold gold-text mb-2 text-center">自在引導步驟</h4><p class="text-sm opacity-60">解決創作心理阻力。</p></div>
+    <div id="astrology-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left text-left text-left text-left text-left text-left">
+        <div class="modal-content bg-[#3d332d] max-w-4xl rounded-[32px] md:rounded-[48px] shadow-2xl relative text-left text-left text-left text-left text-left text-left text-left text-left text-left">
+            <button onclick="window.closeAstrologyModal()" class="absolute top-6 right-6 text-white opacity-40 hover:opacity-100 z-50 p-2 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="x" class="w-8 h-8 text-left text-left text-left text-left text-left text-left text-left text-left text-left"></i></button>
+            <div class="p-8 md:p-16 text-center text-center text-center text-center text-center text-center">
+                <h2 class="text-3xl md:text-4xl gold-text font-light mb-10 uppercase tracking-widest text-center text-center text-center text-center">紫微斗數柔性解盤</h2>
+                <div class="space-y-10 text-center text-center text-center text-center text-center text-center text-center">
+                    <div class="notice-box p-6 md:p-8 rounded-2xl md:rounded-[32px] border-[#c9a67a80] text-center text-center text-center text-center text-center"><p class="text-lg md:text-xl leading-relaxed italic opacity-90 text-center text-center text-center text-center text-center text-center text-center">透過貼近真實的特質分析，找到您的個人使用導航方向。</p></div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-center text-center text-center text-center text-center text-center text-center">
+                        <div class="p-6 bg-black/20 rounded-2xl border border-white/5 text-center text-center text-center text-center text-center text-center text-center text-center text-center"><i data-lucide="book-open" class="w-10 h-10 gold-text mx-auto mb-4 text-center text-center text-center"></i><h4 class="font-bold gold-text mb-2 text-center text-center text-center text-center">個人導航報告書</h4><p class="text-sm opacity-60 text-center text-center text-center text-center">解析天賦定位。</p></div>
+                        <div class="p-6 bg-black/20 rounded-2xl border border-white/5 text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center"><i data-lucide="scroll" class="w-10 h-10 gold-text mx-auto mb-4 text-center text-center text-center text-center"></i><h4 class="font-bold gold-text mb-2 text-center text-center text-center text-center text-center">專屬靈魂腳本</h4><p class="text-sm opacity-60 text-center text-center text-center text-center text-center">適合主題方向建議。</p></div>
+                        <div class="p-8 bg-black/20 rounded-2xl border border-white/5 text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center"><i data-lucide="zap" class="w-10 h-10 gold-text mx-auto mb-4 text-center text-center text-center text-center text-center"></i><h4 class="font-bold gold-text mb-2 text-center text-center text-center text-center text-center">自在引導步驟</h4><p class="text-sm opacity-60 text-center text-center text-center text-center text-center text-center">解決創作心理阻力。</p></div>
                     </div>
-                    <div class="pt-6"><button onclick="window.closeAstrologyModal()" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full text-xl font-black">開始探索方案</button></div>
+                    <div class="pt-6 text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center"><button onclick="window.closeAstrologyModal()" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full text-xl font-black text-center text-center text-center text-center text-center text-center text-center text-center text-center">開始探索方案</button></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 1. Plan Data Config
+        // 作品牆圖片 ID (您提供的 28 組)
+        const rawIds = [
+            '1Af8ultZpsr2pe-rWNP4TrU72P8JrV0jg', '1fWlkcP4gbB_aWyNMKveFlzYLLhDob-bP', '1TBirZHyi8r7W3fdmJzu8RN6fPVd-dZ1H',
+            '16hndIjvdRlp58yY_UM5NrzL0zgJsnkYp', '1XCItzHeBkOFkaOWryWET-c0Yw9Ksz8w_', '1rLr28Cbm94yBOXdUBN9udE0MdtHOvO69',
+            '1njXDcyBL6EyUxgR53xYJDeCJibMJe_pX', '1t8NQO0kMiu54RWFOtMYKeuk4yD4GdOoJ', '19xjO9JIBWkgcUU107M4rmXQ_cP_PcgQT',
+            '1wkPbElEVD8fyu7ObX56bh7owPAViEooJ', '1G1bdpLkMV0bspyRG2jkjGtEdWwe-rJIb', '1tZ-Nd4V4G7mtT6NvqiBIVyMKTbJ0o6Mg',
+            '11lE6Q4upyR8gP4RumJUYJfOUMwj7lTL-', '14Puq00ZTHwvh8iStwyRPAhlvK6ku4xuP', '1nMDDf3v5Uqx926yjDe-1VhpOWRCnrcdK',
+            '1ROOwHlME5l1OCUWyYRwOvlKh4_vUmEZD', '1FmzvaIq4p84s7eZC96YedESsEUZJ8jHt', '1zDRCBlG4EmAwrKWeShF8TYBxGCKjQgxA',
+            '18P4W6jerbx1hqgp4LiNESOSfyWzX0vEq', '1Zor9FHF0RwmcLK0qRt0xgqnvsM62CeqG', '1_6vbUA0Gos80_METisUIA1wyH3_m3xhb',
+            '1AwmXoQdwTx9o0TOhCOf5ovqWpXJ0pNyx', '1LwlcQin0Wynxn_IXO3bshEv9fPznPFy6', '1lYKoWRzqvFVHn-7rSWBmxa1axo_VxoIU',
+            '1kxBYYHorrz11i4wA-6AuNu71r7gzftBi', '169oOWPmKF6VpDi0uTaq_NFGk6cD_DvoL', '1PflD7zSVG-PgL4wf-2zLEmwVLs_iUCdy',
+            '1-OsToS8-SDwQYybaFIuFBeiWiBzKybUA'
+        ];
+
         const planData = {
             'trial': { 
                 name: '試拍方案 ($8,800)', 
@@ -463,7 +421,7 @@
             }
         };
 
-        // 2. Tab Switch Logic (Window Scoped)
+        // UI Core Functions (Mounted on window to fix logic errors)
         window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('bg-[#c9a67a]', 'text-[#3d332d]');
@@ -485,14 +443,14 @@
                         <div class="inline-block px-6 py-2 rounded-xl gold-bg-soft border border-white/10 mb-8"><p class="text-sm font-serif-italic gold-text font-bold">精選方案</p></div>
                     </div>
                     <div class="w-full lg:md:w-2/3 flex flex-col gap-8 text-left font-light">
-                        <div class="text-left"><span class="target-label">建議對象</span><p class="text-lg md:text-xl font-bold">${data.target}</p></div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12">
-                            <div class="flex items-center gap-4"><i data-lucide="check-circle-2" class="gold-text w-6 h-6 shrink-0"></i><span class="text-base md:text-lg opacity-90 font-bold text-[#c9a67a]">贈送：紫微斗數報告書</span></div>
-                            ${data.features.map(f => `<div class="flex items-center gap-4 text-left"><i data-lucide="check-circle-2" class="gold-text w-6 h-6 shrink-0"></i><span class="text-base md:text-lg opacity-90">${f}</span></div>`).join('')}
+                        <div class="text-left text-left text-left text-left text-left"><span class="target-label text-left text-left text-left text-left text-left text-left text-left">建議對象</span><p class="text-lg md:text-xl font-bold text-left text-left text-left text-left text-left">${data.target}</p></div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12 text-left text-left text-left text-left text-left text-left text-left text-left">
+                            <div class="flex items-center gap-4 text-left text-left text-left text-left text-left text-left"><i data-lucide="check-circle-2" class="gold-text w-6 h-6 shrink-0 text-left text-left text-left text-left text-left text-left text-left"></i><span class="text-base md:text-lg opacity-90 font-bold text-[#c9a67a] text-left text-left text-left text-left text-left text-left">贈送：紫微斗數報告書</span></div>
+                            ${data.features.map(f => `<div class="flex items-center gap-4 text-left text-left text-left text-left text-left text-left"><i data-lucide="check-circle-2" class="gold-text w-6 h-6 shrink-0 text-left text-left text-left text-left text-left text-left text-left"></i><span class="text-base md:text-lg opacity-90 text-left text-left text-left text-left text-left text-left">${f}</span></div>`).join('')}
                         </div>
-                        <div class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-white/10">
-                            <button onclick="window.selectPlanAndScroll('${tabId}')" class="flex-1 py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg text-center hover:brightness-110 active:scale-95 transition-all">選擇方案</button>
-                            <button onclick="window.openModal('${tabId}')" class="flex-1 py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 text-center active:scale-95 transition-all">觀看範本</button>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-white/10 text-left text-left text-left text-left text-left text-left">
+                            <button onclick="window.selectPlanAndScroll('${tabId}')" class="flex-1 py-4 gold-bg text-[#3d332d] rounded-xl font-black shadow-lg text-center hover:brightness-110 active:scale-95 transition-all text-center text-center text-center text-center text-center text-center">選擇方案</button>
+                            <button onclick="window.openModal('${tabId}')" class="flex-1 min-w-[160px] py-4 bg-transparent border border-white/20 text-white rounded-xl font-bold hover:bg-white/5 text-center active:scale-95 transition-all text-center text-center text-center text-center text-center text-center">觀看範本</button>
                         </div>
                     </div>
                 `;
@@ -501,12 +459,8 @@
             document.getElementById('selected_plan_display').value = data.name;
         };
 
-        window.selectPlanAndScroll = function(tabId) { 
-            window.switchTab(tabId); 
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' }); 
-        };
-
-        // 3. Modal Logic (Window Scoped)
+        window.selectPlanAndScroll = function(tabId) { window.switchTab(tabId); document.getElementById('booking').scrollIntoView({ behavior: 'smooth' }); };
+        
         window.openModal = function(tabId) {
             const data = planData[tabId];
             document.getElementById('modal-title').innerText = data.name;
@@ -516,12 +470,11 @@
             featureList.innerHTML = '';
             data.features.forEach(f => {
                 const li = document.createElement('li');
-                li.className = "flex items-center gap-3 text-left";
-                li.innerHTML = `<i data-lucide="check" class="w-5 h-5 gold-text shrink-0"></i> <span>${f}</span>`;
+                li.className = "flex items-center gap-3 text-left text-left text-left";
+                li.innerHTML = `<i data-lucide="check" class="w-5 h-5 gold-text shrink-0 text-left text-left text-left"></i> <span>${f}</span>`;
                 featureList.appendChild(li);
             });
             lucide.createIcons();
-            // Google Drive preview URL with specific sizing fixes
             document.getElementById('modal-video-container').innerHTML = `<iframe class="absolute inset-0 w-full h-full" src="${data.videoURL}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             document.getElementById('sample-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -532,36 +485,36 @@
         window.openAstrologyModal = function() { document.getElementById('astrology-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
         window.closeAstrologyModal = function() { document.getElementById('astrology-modal').classList.add('hidden'); document.body.style.overflow = ''; };
 
-        // 4. Portfolio Generator
+        //作品牆生成 - 循環 28 個 ID 並套用永久模糊效果
         window.generatePortfolio = function() {
             const grid = document.getElementById('image-grid');
             if(!grid) return;
             grid.innerHTML = '';
-            for(let i=1; i<=36; i++) {
+            for(let i=0; i<36; i++) {
+                const id = rawIds[i % rawIds.length];
                 const item = document.createElement('div');
                 item.className = 'portfolio-grid-item rounded-[2px]';
+                const thumbUrl = `https://lh3.googleusercontent.com/d/${id}`;
                 item.innerHTML = `
-                    <div class="portfolio-blur-content flex items-center justify-center bg-white/5">
-                        <span class="opacity-10 text-[6px] font-bold">RE 0${i}</span>
+                    <div class="portfolio-blur-content" style="background-image: url('${thumbUrl}');"></div>
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <span class="opacity-10 text-[6px] font-black tracking-tighter">RENATA 0${(i+1).toString().padStart(2, '0')}</span>
                     </div>
                 `;
                 grid.appendChild(item);
             }
         };
 
-        // 5. Global Handlers
         window.onclick = function(e) {
             if (e.target.id === 'sample-modal') window.closeModal();
             if (e.target.id === 'astrology-modal') window.closeAstrologyModal();
         };
 
-        // Initialize on load
         window.onload = () => {
             lucide.createIcons();
             window.switchTab('trial');
             window.generatePortfolio();
             
-            // Form init
             const form = document.getElementById('booking-form');
             if(form) {
                 form.addEventListener('submit', function(e) {
