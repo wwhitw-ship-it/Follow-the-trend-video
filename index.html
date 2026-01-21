@@ -137,7 +137,7 @@
             border: 1px solid rgba(201, 166, 122, 0.3);
         }
 
-        /* Animations */
+        /* Scarcity Bar Animation */
         @keyframes pulse-gold {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
@@ -163,7 +163,7 @@
         </button>
     </div>
 
-    <!-- 1. Hero Section (解方) -->
+    <!-- 1. Hero Section (首頁) -->
     <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-[#c9a67a33] px-6 text-center">
         <div class="absolute inset-0 opacity-20 pointer-events-none" style="background: radial-gradient(circle at center, var(--bronze-gold) 0%, transparent 75%);"></div>
         <div class="container mx-auto relative z-10 py-20">
@@ -181,7 +181,7 @@
         </div>
     </section>
 
-    <!-- 2. Pain Points Section (解決什麼問題) -->
+    <!-- 2. Pain Points Section (痛點) -->
     <section id="pain-points" class="py-20 md:py-32 bg-[#342c27] border-b border-[#c9a67a1a]">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="text-center mb-16">
@@ -214,39 +214,35 @@
         </div>
     </section>
 
-    <!-- 3. Self Introduction (Part 1: Brand Timeline - UPDATE) -->
+    <!-- 3. Brand Timeline (品牌時間軸) -->
     <section class="py-16 md:py-24 bg-[#3d332d] border-b border-white/5">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:flex md:flex-row justify-center items-start gap-8 md:gap-16">
-                <!-- Timeline Item 1 -->
+            <div class="grid grid-cols-2 md:flex md:flex-row justify-center items-start gap-8 md:gap-16 mb-12">
                 <div class="flex flex-col items-center text-center">
                     <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
                     <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2007</span>
-                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">品牌誕生</h4>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">品牌誕生・解決困擾</h4>
                 </div>
-                <!-- Timeline Item 2 -->
                 <div class="flex flex-col items-center text-center">
                     <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
                     <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2022</span>
-                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">數位轉型</h4>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">影片協助・擴大露出</h4>
                 </div>
-                <!-- Timeline Item 3 -->
                 <div class="flex flex-col items-center text-center">
                     <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
-                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2024</span>
-                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">天賦影音成形</h4>
+                    <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2025</span>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">啟動服務 全年優惠</h4>
                 </div>
-                <!-- Timeline Item 4 -->
                 <div class="flex flex-col items-center text-center">
                     <div class="w-4 h-4 rounded-full bg-[#c9a67a] glowing-dot mb-4"></div>
                     <span class="block text-2xl font-serif-italic gold-text font-bold mb-1">2026</span>
-                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">沙龍正式啟動</h4>
+                    <h4 class="text-xs uppercase font-bold opacity-60 tracking-widest">深度企劃・全面升級</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Self Introduction (Part 2: Gentle Manifesto / Values) -->
+    <!-- 4. Gentle Manifesto (自我介紹) -->
     <section class="py-20 md:py-32 bg-[#3d332d] border-b border-white/5 relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none" style="background: radial-gradient(circle at center, #c9a67a 0%, transparent 60%);"></div>
         <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
@@ -254,94 +250,192 @@
             <h2 class="text-3xl md:text-5xl font-light mb-8 leading-tight">「真實」是這時代<br>最稀缺的<span class="gold-text">商業競爭力</span></h2>
             <div class="w-16 h-0.5 gold-bg mx-auto mb-10 opacity-50"></div>
             
-            <p class="text-lg md:text-xl opacity-70 leading-relaxed mb-16 max-w-3xl mx-auto font-light">
-                與其追逐瞬息萬變的演算法，不如建立無可取代的個人品牌。<br>
-                在順勢影音沙龍，我們不教您演戲，而是協助您放大「本質」。<br>
-                <span class="text-white opacity-95 mt-6 block font-bold">因為唯有真實，才能篩選出頻率相近的高價值客群，<br>這才是讓業績細水長流的終極秘密。</span>
-            </p>
+            <div class="text-base md:text-lg opacity-80 leading-loose mb-16 max-w-3xl mx-auto font-light space-y-8">
+                <p>
+                    與其追逐瞬息萬變的演算法，不如建立無可取代的個人品牌，<br>
+                    我不教你演戲，我協助你展現自己，<br>
+                    把專業拍成別人看得懂，願意為你停留的影片。
+                </p>
+                <p class="text-xl text-white font-bold tracking-wider">
+                    影片才會開始 累積信任，而不只是曝光。
+                </p>
+            </div>
 
+            <div class="text-center mb-10">
+                <h3 class="text-2xl md:text-3xl font-bold gold-text">我們實際在做的，是這三件事</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500 flex flex-col items-center h-full">
+                    <div class="w-12 h-12 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0 mb-4">
+                        <i data-lucide="scan-face" class="w-6 h-6 gold-text"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">幫你找到<br>「你適合怎麼拍」</h4>
+                </div>
+                
+                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500 flex flex-col items-center h-full">
+                    <div class="w-12 h-12 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0 mb-4">
+                        <i data-lucide="zap" class="w-6 h-6 gold-text"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">讓你在短時間內<br>「拍得出來」</h4>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500 flex flex-col items-center h-full">
+                    <div class="w-12 h-12 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0 mb-4">
+                        <i data-lucide="hand-helping" class="w-6 h-6 gold-text"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">如果你沒時間都自己拍<br>我可以接手協助</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Suitable Audience (客戶是誰) -->
+    <section class="py-20 md:py-32 bg-[#342c27] border-b border-white/5">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-5xl font-light mb-12">誰最適合<span class="gold-text">順勢影音</span>？</h2>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="shield-check" class="w-5 h-5 gold-text"></i></div>
-                        <h4 class="text-lg font-bold gold-text">建立信任護城河</h4>
+                <div class="p-8 rounded-3xl bg-[#3d332d] border border-[#c9a67a]/30 flex items-center gap-4 shadow-xl hover:transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="w-6 h-6 gold-text"></i>
                     </div>
-                    <p class="text-sm opacity-70 leading-relaxed">透過真實展現，讓客戶在踏入店門前就已對您產生深厚信任，大幅降低溝通成本與議價機率。</p>
+                    <span class="text-lg font-bold text-white/90">已經有專業的人（不分產業）</span>
                 </div>
-                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="heart-handshake" class="w-5 h-5 gold-text"></i></div>
-                        <h4 class="text-lg font-bold gold-text">吸引精準高頻客群</h4>
+                
+                <div class="p-8 rounded-3xl bg-[#3d332d] border border-[#c9a67a]/30 flex items-center gap-4 shadow-xl hover:transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="w-6 h-6 gold-text"></i>
                     </div>
-                    <p class="text-sm opacity-70 leading-relaxed">不必討好所有人。順著天賦發出的訊號，自然會吸引懂您的客人，讓每一次服務都是愉快的交流。</p>
+                    <span class="text-lg font-bold text-white/90">教練、顧問、講師、創業者<br>服務業經營者</span>
                 </div>
-                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="trending-up" class="w-5 h-5 gold-text"></i></div>
-                        <h4 class="text-lg font-bold gold-text">累積複利型數位資產</h4>
+
+                <div class="p-8 rounded-3xl bg-[#3d332d] border border-[#c9a67a]/30 flex items-center gap-4 shadow-xl hover:transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="w-6 h-6 gold-text"></i>
                     </div>
-                    <p class="text-sm opacity-70 leading-relaxed">影片不是消耗品，而是 24 小時為您工作的業務員。隨著時間推移，這些真實內容將持續為您帶來被動流量。</p>
+                    <span class="text-lg font-bold text-white/90">想用影片累積信任<br>而不是追短期流量</span>
                 </div>
-                <div class="p-8 rounded-3xl bg-white/5 border border-[#c9a67a]/20 hover:border-[#c9a67a]/50 transition-all duration-500">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0"><i data-lucide="smile" class="w-5 h-5 gold-text"></i></div>
-                        <h4 class="text-lg font-bold gold-text">舒適永續的創作節奏</h4>
+
+                <div class="p-8 rounded-3xl bg-[#3d332d] border border-[#c9a67a]/30 flex items-center gap-4 shadow-xl hover:transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[#c9a67a]/20 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="w-6 h-6 gold-text"></i>
                     </div>
-                    <p class="text-sm opacity-70 leading-relaxed">做自己最輕鬆。因為不需要「演」，所以不會累，這才是能讓您長期堅持、穩定產出的關鍵心法。</p>
+                    <span class="text-lg font-bold text-white/90">不想被拍片拖垮其他大事的人</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Plan Menu (Comparison) -->
-    <section class="py-20 md:py-32 bg-[#342c27]">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-light mb-6">為什麼選擇 <span class="gold-text">順勢影音</span>？</h2>
-                <p class="opacity-60 text-lg">別再走冤枉路，一次選對最適合你的創作方式</p>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full comparison-table min-w-[600px]">
-                    <thead>
-                        <tr>
-                            <th class="w-1/4">比較項目</th>
-                            <th class="w-1/4 opacity-60">一般攝影工作室</th>
-                            <th class="w-1/4 opacity-60">自己摸索拍攝</th>
-                            <th class="w-1/4 gold-text text-xl font-bold bg-[#c9a67a] bg-opacity-10 rounded-t-2xl">順勢影音沙龍</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-bold">核心技術</td>
-                            <td>單純攝影</td>
-                            <td>模仿他人</td>
-                            <td class="comparison-highlight font-bold gold-text">紫微斗數 + 影音企劃</td>
-                        </tr>
-                        <tr>
-                            <td class="font-bold">鏡頭引導</td>
-                            <td>只顧畫面美感</td>
-                            <td>無（容易尷尬）</td>
-                            <td class="comparison-highlight font-bold gold-text">心理錨點引導（不需演技）</td>
-                        </tr>
-                        <tr>
-                            <td class="font-bold">內容策略</td>
-                            <td>無（需自備腳本）</td>
-                            <td>無（想到什麼拍什麼）</td>
-                            <td class="comparison-highlight font-bold gold-text">全年度品牌營運思維</td>
-                        </tr>
-                        <tr>
-                            <td class="font-bold border-none">成效</td>
-                            <td class="border-none">有影片沒靈魂</td>
-                            <td class="border-none">有產出沒流量</td>
-                            <td class="comparison-highlight font-bold gold-text rounded-b-2xl border-none">打造個人 IP 數位資產</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!-- NEW: Pathfinder Section -->
+    <section class="py-20 bg-[#342c27]">
+        <div class="container mx-auto px-6 max-w-6xl">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Left Option -->
+                <a href="#event-march" class="group relative block p-8 md:p-12 rounded-[32px] border border-[#c9a67a]/30 hover:border-[#c9a67a] bg-[#3d332d] transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div class="text-left h-full flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block mb-4 text-xs font-bold tracking-widest text-[#c9a67a] uppercase border border-[#c9a67a] px-3 py-1 rounded-full">給 第一次想認真面對影片的人</span>
+                            <h3 class="text-2xl md:text-3xl font-light mb-4 text-white leading-relaxed">先親身感受<br><span class="font-bold">「適合你的拍法」</span></h3>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-white/10 flex items-center justify-between">
+                            <span class="text-lg font-bold text-white group-hover:text-[#c9a67a] transition-colors">體驗課｜從 0 → 1，兩小時拍出一支影片</span>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#c9a67a] group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Right Option -->
+                <a href="#plans" class="group relative block p-8 md:p-12 rounded-[32px] border border-[#c9a67a]/30 hover:border-[#c9a67a] bg-[#3d332d] transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div class="text-left h-full flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block mb-4 text-xs font-bold tracking-widest text-[#c9a67a] uppercase border border-[#c9a67a] px-3 py-1 rounded-full">給 已經想穩定輸出，不耗能的人</span>
+                            <h3 class="text-2xl md:text-3xl font-light mb-4 text-white leading-relaxed">我負責一條龍企劃 │ 企劃、腳本、拍攝、剪輯<br><span class="font-bold">你負責把專業說出口</span></h3>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-white/10 flex items-center justify-between">
+                            <span class="text-lg font-bold text-white group-hover:text-[#c9a67a] transition-colors">拍攝服務 │ 查看方案</span>
+                            <i data-lucide="arrow-right" class="w-6 h-6 text-[#c9a67a] group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 4. Plan Menu (Experiential Event) -->
+    <!-- 6. Pricing Plans (服務項目：拍攝企劃) -->
+    <section class="py-20 md:py-32 bg-[#342c27]" id="plans">
+        <div class="container mx-auto px-6 max-w-7xl text-center">
+            <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-center">光之沙龍：拍攝企劃</h2>
+            <p class="opacity-70 text-lg md:xl font-light text-center">順流拍攝企劃，拍出屬於您的數位資產</p>
+            <div class="w-20 h-1 gold-bg mx-auto mt-8 mb-16"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
+                <!-- Trial -->
+                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
+                    <h3 class="text-2xl font-light mb-2">試拍方案</h3>
+                    <div class="mb-4">
+                        <p class="text-4xl font-serif-italic gold-text font-bold">$10,000</p>
+                        <p class="text-sm opacity-80 mt-1">4 支影片</p>
+                    </div>
+                    <p class="text-sm gold-text font-bold leading-relaxed mb-6">解決「不敢拍」的心理障礙，跨出第一步。</p>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>拍攝時間 1.5 小時</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>出片時間預計 14 天 (不含國定假日)</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>【基礎剪輯】基本字幕、音樂、重點文字</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>含一次修改</li>
+                    </ul>
+                    <div class="space-y-3">
+                        <button onclick="window.selectPlanAndScroll('trial')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('trial')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
+                    </div>
+                </div>
+                <!-- Starter -->
+                <div class="plan-card featured rounded-[32px] p-8 md:p-10 flex flex-col text-left shadow-2xl scale-105 z-10">
+                    <div class="featured-badge">MOST POPULAR</div>
+                    <h3 class="text-2xl font-light mb-2 text-left">入門方案</h3>
+                    <div class="mb-4">
+                        <p class="text-4xl font-serif-italic gold-text font-bold">$22,000</p>
+                        <p class="text-sm opacity-80 mt-1">8 支影片</p>
+                    </div>
+                    <p class="text-sm gold-text font-bold leading-relaxed mb-6 text-left">解決「拍不好」的焦慮，建立專業品牌內容。</p>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>拍攝時間 3 小時</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>影片呈現：基礎剪輯：基本字幕、音樂、重點文字</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>影片剪輯：【進階記憶】基礎剪輯、段落重點、圖樣輔助、文字動畫</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>含一次修改</li>
+                    </ul>
+                    <div class="space-y-3">
+                        <button onclick="window.selectPlanAndScroll('starter')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('starter')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
+                    </div>
+                </div>
+                <!-- Subscription -->
+                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
+                    <h3 class="text-2xl font-light mb-2">訂閱方案</h3>
+                    <div class="mb-4">
+                        <p class="text-4xl font-serif-italic gold-text font-bold">$25,000/月</p>
+                        <p class="text-sm opacity-80 mt-1">10 支影片</p>
+                    </div>
+                    <p class="text-sm gold-text font-bold leading-relaxed mb-6 text-left">解決「沒主題」的瓶頸，打造權威影響力。</p>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
+                        <li class="flex items-start gap-3 text-sm font-bold text-[#c9a67a]"><i data-lucide="alert-circle" class="w-5 h-5 shrink-0 mt-0.5"></i>※ 訂閱最少 2 個月</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>依據您的個人特質及喜好興趣規劃內容</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>拍攝時間 5 小時</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>影片剪輯：【強烈視覺】基礎剪輯、段落重點、圖樣輔助、節奏搭配、文字動畫、AI動態素材圖樣輔助、完整特效</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>含一次修改</li>
+                        <li class="flex items-start gap-3 text-sm font-bold gold-text"><i data-lucide="gift" class="w-5 h-5 shrink-0 mt-0.5"></i>Bonus：專屬人物貼圖*6 (可用於限動)</li>
+                    </ul>
+                    <div class="space-y-3">
+                        <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
+                        <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Experiential Event (快閃體驗課) -->
     <section id="event-march" class="py-24 bg-[#342c27] border-b border-[#c9a67a33]">
         <div class="container mx-auto px-6 max-w-6xl text-center lg:text-left">
             <div class="bg-[#3d332d] rounded-[48px] border-2 border-[#c9a67a] p-8 md:p-16 relative overflow-hidden shadow-2xl">
@@ -352,16 +446,8 @@
                         <h2 class="text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">3/25-3/26<br><span class="gold-text">雙日快閃體驗課</span></h2>
                         
                         <div class="mb-8">
-                            <div class="flex justify-between items-end mb-2">
-                                <span class="text-xs font-bold gold-text opacity-80">名額倒數中</span>
-                                <span class="text-xs font-black gold-text scarcity-pulse">僅剩最後 2 席</span>
-                            </div>
-                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-[#c9a67a] to-[#fff] w-[80%]"></div>
-                            </div>
+                            <p class="text-lg opacity-80 mb-8 leading-relaxed">親身體驗現場解盤與影音引導的魅力，產出屬於您的 30 秒天賦影音。限量名額預約中。</p>
                         </div>
-
-                        <p class="text-lg opacity-80 mb-8 leading-relaxed">親身體驗現場解盤與影音引導的魅力，產出屬於您的 30 秒天賦影音。限量名額預約中。</p>
                         
                         <div class="flex flex-col sm:flex-row gap-4">
                             <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full font-black text-xl shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap">立即卡位 $2,980</button>
@@ -377,64 +463,7 @@
         </div>
     </section>
 
-    <!-- 4. Plan Menu (Pricing Plans - Buttons Updated) -->
-    <section class="py-20 md:py-32 bg-[#342c27]" id="plans">
-        <div class="container mx-auto px-6 max-w-7xl text-center">
-            <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-center">光之沙龍：拍攝企劃</h2>
-            <p class="opacity-70 text-lg md:xl font-light text-center">順流拍攝企劃，拍出屬於您的數位資產</p>
-            <div class="w-20 h-1 gold-bg mx-auto mt-8 mb-16"></div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
-                <!-- Trial -->
-                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
-                    <h3 class="text-2xl font-light mb-2">試拍方案</h3>
-                    <p class="text-4xl font-serif-italic gold-text font-bold mb-4">$8,800</p>
-                    <p class="text-sm gold-text font-bold leading-relaxed mb-6">解決「不敢拍」的心理障礙，跨出第一步。</p>
-                    <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>消除鏡頭緊張感</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>掌握開場黃金 3 秒</li>
-                    </ul>
-                    <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('trial')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('trial')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
-                    </div>
-                </div>
-                <!-- Starter -->
-                <div class="plan-card featured rounded-[32px] p-8 md:p-10 flex flex-col text-left shadow-2xl scale-105 z-10">
-                    <div class="featured-badge">MOST POPULAR</div>
-                    <h3 class="text-2xl font-light mb-2 text-left">入門方案</h3>
-                    <p class="text-4xl font-serif-italic gold-text font-bold mb-4 text-left">$20,000</p>
-                    <p class="text-sm gold-text font-bold leading-relaxed mb-6 text-left">解決「拍不好」的焦慮，建立專業品牌內容。</p>
-                    <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>品牌專屬記憶點開發</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90 text-left"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>專業內容視覺輔助</li>
-                    </ul>
-                    <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('starter')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('starter')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
-                    </div>
-                </div>
-                <!-- Subscription -->
-                <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
-                    <h3 class="text-2xl font-light mb-2">訂閱方案</h3>
-                    <p class="text-4xl font-serif-italic gold-text font-bold mb-4">$22,500</p>
-                    <p class="text-sm gold-text font-bold leading-relaxed mb-6 text-left">解決「沒主題」的瓶頸，打造權威影響力。</p>
-                    <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>贈送：紫微斗數報告書</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>AI 動態素材製作</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>全年度營運策略建議</li>
-                    </ul>
-                    <div class="space-y-3">
-                        <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看範本 (9:16)</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Articles (Professional Insights) -->
+    <!-- 8. Professional Insights (專欄內容) -->
     <section class="py-20 md:py-32 bg-[#342c27] border-y border-white/5">
         <div class="container mx-auto px-6 max-w-6xl text-center">
             <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">專業 <span class="gold-text text-center">內容專欄</span></h2>
@@ -467,7 +496,31 @@
         </div>
     </section>
 
-    <!-- 6. Reviews (Part 1: Asset Proof) -->
+    <!-- 9. Testimonials (創作者見證) -->
+    <section class="py-20 md:py-32 bg-[#3d332d]">
+        <div class="container mx-auto px-6 max-w-6xl text-center">
+            <div class="mb-20">
+                <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">創作者<span class="gold-text text-center">真實見證</span></h2>
+                <p class="opacity-60 text-lg text-center text-center">聽聽那些已經開始「順勢拍攝」的聲音</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left text-left">
+                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left">
+                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Hair Stylist / A-Lin</p>
+                    <p class="text-lg font-bold leading-relaxed text-left text-left">「解完盤才知道，我適合隨興聊而非演劇本，現在拍片超快！」</p>
+                </div>
+                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left text-left">
+                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Salon Owner / Leo</p>
+                    <p class="text-lg font-bold leading-relaxed text-left">「入門方案幫我建立的視覺標準，讓我的店看起來價值翻倍。」</p>
+                </div>
+                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left">
+                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Sara / Entrepreneur</p>
+                    <p class="text-lg font-bold leading-relaxed text-left">「訂閱方案解決了我一整年的主題焦慮，團隊完全懂我的風格。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Asset Proof (作品1：資產證實) -->
     <section class="py-20 md:py-32 bg-[#3d332d] border-b border-white/5">
         <div class="container mx-auto px-6 max-w-4xl text-center">
             <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">資產實證：<span class="gold-text">順著天賦，流量是必然的紅利</span></h2>
@@ -525,7 +578,7 @@
         </div>
     </section>
 
-    <!-- 6. Reviews (Part 2: Portfolio Wall) -->
+    <!-- 11. Portfolio Wall (作品2：作品牆) -->
     <section id="portfolio-wall" class="py-20 md:py-32 bg-[#342c27] overflow-hidden text-center text-center">
         <div class="container mx-auto px-4 text-center">
             <div class="mb-16 text-center">
@@ -540,58 +593,7 @@
         </div>
     </section>
 
-    <!-- 6. Reviews (Part 3: Testimonials) -->
-    <section class="py-20 md:py-32 bg-[#3d332d]">
-        <div class="container mx-auto px-6 max-w-6xl text-center">
-            <div class="mb-20">
-                <h2 class="text-3xl md:text-5xl font-light mb-4 text-center">創作者<span class="gold-text text-center">真實見證</span></h2>
-                <p class="opacity-60 text-lg text-center text-center">聽聽那些已經開始「順勢拍攝」的聲音</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left text-left">
-                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left">
-                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Hair Stylist / A-Lin</p>
-                    <p class="text-lg font-bold leading-relaxed text-left text-left">「解完盤才知道，我適合隨興聊而非演劇本，現在拍片超快！」</p>
-                </div>
-                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left text-left">
-                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Salon Owner / Leo</p>
-                    <p class="text-lg font-bold leading-relaxed text-left">「入門方案幫我建立的視覺標準，讓我的店看起來價值翻倍。」</p>
-                </div>
-                <div class="p-8 rounded-[32px] bg-[#342c27] border border-white/5 shadow-xl text-left">
-                    <p class="text-xs gold-text font-black tracking-widest uppercase mb-4 text-left">Sara / Entrepreneur</p>
-                    <p class="text-lg font-bold leading-relaxed text-left">「訂閱方案解決了我一整年的主題焦慮，團隊完全懂我的風格。」</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 md:py-32 bg-[#3d332d] border-t border-white/5 text-center">
-        <div class="container mx-auto px-6 max-w-4xl text-center">
-            <h2 class="text-3xl md:text-5xl font-light mb-16 text-center text-center">常見問題 <span class="gold-text text-center">FAQ</span></h2>
-            <div class="space-y-4 text-left">
-                <div class="faq-item p-6 cursor-pointer bg-white/5 rounded-2xl text-left text-left" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center text-left">
-                        <h4 class="text-lg font-bold text-left">我真的很害羞，這真的能解決嗎？</h4>
-                        <i data-lucide="chevron-down" class="gold-text transition-transform"></i>
-                    </div>
-                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed text-left">
-                        這正是我們存在的意義。我們不要求你「演」，而是透過紫微斗數報告找到你能量最自然的表達方式。
-                    </div>
-                </div>
-                <div class="faq-item p-6 cursor-pointer bg-white/5 rounded-2xl text-left" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center text-left text-left">
-                        <h4 class="text-lg font-bold text-left text-left">直式影音適合所有平台嗎？</h4>
-                        <i data-lucide="chevron-down" class="gold-text transition-transform"></i>
-                    </div>
-                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed text-left text-left">
-                        是的，目前主流的 Reels, TikTok, Shorts 皆為 9:16 直式比例。我們的拍攝企劃能確保您的作品在這些高流量平台上有最佳視覺呈現。
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Form -->
+    <!-- 12. Booking Form (預約) -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="booking">
         <div class="container mx-auto px-6 max-w-5xl text-center">
             <h2 class="text-4xl gold-text font-light mb-4 text-center">預約您的創作旅程</h2>
@@ -621,7 +623,7 @@
                     </div>
                     <div class="flex flex-col gap-3 md:col-span-2 text-left">
                         <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">所選方案</label>
-                        <input type="text" id="selected_plan_display" name="plan" readonly value="試拍方案 ($8,800)" class="p-4 rounded-xl opacity-60 text-left">
+                        <input type="text" id="selected_plan_display" name="plan" readonly value="試拍方案 ($10,000)" class="p-4 rounded-xl opacity-60 text-left">
                     </div>
                     
                     <div class="flex flex-col gap-6 md:col-span-2 mt-4 text-left">
@@ -659,9 +661,52 @@
         </div>
     </section>
 
+    <!-- 13. FAQ -->
+    <section class="py-20 md:py-32 bg-[#3d332d] border-t border-white/5 text-center">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-5xl font-light mb-16 text-center text-center">常見問題 <span class="gold-text text-center">FAQ</span></h2>
+            <div class="space-y-4 text-left">
+                <div class="faq-item p-6 cursor-pointer bg-white/5 rounded-2xl text-left text-left" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center text-left">
+                        <h4 class="text-lg font-bold text-left">我真的很害羞，這真的能解決嗎？</h4>
+                        <i data-lucide="chevron-down" class="gold-text transition-transform"></i>
+                    </div>
+                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed text-left">
+                        這正是我們存在的意義。我們不要求你「演」，而是透過紫微斗數報告找到你能量最自然的表達方式。
+                    </div>
+                </div>
+                <div class="faq-item p-6 cursor-pointer bg-white/5 rounded-2xl text-left" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center text-left text-left">
+                        <h4 class="text-lg font-bold text-left text-left">直式影音適合所有平台嗎？</h4>
+                        <i data-lucide="chevron-down" class="gold-text transition-transform"></i>
+                    </div>
+                    <div class="faq-answer mt-4 opacity-70 text-sm leading-relaxed text-left text-left">
+                        是的，目前主流的 Reels, TikTok, Shorts 皆為 9:16 直式比例。我們的拍攝企劃能確保您的作品在這些高流量平台上有最佳視覺呈現。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="py-12 container mx-auto px-6 text-center border-t border-white/5 uppercase opacity-30 text-[10px] tracking-[0.3em] text-center">
-        RENATA © 2026 SALON. BORN WITH TALENT, FLOW WITH ART.
+    <footer class="py-12 container mx-auto px-6 border-t border-white/5 text-center">
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="https://www.instagram.com/betty.tzeng/" target="_blank" class="group flex items-center gap-2 opacity-60 hover:opacity-100 transition-all">
+                <div class="w-10 h-10 rounded-full border border-[#c9a67a] flex items-center justify-center group-hover:bg-[#c9a67a] group-hover:text-[#3d332d] transition-all">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xs tracking-widest hidden md:block">betty.tzeng</span>
+            </a>
+            <a href="https://www.facebook.com/videosoul.re" target="_blank" class="group flex items-center gap-2 opacity-60 hover:opacity-100 transition-all">
+                <div class="w-10 h-10 rounded-full border border-[#c9a67a] flex items-center justify-center group-hover:bg-[#c9a67a] group-hover:text-[#3d332d] transition-all">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xs tracking-widest hidden md:block">順勢影音沙龍</span>
+            </a>
+        </div>
+        <div class="opacity-30 text-[10px] tracking-[0.3em] uppercase">
+            RENATA © 2026 SALON. BORN WITH TALENT, FLOW WITH ART.
+        </div>
     </footer>
 
     <!-- Article Modal -->
@@ -725,9 +770,9 @@
         ];
 
         const planDetails = {
-            'trial': { name: '試拍方案 ($8,800)', features: ['紫微斗數報告', '鏡頭緊張感消除', '開場黃金3秒掌握'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
-            'starter': { name: '入門方案 ($20,000)', features: ['品牌記憶點開發', '專業視覺輔助', '穩定創作節奏'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
-            'subscription': { name: '訂閱方案 ($22,500)', features: ['AI動態素材', '年度營運策略', '極致質感工程'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
+            'trial': { name: '試拍方案 ($10,000)', features: ['紫微斗數報告', '鏡頭緊張感消除', '開場黃金3秒掌握'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
+            'starter': { name: '入門方案 ($22,000)', features: ['品牌記憶點開發', '專業視覺輔助', '穩定創作節奏'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
+            'subscription': { name: '訂閱方案 ($25,000/月)', features: ['AI動態素材', '年度營運策略', '極致質感工程'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' },
             'event': { name: '體驗課程 ($2,980)', features: ['現場天賦解盤', '30秒影音產出', '引導式對談體驗'], video: 'https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview' }
         };
 
