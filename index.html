@@ -46,6 +46,7 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(201, 166, 122, 0.15);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; /* Ensure badges can be positioned on all cards */
         }
         .plan-card:hover, .article-card:hover {
             border-color: var(--bronze-gold);
@@ -54,7 +55,7 @@
         .plan-card.featured {
             border: 2px solid var(--bronze-gold);
             background: rgba(201, 166, 122, 0.05);
-            position: relative;
+            /* position: relative; Removed as it's now on .plan-card */
         }
         .featured-badge {
             position: absolute;
@@ -62,6 +63,7 @@
             background: var(--bronze-gold); color: var(--dark-wood);
             padding: 4px 20px; border-radius: 99px; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.1em;
             white-space: nowrap;
+            z-index: 20;
         }
 
         /* FAQ Accordion */
@@ -180,8 +182,8 @@
             </div>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4 text-center">
-                <a href="#event-march" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest bg-[#c9a67a] text-[#3d332d] font-black shadow-xl active:scale-95 transition-all text-center whitespace-nowrap">馬上預約體驗課</a>
-                <a href="#plans" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest border border-[#c9a67a] gold-text font-black active:scale-95 transition-all text-center whitespace-nowrap">馬上查看拍攝方案</a>
+                <a href="#event-march" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest bg-[#c9a67a] text-[#3d332d] font-black shadow-xl active:scale-95 transition-all text-center whitespace-nowrap">零基礎小白的影音實戰課</a>
+                <a href="#plans" class="px-10 py-5 rounded-full text-base md:text-lg tracking-widest border border-[#c9a67a] gold-text font-black active:scale-95 transition-all text-center whitespace-nowrap">讓你專心做業績拍攝方案</a>
             </div>
         </div>
     </section>
@@ -225,96 +227,14 @@
         </div>
     </section>
 
-    <!-- 3. Brand Authority (品牌資歷) -->
-    <section class="py-16 md:py-24 bg-[#3d332d] border-b border-white/5">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                <div class="flex flex-col items-center text-center group">
-                    <div class="text-5xl md:text-6xl font-serif-italic gold-text font-bold mb-4 group-hover:scale-110 transition-transform duration-500">9<span class="text-lg font-sans font-medium text-white/60 ml-2">年</span></div>
-                    <h4 class="text-base font-bold opacity-80 tracking-widest border-t border-[#c9a67a]/30 pt-4 w-32 mx-auto">蕾娜塔髮品<br>品牌企劃體系</h4>
-                </div>
-                <div class="flex flex-col items-center text-center group">
-                    <div class="text-5xl md:text-6xl font-serif-italic gold-text font-bold mb-4 group-hover:scale-110 transition-transform duration-500">4<span class="text-lg font-sans font-medium text-white/60 ml-2">年以上</span></div>
-                    <h4 class="text-base font-bold opacity-80 tracking-widest border-t border-[#c9a67a]/30 pt-4 w-32 mx-auto">影音企劃<br>拍攝製作經驗</h4>
-                </div>
-                <div class="flex flex-col items-center text-center group">
-                    <div class="text-5xl md:text-6xl font-serif-italic gold-text font-bold mb-4 group-hover:scale-110 transition-transform duration-500">1000<span class="text-lg font-sans font-medium text-white/60 ml-2">支以上</span></div>
-                    <h4 class="text-base font-bold opacity-80 tracking-widest border-t border-[#c9a67a]/30 pt-4 w-32 mx-auto">短影音<br>實戰經驗</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Unique Feature (紫微斗數特色) -->
-    <section class="py-20 md:py-32 bg-[#3d332d] border-b border-white/5 relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none" style="background: radial-gradient(circle at center, #c9a67a 0%, transparent 60%);"></div>
-        <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
-            <span class="inline-block py-1 px-4 rounded-full border border-[#c9a67a] text-[#c9a67a] text-xs font-bold tracking-[0.2em] mb-8 uppercase">Exclusive Feature</span>
-            
-            <h2 class="text-3xl md:text-5xl font-light mb-8 leading-tight">獨家引入<br><span class="gold-text">『紫微斗數個人特質分析』</span></h2>
-            
-            <div class="w-24 h-1 gold-bg mx-auto mb-10"></div>
-            
-            <p class="text-xl md:text-3xl opacity-90 leading-relaxed font-serif-italic text-white">
-                找出更符合你的<br class="md:hidden">影片表達方式、拍攝方向
-            </p>
-        </div>
-    </section>
-
-    <!-- 5. Core Solutions (三大痛點解決) -->
-    <section class="py-20 md:py-32 bg-[#342c27] border-b border-white/5">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl md:text-4xl font-light mb-4">我們最常幫客戶解決<br class="md:hidden"><span class="gold-text">拍片最重要的 3 件事</span></h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Solution 1 -->
-                <div class="p-8 rounded-[32px] bg-[#3d332d] border border-[#c9a67a]/20 flex flex-col items-center text-center shadow-2xl group hover:border-[#c9a67a] hover:-translate-y-2 transition-all duration-500">
-                    <div class="w-16 h-16 rounded-full bg-[#c9a67a]/10 flex items-center justify-center mb-6 group-hover:bg-[#c9a67a] transition-all duration-500">
-                        <i data-lucide="eye-off" class="w-8 h-8 gold-text group-hover:text-[#3d332d] transition-colors"></i>
-                    </div>
-                    <div class="flex-grow flex flex-col justify-center">
-                        <h4 class="text-lg font-bold mb-3 text-white/40 line-through decoration-[#c9a67a]">看鏡頭就害怕</h4>
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-[#c9a67a]/50 to-transparent my-3"></div>
-                        <h4 class="text-2xl font-black gold-text leading-tight">無感聊天<br>就完成</h4>
-                    </div>
-                </div>
-
-                <!-- Solution 2 -->
-                <div class="p-8 rounded-[32px] bg-[#3d332d] border border-[#c9a67a]/20 flex flex-col items-center text-center shadow-2xl group hover:border-[#c9a67a] hover:-translate-y-2 transition-all duration-500">
-                    <div class="w-16 h-16 rounded-full bg-[#c9a67a]/10 flex items-center justify-center mb-6 group-hover:bg-[#c9a67a] transition-all duration-500">
-                        <i data-lucide="mic" class="w-8 h-8 gold-text group-hover:text-[#3d332d] transition-colors"></i>
-                    </div>
-                    <div class="flex-grow flex flex-col justify-center">
-                        <h4 class="text-lg font-bold mb-3 text-white/40 line-through decoration-[#c9a67a]">不知道說什麼</h4>
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-[#c9a67a]/50 to-transparent my-3"></div>
-                        <h4 class="text-2xl font-black gold-text leading-tight">現場引導<br>自然講出來</h4>
-                    </div>
-                </div>
-
-                <!-- Solution 3 -->
-                <div class="p-8 rounded-[32px] bg-[#3d332d] border border-[#c9a67a]/20 flex flex-col items-center text-center shadow-2xl group hover:border-[#c9a67a] hover:-translate-y-2 transition-all duration-500">
-                    <div class="w-16 h-16 rounded-full bg-[#c9a67a]/10 flex items-center justify-center mb-6 group-hover:bg-[#c9a67a] transition-all duration-500">
-                        <i data-lucide="file-text" class="w-8 h-8 gold-text group-hover:text-[#3d332d] transition-colors"></i>
-                    </div>
-                    <div class="flex-grow flex flex-col justify-center">
-                        <h4 class="text-lg font-bold mb-3 text-white/40 line-through decoration-[#c9a67a]">不知道拍什麼</h4>
-                        <div class="w-full h-px bg-gradient-to-r from-transparent via-[#c9a67a]/50 to-transparent my-3"></div>
-                        <h4 class="text-2xl font-black gold-text leading-tight">企劃先行<br>拍攝不亂聊</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW: Pathfinder Section -->
+    <!-- NEW: Pathfinder Section (Moved Here) -->
     <section class="py-20 bg-[#342c27]">
         <div class="container mx-auto px-6 max-w-6xl">
             <!-- Title removed here as requested -->
              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Left Option -->
                 <a href="#event-march" class="group relative block p-8 md:p-12 rounded-[32px] border border-[#c9a67a]/30 hover:border-[#c9a67a] bg-[#3d332d] transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div class="featured-badge">零基礎小白的短影音實戰課</div>
                     <div class="text-left h-full flex flex-col justify-between">
                         <div>
                             <h3 class="text-xl md:text-2xl font-light mb-2 text-white/90 leading-relaxed">如果你還不確定自己適不適合拍影片</h3>
@@ -357,6 +277,7 @@
 
                 <!-- Right Option -->
                 <a href="#plans" class="group relative block p-8 md:p-12 rounded-[32px] border border-[#c9a67a]/30 hover:border-[#c9a67a] bg-[#3d332d] transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <div class="featured-badge">想要專心做業績也想拍短影音</div>
                     <div class="text-left h-full flex flex-col justify-between">
                         <div>
                             <h3 class="text-xl md:text-2xl font-light mb-2 text-white/90 leading-relaxed">如果你已知道影片重要，不想再試錯</h3>
@@ -401,16 +322,128 @@
         </div>
     </section>
 
-    <!-- 6. Pricing Plans (服務項目：拍攝企劃) -->
+    <!-- 3. Brand Authority (品牌資歷) -->
+    <section class="py-16 md:py-24 bg-[#3d332d] border-b border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div class="flex flex-col items-center text-center group">
+                    <div class="text-5xl md:text-6xl font-serif-italic gold-text font-bold mb-4 group-hover:scale-110 transition-transform duration-500">9<span class="text-lg font-sans font-medium text-white/60 ml-2">年</span></div>
+                    <h4 class="text-base font-bold opacity-80 tracking-widest border-t border-[#c9a67a]/30 pt-4 w-32 mx-auto">蕾娜塔髮品<br>品牌企劃體系</h4>
+                </div>
+                <div class="flex flex-col items-center text-center group">
+                    <div class="text-5xl md:text-6xl font-serif-italic gold-text font-bold mb-4 group-hover:scale-110 transition-transform duration-500">4<span class="text-lg font-sans font-medium text-white/60 ml-2">年以上</span></div>
+                    <h4 class="text-base font-bold opacity-80 tracking-widest border-t border-[#c9a67a]/30 pt-4 w-32 mx-auto">影音企劃<br>拍攝製作經驗</h4>
+                </div>
+                <div class="flex flex-col items-center text-center group">
+                    <div class="text-5xl md:text-6xl font-serif-italic gold-text font-bold mb-4 group-hover:scale-110 transition-transform duration-500">1000<span class="text-lg font-sans font-medium text-white/60 ml-2">支以上</span></div>
+                    <h4 class="text-base font-bold opacity-80 tracking-widest border-t border-[#c9a67a]/30 pt-4 w-32 mx-auto">短影音<br>實戰經驗</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Unique Feature (紫微斗數特色) -->
+    <section class="py-20 md:py-32 bg-[#3d332d] border-b border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none" style="background: radial-gradient(circle at center, #c9a67a 0%, transparent 60%);"></div>
+        <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+            <span class="inline-block py-1 px-4 rounded-full border border-[#c9a67a] text-[#c9a67a] text-xs font-bold tracking-[0.2em] mb-8 uppercase">Exclusive Feature</span>
+            
+            <h2 class="text-3xl md:text-5xl font-light mb-8 leading-tight">獨家引入<br><span class="gold-text">『紫微斗數個人特質分析』</span></h2>
+            
+            <div class="w-24 h-1 gold-bg mx-auto mb-10"></div>
+            
+            <p class="text-xl md:text-3xl opacity-90 leading-relaxed font-serif-italic text-white">
+                找出更符合你的<br class="md:hidden">影片表達方式、拍攝方向
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. Core Solutions (三大痛點解決) -->
+    <section class="py-20 md:py-32 bg-[#342c27] border-b border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-4xl font-light mb-4">我們最常幫客戶解決<br><span class="gold-text">拍片最害怕遇到的 3 件事</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Solution 1 -->
+                <div class="p-8 rounded-[32px] bg-[#3d332d] border border-[#c9a67a]/20 flex flex-col items-center text-center shadow-2xl group hover:border-[#c9a67a] hover:-translate-y-2 transition-all duration-500">
+                    <div class="w-16 h-16 rounded-full bg-[#c9a67a]/10 flex items-center justify-center mb-6 group-hover:bg-[#c9a67a] transition-all duration-500">
+                        <i data-lucide="eye-off" class="w-8 h-8 gold-text group-hover:text-[#3d332d] transition-colors"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="text-lg font-bold mb-3 text-white/40 line-through decoration-[#c9a67a]">看鏡頭就害怕</h4>
+                        <div class="w-full h-px bg-gradient-to-r from-transparent via-[#c9a67a]/50 to-transparent my-3"></div>
+                        <h4 class="text-2xl font-black gold-text leading-tight">無感聊天<br>就完成</h4>
+                    </div>
+                </div>
+
+                <!-- Solution 2 -->
+                <div class="p-8 rounded-[32px] bg-[#3d332d] border border-[#c9a67a]/20 flex flex-col items-center text-center shadow-2xl group hover:border-[#c9a67a] hover:-translate-y-2 transition-all duration-500">
+                    <div class="w-16 h-16 rounded-full bg-[#c9a67a]/10 flex items-center justify-center mb-6 group-hover:bg-[#c9a67a] transition-all duration-500">
+                        <i data-lucide="mic" class="w-8 h-8 gold-text group-hover:text-[#3d332d] transition-colors"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="text-lg font-bold mb-3 text-white/40 line-through decoration-[#c9a67a]">不知道說什麼</h4>
+                        <div class="w-full h-px bg-gradient-to-r from-transparent via-[#c9a67a]/50 to-transparent my-3"></div>
+                        <h4 class="text-2xl font-black gold-text leading-tight">現場引導<br>讓你順勢講出來</h4>
+                    </div>
+                </div>
+
+                <!-- Solution 3 -->
+                <div class="p-8 rounded-[32px] bg-[#3d332d] border border-[#c9a67a]/20 flex flex-col items-center text-center shadow-2xl group hover:border-[#c9a67a] hover:-translate-y-2 transition-all duration-500">
+                    <div class="w-16 h-16 rounded-full bg-[#c9a67a]/10 flex items-center justify-center mb-6 group-hover:bg-[#c9a67a] transition-all duration-500">
+                        <i data-lucide="file-text" class="w-8 h-8 gold-text group-hover:text-[#3d332d] transition-colors"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="text-lg font-bold mb-3 text-white/40 line-through decoration-[#c9a67a]">不知道拍什麼</h4>
+                        <div class="w-full h-px bg-gradient-to-r from-transparent via-[#c9a67a]/50 to-transparent my-3"></div>
+                        <h4 class="text-2xl font-black gold-text leading-tight">企劃先行<br>拍攝不亂聊</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Experiential Event (快閃體驗課) - MOVED HERE -->
+    <section id="event-march" class="py-24 bg-[#342c27] border-b border-[#c9a67a33]">
+        <div class="container mx-auto px-6 max-w-6xl text-center lg:text-left">
+            <div class="bg-[#3d332d] rounded-[48px] border-2 border-[#c9a67a] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 gold-bg text-[#3d332d] px-12 py-2 rotate-45 translate-x-10 translate-y-4 font-black tracking-widest text-sm">LIMITED</div>
+                <div class="flex flex-col lg:flex-row items-center gap-12 relative z-10 text-left">
+                    <div class="w-full lg:w-1/2">
+                        <span class="gold-text font-bold tracking-widest uppercase mb-4 block">Experiential Course</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">3/25-3/26<br><span class="gold-text">雙日快閃體驗課</span></h2>
+                        
+                        <div class="mb-8">
+                            <p class="text-lg opacity-80 mb-8 leading-relaxed">親身體驗現場解盤與影音引導的魅力，產出屬於您的 30 秒天賦影音。限量名額預約中。</p>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full font-black text-xl shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap">立即卡位 $2,980</button>
+                            <button onclick="window.openModal('event')" class="w-full sm:w-auto px-12 py-5 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-xl hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">了解課程詳情</button>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
+                        <div class="event-photo rounded-3xl"><img src="https://images.unsplash.com/photo-1595475244012-2e924296ce67?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
+                        <div class="event-photo rounded-3xl mt-8"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Pricing Plans (服務項目：拍攝企劃) - MOVED HERE -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="plans">
         <div class="container mx-auto px-6 max-w-7xl text-center">
-            <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-center">光之沙龍：拍攝企劃</h2>
+            <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-center">短影音企劃製作</h2>
             <p class="opacity-70 text-lg md:xl font-light text-center">順流拍攝企劃，拍出屬於您的數位資產</p>
             <div class="w-20 h-1 gold-bg mx-auto mt-8 mb-16"></div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
                 <!-- Trial -->
                 <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
+                    <div class="featured-badge">很怕鏡頭？ 建議選</div>
                     <h3 class="text-2xl font-light mb-2">試拍方案</h3>
                     <div class="mb-4">
                         <p class="text-4xl font-serif-italic gold-text font-bold">$10,000</p>
@@ -433,7 +466,7 @@
                 </div>
                 <!-- Starter -->
                 <div class="plan-card featured rounded-[32px] p-8 md:p-10 flex flex-col text-left shadow-2xl scale-105 z-10">
-                    <div class="featured-badge">MOST POPULAR</div>
+                    <div class="featured-badge">想穩定拍？ 建議選</div>
                     <h3 class="text-2xl font-light mb-2 text-left">入門方案</h3>
                     <div class="mb-4">
                         <p class="text-4xl font-serif-italic gold-text font-bold">$22,000</p>
@@ -457,6 +490,7 @@
                 </div>
                 <!-- Subscription -->
                 <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
+                    <div class="featured-badge">想省力拍？ 建議選</div>
                     <h3 class="text-2xl font-light mb-2">訂閱方案</h3>
                     <div class="mb-4">
                         <p class="text-4xl font-serif-italic gold-text font-bold">$25,000/月</p>
@@ -479,34 +513,6 @@
                     <div class="space-y-3 mt-4">
                         <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
                         <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看影片範本</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. Experiential Event (快閃體驗課) -->
-    <section id="event-march" class="py-24 bg-[#342c27] border-b border-[#c9a67a33]">
-        <div class="container mx-auto px-6 max-w-6xl text-center lg:text-left">
-            <div class="bg-[#3d332d] rounded-[48px] border-2 border-[#c9a67a] p-8 md:p-16 relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 gold-bg text-[#3d332d] px-12 py-2 rotate-45 translate-x-10 translate-y-4 font-black tracking-widest text-sm">LIMITED</div>
-                <div class="flex flex-col lg:flex-row items-center gap-12 relative z-10 text-left">
-                    <div class="w-full lg:w-1/2">
-                        <span class="gold-text font-bold tracking-widest uppercase mb-4 block">Experiential Course</span>
-                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">3/25-3/26<br><span class="gold-text">雙日快閃體驗課</span></h2>
-                        
-                        <div class="mb-8">
-                            <p class="text-lg opacity-80 mb-8 leading-relaxed">親身體驗現場解盤與影音引導的魅力，產出屬於您的 30 秒天賦影音。限量名額預約中。</p>
-                        </div>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-12 py-5 gold-bg text-[#3d332d] rounded-full font-black text-xl shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap">立即卡位 $2,980</button>
-                            <button onclick="window.openModal('event')" class="w-full sm:w-auto px-12 py-5 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-xl hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">了解課程詳情</button>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
-                        <div class="event-photo rounded-3xl"><img src="https://images.unsplash.com/photo-1595475244012-2e924296ce67?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
-                        <div class="event-photo rounded-3xl mt-8"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800" alt="實戰照片"></div>
                     </div>
                 </div>
             </div>
@@ -572,56 +578,108 @@
 
     <!-- 10. Asset Proof (作品1：資產證實) -->
     <section class="py-20 md:py-32 bg-[#3d332d] border-b border-white/5">
-        <div class="container mx-auto px-6 max-w-4xl text-center">
+        <div class="container mx-auto px-6 max-w-[90%] text-center">
             <h2 class="text-3xl md:text-5xl font-light mb-4 text-center"><span class="gold-text">順著天賦，流量是必然的紅利</span></h2>
             <p class="opacity-60 text-lg text-center mb-16">不追求曇花一現的爆紅，而是打造 24 小時為您工作的數位分身</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="relative group cursor-default">
-                    <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a]/20 relative shadow-xl">
-                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800'); filter: blur(5px);"></div>
-                        <div class="absolute inset-0 bg-black/50 flex flex-col justify-between p-5">
-                            <div class="flex justify-end"><span class="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> 隱私保護中</span></div>
-                            <div class="text-left">
-                                <p class="gold-text font-black text-4xl mb-1">365天</p>
-                                <p class="text-white font-bold text-sm mb-3">持續獲客能力</p>
-                                <div class="w-8 h-px gold-bg mb-3 opacity-50"></div>
-                                <h4 class="text-white font-bold text-base mb-1">長尾效應資產</h4>
-                                <p class="text-xs text-white/70 leading-relaxed">影片發布一年後，依然在網路上為您介紹服務，越陳越香。</p>
-                            </div>
-                        </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-7 gap-3">
+                <!-- Image 1 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/183AQ2mX4rcsUzDblWX-_KMR4tfckLrO_" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <!-- Blur Overlay: Top 80% Blur (black), Fade to Clear at Bottom 20% (transparent) -->
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="relative group cursor-default">
-                    <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a]/20 relative shadow-xl">
-                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800'); filter: blur(5px);"></div>
-                        <div class="absolute inset-0 bg-black/50 flex flex-col justify-between p-5">
-                            <div class="flex justify-end"><span class="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> 隱私保護中</span></div>
-                            <div class="text-left">
-                                <p class="gold-text font-black text-4xl mb-1">0 距離</p>
-                                <p class="text-white font-bold text-sm mb-3">信任建立</p>
-                                <div class="w-8 h-px gold-bg mb-3 opacity-50"></div>
-                                <h4 class="text-white font-bold text-base mb-1">情感帳戶資產</h4>
-                                <p class="text-xs text-white/70 leading-relaxed">讓客人在預約前就感覺認識您，篩選出頻率相近的優質客群。</p>
-                            </div>
-                        </div>
+                <!-- Image 2 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1Qu7Oo0m7-9rf4PxPsLfgYweYrg-eJrvF" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
                     </div>
                 </div>
-                <!-- Card 3 -->
-                <div class="relative group cursor-default">
-                    <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a]/20 relative shadow-xl">
-                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800'); filter: blur(5px);"></div>
-                        <div class="absolute inset-0 bg-black/50 flex flex-col justify-between p-5">
-                            <div class="flex justify-end"><span class="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> 隱私保護中</span></div>
-                            <div class="text-left">
-                                <p class="gold-text font-black text-4xl mb-1">高價值</p>
-                                <p class="text-white font-bold text-sm mb-3">品牌溢價</p>
-                                <div class="w-8 h-px gold-bg mb-3 opacity-50"></div>
-                                <h4 class="text-white font-bold text-base mb-1">專業形象資產</h4>
-                                <p class="text-xs text-white/70 leading-relaxed">獨特影像美學讓專業被看見。當價值確立，價格不再是唯一考量。</p>
-                            </div>
-                        </div>
+                <!-- Image 3 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1SLS1imXgD2RCgLktu0x7ER5pg1TMqxeh" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 4 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1vBg7zRGqXoAeWDI9vssZXJwkpqaKhERF" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 5 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1FlfcSsVM9GsQ36ahvMuNV_4clCcgV4dQ" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 6 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1WKvfcf5SA7UWndR3caccLVzHL-9O1I9Q" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 7 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1VK83C4ImtJp8tPpA1YpItlSSfbTXE_Y2" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 8 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1EMcEZVtKPzXeJ-ov_y68gtCnrOmy_Ze5" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 9 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1rPmHT9z0vl1rOTR69UPVHlwKg-7IVp5u" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 10 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1GWPnDL2CbXQ5Zmi8VF_DYHFU5beq5NQk" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 11 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1HbY80kL-XFOmls3HBRrXHPd7K8rCsbuw" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 12 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1OvH12yGva1VzmK2uGmDxVVa1LsfnOU_V" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 13 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1_jQEHDIK1Nimmpd8UhiFW_VcUEBNmXLk" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+                </div>
+                <!-- Image 14 -->
+                <div class="relative group aspect-[9/16] rounded-xl overflow-hidden border border-[#c9a67a]/20 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/1BklC5iENHrWg2raZ-zh6Fwy6Fo1FrgXn" class="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="流量實證">
+                    <div class="absolute inset-0 backdrop-blur-[10px] bg-black/10" 
+                         style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
                     </div>
                 </div>
             </div>
