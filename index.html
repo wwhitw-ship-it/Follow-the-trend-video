@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>順勢影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
+    <title>社群影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -133,16 +133,16 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 修復後的影片容器 */
+        /* ✅ 修復後的影片容器 - 適用於 Vimeo 與 Google Drive */
         .vertical-video-wrapper { 
-            position: relative;           /* 改成 relative 作為定位基準 */
-            top: auto;                    /* 移除 top */
-            left: auto;                   /* 移除 left */
+            position: relative;           
+            top: auto;                    
+            left: auto;                   
             width: 100%;
             height: 100%;
             overflow: hidden;
-            box-sizing: border-box;       /* 加上 box-sizing */
-            background: transparent;      /* 明確設為透明 */
+            box-sizing: border-box;       
+            background: transparent;      
         }
         .vertical-video-wrapper iframe {
             position: absolute !important;
@@ -223,23 +223,22 @@
                     <h3 class="text-2xl font-light mb-2">試拍方案</h3>
                     <div class="mb-4">
                         <p class="text-4xl font-serif-italic gold-text font-bold">$10,000</p>
-                        <p class="text-sm opacity-80 mt-1">60秒內影片 4 支</p>
+                        <p class="text-sm opacity-80 mt-1">60秒內影片 3支</p>
                     </div>
                     <p class="text-sm gold-text font-bold leading-relaxed mb-6">解決「不敢拍」的心理障礙，跨出第一步。</p>
                     <ul class="space-y-4 mb-10 flex-grow">
                         <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>前置溝通1次 (線上)</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>主題腳本規劃</li>
-                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>主題腳本溝通1次</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>主題腳本選單1份</li>
+                        <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>調整主題與內容1次</li>
                         <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>現場拍攝2小時內</li>
                         <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>後製剪輯</li>
                         <li class="flex items-start gap-3 text-sm opacity-90"><i data-lucide="check-circle-2" class="gold-text w-5 h-5 shrink-0 mt-0.5"></i>影片修改1次</li>
                     </ul>
                     <div class="mt-4 pt-4 border-t border-white/10 text-xs opacity-60">
-                        注意事項： 稅內含、車資另計<br>新竹以南$3,000、嘉義以南$5,000
+                        注意事項： 稅內含、新竹以南外縣市可能會有額外車資
                     </div>
                     <div class="space-y-3 mt-4">
                         <button onclick="window.selectPlanAndScroll('trial')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('trial')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看影片範本</button>
                     </div>
                 </div>
                 
@@ -264,11 +263,10 @@
                         <li class="flex items-start gap-3 text-sm gold-text font-bold"><i data-lucide="gift" class="w-5 h-5 shrink-0 mt-0.5"></i>Bonus：贈專屬小人偶貼圖1份6支(可用於限動等)</li>
                     </ul>
                     <div class="mt-4 pt-4 border-t border-white/10 text-xs opacity-60">
-                        注意事項： 稅內含、車資另計<br>新竹以南$3,000、嘉義以南$5,000
+                        注意事項： 稅內含、新竹以南外縣市可能會有額外車資
                     </div>
                     <div class="space-y-3 mt-4">
                         <button onclick="window.selectPlanAndScroll('subscription')" class="w-full py-4 gold-bg text-[#3d332d] rounded-full font-black shadow-lg hover:brightness-110 active:scale-95 transition-all text-center whitespace-nowrap">選擇方案</button>
-                        <button onclick="window.openModal('subscription')" class="w-full py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-95 transition-all text-sm text-center whitespace-nowrap">觀看影片範本</button>
                     </div>
                 </div>
             </div>
@@ -343,11 +341,12 @@
                                 <li class="flex items-center gap-2 text-white/90 md:justify-end text-lg"><span class="gold-text md:order-2">▌</span> 個人分析報告</li>
                             </ul>
                             
+                            <!-- Admin Links with Password Check -->
                             <div class="flex flex-wrap justify-start md:justify-end gap-3">
-                                <a href="javascript:void(0)" onclick="alert('管理者功能：查看訪談規劃表')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
+                                <a href="javascript:void(0)" onclick="window.checkAdminAccess('訪談規劃表')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                     <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> 訪談規劃表 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
                                 </a>
-                                <a href="javascript:void(0)" onclick="alert('管理者功能：查看個人分析報告')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
+                                <a href="javascript:void(0)" onclick="window.checkAdminAccess('個人分析報告')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                     <i data-lucide="file-bar-chart-2" class="w-4 h-4"></i> 個人分析報告 <span class="text-[10px] opacity-50">(試拍方案不適用)</span> <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
                                 </a>
                             </div>
@@ -388,7 +387,7 @@
                                 <li class="flex items-center gap-2 text-white/90 text-lg"><span class="gold-text">▌</span> 線上對焦</li>
                             </ul>
                             
-                            <a href="javascript:void(0)" onclick="alert('管理者功能：進入影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
+                            <a href="javascript:void(0)" onclick="window.checkAdminAccess('影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                 <i data-lucide="link" class="w-4 h-4"></i> 進入影片清單庫 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
                             </a>
                         </div>
@@ -415,9 +414,8 @@
                                 <li class="flex items-center gap-2 text-white/90 md:justify-end text-lg"><span class="gold-text md:order-2">▌</span> 製作觀察與建議</li>
                             </ul>
 
-                            <!-- Admin Link Moved Here -->
                             <div class="flex justify-start md:justify-end">
-                                <a href="javascript:void(0)" onclick="alert('管理者功能：進入專屬影片清單庫')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
+                                <a href="javascript:void(0)" onclick="window.checkAdminAccess('專屬雲端連結')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                     <i data-lucide="folder-check" class="w-4 h-4"></i> 專屬雲端連結：下載影片與文案 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
                                 </a>
                             </div>
@@ -469,6 +467,7 @@
                             <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-6 py-3 gold-bg text-[#3d332d] rounded-full font-black text-base shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap hover:brightness-110">預約體驗</button>
                             <button onclick="window.openModal('event_intro')" class="w-full sm:w-auto px-5 py-3 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-sm hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">課程介紹</button>
                             <button onclick="window.openModal('event_locations')" class="w-full sm:w-auto px-5 py-3 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-sm hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">課程資訊</button>
+                            <!-- New Button -->
                             <button onclick="window.openModal('student_results')" class="w-full sm:w-auto px-5 py-3 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-sm hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">更多學員成果</button>
                         </div>
                         <p class="text-xs opacity-50 mt-4 text-left">課程體驗請聯繫你的業務</p>
@@ -476,10 +475,10 @@
                     
                     <!-- Right Side: 1 Video (9:16 Vertical) - Centered and Single -->
                     <div class="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center">
-                        <div class="flex flex-col gap-2 w-full max-w-[320px]">
+                        <div class="flex flex-col gap-2 w-full max-w-[280px]">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
-                            <!-- ✅ Video Container: Standardized to 320px and Centered -->
-                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
+                            <!-- ✅ Video Container: Standardized to 280px & Centered -->
+                            <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
                                             frameborder="0" 
@@ -840,8 +839,8 @@
 
         const articles = [
             {
-                title: "為什麼專業人士不該「演戲」？用「訪談式拍攝」引導出最真實的專家魅力",
-                summary: "想做個人品牌拍攝短影音卻有鏡頭恐懼症？本文說明「訪談式拍攝」為何是建立信任感的關鍵，透過引導式對話，不背稿也能拍出高專業度的短影音。",
+                title: "專業人士別演戲！「訪談式拍攝」引導出最真實的專家魅力",
+                summary: "想做個人品牌拍攝短影音卻有鏡頭恐懼症？專業人士最大的誤區就是試圖在鏡頭前「表演」。本文說明「訪談式拍攝」為何是建立信任感的關鍵，透過引導式對話，不背稿也能拍出高專業度的短影音。",
                 content: `
                     <div class="space-y-6">
                         <p class="opacity-80 leading-loose font-serif-italic border-l-2 border-[#c9a67a] pl-4 italic">
@@ -909,21 +908,177 @@
                 `
             },
             {
-                title: "數位遺產：每一支影片都是未來的資產",
-                summary: "我們不只在拍片，而是在建立一套自動化信任系統。將專業轉化為具備長尾效應的數位資產。",
-                content: `<h2 class="text-3xl gold-text mb-6">讓影音成為您的 24 小時銷售員</h2><p class="opacity-80 leading-loose">當您休息時，影片仍在網路上為您與潛在客戶溝通。我們協助您佈局具備長尾效應的內容，讓時間成為品牌的助燃劑。每一支具備靈魂的影片，都在持續傳遞品牌的價值與溫度。</p>`
+                title: "2小時10支？免被稿的「聊天式」短影音製作揭密",
+                summary: "覺得拍短影音很花時間？害怕面對鏡頭忘詞？本文公開我們獨家的「引導式拍攝」SOP，教你如何擺脫劇本焦慮，透過簡單的訪談對話，在 2 小時內產出 10 支展現個人魅力的專業短影片。",
+                content: `
+                    <div class="space-y-6">
+                        <p class="opacity-80 leading-loose">
+                            許多專業人士（無論是髮型師、教練或講師）遲遲不敢經營短影音，通常不是因為「沒專業」，而是卡在兩個字：<strong>「麻煩」</strong>。
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            想到要寫腳本、背台詞、架燈光，拍一支影片 NG 十幾次，好不容易拍完，一天也過去了。這種「時間成本」對於分秒必爭的專業人士來說，實在太高了。<br>
+                            但如果我告訴你，你只需要像平常跟客人聊天一樣，喝著咖啡，坐下來聊個 2 小時，就能完成一個月所需的 10 支高質感影片，你會不會覺得輕鬆很多？
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            這不是魔法，這是我們經過無數次實戰驗證的<strong>「引導式拍攝SOP」</strong>。今天，就帶你揭秘我們是如何做到的。
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">秘密一：我們不寫「劇本」，我們設計「話題」</h3>
+                        <p class="opacity-80 leading-loose">
+                            傳統拍片最大的痛苦來源就是「背劇本」。當你的大腦在回想文字時，表情會僵硬，眼神會死板。<br>
+                            我們的做法完全不同。在拍攝前，我們會提供一份專屬的「影片清單庫」。這不是要你死背的台詞，而是根據你的專業領域（美業、健身、諮詢、餐廳等）設計出的「話題選單」。
+                        </p>
+                        <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[#c9a67a]">
+                            <p class="opacity-90 italic">
+                                例如，我們不會給你一份 500 字的稿子唸，而是會在現場問你：<br>
+                                「教練，對於想瘦肚子的人，你建議先做哪三個動作？」<br>
+                                「設計師，今年秋冬最顯白的髮色，你會推薦哪一款？」
+                            </p>
+                        </div>
+                        <p class="opacity-80 leading-loose mt-4">
+                            因為這些都是你每天在講的專業知識，你根本不需要背，張口就能來。不用背，自然就不會忘詞。
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">秘密二：像朋友一樣的「引導式拍攝」現場</h3>
+                        <p class="opacity-80 leading-loose">
+                            拍攝現場沒有冷冰冰的倒數計時，只有一位像朋友一樣的引導師。<br>
+                            我們採用「訪談視角」。你不需要盯著鏡頭看（這會讓很多人恐懼），你只需要看著鏡頭旁邊的引導師，回答他的問題。
+                        </p>
+                        <ul class="space-y-2 opacity-80 leading-loose pl-4 list-disc">
+                            <li>你卡詞了？ 沒關係，我們聊天帶過。</li>
+                            <li>你講錯了？ 沒關係，我們換個問法再來一次。</li>
+                            <li>不知道怎麼結尾？ 沒關係，引導師會幫你收尾。</li>
+                        </ul>
+                        <p class="opacity-80 leading-loose mt-4">
+                            這種「沉浸式」的對話氛圍，能讓你進入「心流狀態」。很多客戶拍完後驚訝地說：「蛤？已經拍完10 支了？原來我可以拍這麼快！」
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">秘密三：獨家黑科技——「個人特質分析」與「結構化剪輯」</h3>
+                        <p class="opacity-80 leading-loose">
+                            為什麼我們能在 2 小時內完成？因為我們把 80% 的工作都在「鏡頭外」解決了。
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-2">1. 前期：關於你的人物分析</h4>
+                                <p class="opacity-80 leading-loose">
+                                    在開拍前，我們會透過獨家的「個人特質表單」與訪談，先摸清你的說話風格與品牌定位。我們不會讓一個幽默風趣的教練去拍嚴肅的教學片，也不會讓一個氣質優雅的設計師去拍搞笑段子。除非你的骨子裡跟外表就是長這樣，然而方向對了，拍攝自然快。
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-2">2. 中期：邏輯延伸與重組</h4>
+                                <p class="opacity-80 leading-loose">
+                                    你在現場講話可能有贅詞、有停頓，這都沒關係。我們在第一次拍攝之後，會重新分析你的真實性格與特性，重新將你的「個人特色」進行邏輯重組。提煉出你對話中的「金句」。
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">為什麼這套方法適合忙碌的你？</h3>
+                        <p class="opacity-80 leading-loose">
+                            對於創業者和專業職人來說，時間就是金錢。
+                        </p>
+                        <ul class="space-y-2 opacity-80 leading-loose">
+                            <li class="flex gap-2">
+                                <span class="text-red-400 font-bold shrink-0">✕ 傳統自製影片：</span>
+                                <span>寫稿 2 小時 + 拍攝 4 小時 + 剪輯 6 小時 = 耗費 12 小時產出 1 支影片（而且品質不一定好）。</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-[#c9a67a] font-bold shrink-0">✓ 我們的實戰方案：</span>
+                                <span>前期溝通 1 小時 + 現場拍攝 2 小時 = 耗費 3 小時產出 10 支高品質影片。</span>
+                            </li>
+                        </ul>
+                        <p class="opacity-80 leading-loose mt-4">
+                            這不僅是效率的提升，更是讓你能把時間花在你最擅長的「本業」上，而不用為了當網紅而犧牲專業。
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">結語：把專業交給你，把製作交給我們</h3>
+                        <p class="opacity-80 leading-loose">
+                            短影音時代，流量很兇，但你不需要焦慮。<br>
+                            透過我們的「引導式拍攝」，你不需要成為演員，也不需要成為剪輯大師。你只需要帶著你的專業出現，然後與我們來一場愉快的下午茶對話。<br>
+                            <strong class="text-white">剩下的，就交給鏡頭，讓流量自然成為你發光的附加價值。</strong>
+                        </p>
+                    </div>
+                `
             },
             {
-                title: "鏡頭引導：心理素質大於攝影器材",
-                summary: "害羞與焦慮是大多數人的門檻。我們透過專業心理引導，讓您遺忘鏡頭，回歸最自然的情感流動。",
-                content: `<h2 class="text-3xl gold-text mb-6">忘記鏡頭，記住專業</h2><p class="opacity-80 leading-loose">我們深信動人的影像來自情感的流動。我們會教您簡單的心理錨點與呼吸法，將鏡頭轉化為好友或學生。這不需要演技，只需要您回歸專業，捕捉眼神發光的瞬間。</p>`
+                title: "你要流量還是留量？打造「品牌磁場」讓高單價客戶主動上門",
+                summary: "短影音流量很大，但為什麼你的私訊總是靜悄悄？本文分析從美業設計師到健身教練的成功案例，揭秘如何不靠百萬流量，而是透過建立「品牌磁場」，吸引精準的高價值客戶主動買單。",
+                content: `
+                    <div class="space-y-6">
+                        <p class="opacity-80 leading-loose">
+                            短影音時代，我們常聽到一句話：「現在流量很兇。」<br>
+                            但身為專業人士（無論你是設計師、教練、房仲或顧問），你心中可能有個更大的疑問：「流量是很兇，但為什麼我抓不住？」
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            你可能試過跟風拍了搞笑影片，觀看數破萬，但預約表卻沒有動靜；<br>
+                            或者你拍了專業教學，但內容太生硬，滑過去的人連停都不停。<br>
+                            其實，你缺的不是流量，而是<strong>「留量」</strong>。<br>
+                            你需要建立的不是爆款影片，而是一個專屬於你的<strong>「品牌磁場」</strong>。
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">一、什麼是「品牌磁場」？</h3>
+                        <p class="opacity-80 leading-loose">
+                            想像一下，有些人的影片，你滑到時會覺得「哇，這個人好厲害」；<br>
+                            但有些人的影片，你會覺得「天啊，我好想把我的頭髮/身材交給他！」<br>
+                            後者，就是擁有了「品牌磁場」。
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            它是一種透過影片傳遞出的頻率與氛圍。<br>
+                            當你的專業（內在）與你的表現方式（外在）完美對齊時，你會散發出一種獨特的吸引力。<br>
+                            這股磁場會幫你「過濾」客戶：
+                        </p>
+                        <ul class="list-disc list-inside opacity-80 leading-loose pl-2">
+                            <li>它會推開那些只在乎價格、愛比價的「無效流量」。</li>
+                            <li>它會吸進那些認同你價值觀、信任你技術的「高價值客戶」。</li>
+                        </ul>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">二、從「操作」到「專家」：磁場如何運作？</h3>
+                        <p class="opacity-80 leading-loose">
+                            我們服務過許多不同領域的專業人士，發現核心邏輯都是一樣的：信任，源自於真實的展現。
+                        </p>
+                        <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[#c9a67a] my-4">
+                            <h4 class="font-bold text-white mb-2">舉例：美業設計師的磁場：不只賣髮型，更賣「懂你」</h4>
+                            <p class="opacity-90 text-sm leading-relaxed">
+                                過去，設計師只會拍美美的髮型成品照。<br>
+                                但在我們的「引導式拍攝」中，我們讓設計師面對鏡頭聊：「為什麼你會建議客人不要染這個顏色？」<br><br>
+                                當設計師說出：「因為會傷害髮質，雖然不染我少賺一筆，但我希望她的頭髮健康。」<br>
+                                這一瞬間，品牌磁場就建立了。觀眾看到的不是一個想賺錢的商人，而是一個有職業道德的顧問。
+                            </p>
+                        </div>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">三、如何打造你的品牌磁場？</h3>
+                        <p class="opacity-80 leading-loose mb-4">
+                            打造磁場不需要華麗的特效，也不需要百萬剪輯師，你需要的是做對這三件事：
+                        </p>
+                        <ul class="space-y-4 opacity-80 leading-loose">
+                            <li>
+                                <strong class="text-[#c9a67a]">1. 挖掘核心特質：</strong><br>
+                                你是溫柔療癒型？還是數據權威型？不要去模仿別人，做你自己，磁場最強。 我們的前期分析報告，就是為了幫你找到這個特色。
+                            </li>
+                            <li>
+                                <strong class="text-[#c9a67a]">2. 持續輸出價值：</strong><br>
+                                不要只拍「多厲害」，要拍「能幫客戶解決什麼」。
+                            </li>
+                            <li>
+                                <strong class="text-[#c9a67a]">3. 保持真實對話：</strong><br>
+                                這是最重要的一點。不要演戲。透過我們的「引導式拍攝」，你只需要像平常工作一樣說話。那種自然的眼神交流、思考時的停頓，才是建立信任感的關鍵。
+                            </li>
+                        </ul>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">結論：當內在與外在對齊，流量自然會變現</h3>
+                        <p class="opacity-80 leading-loose">
+                            短影音的終局，不是比誰的觀看數多，而是比誰的客戶黏著度高。<br>
+                            當你建立起強大的「品牌磁場」，你就不需要再去追逐演算法的紅利。<br>
+                            <strong class="text-white">因為，對的人自然會被你吸引，主動敲你的私訊，說出那句你最想聽的話：「老師/教練，請問怎麼預約？」</strong>
+                        </p>
+                    </div>
+                `
             }
         ];
 
         const planDetails = {
             'trial': { 
                 name: '試拍方案 ($10,000)', 
-                features: ['前置溝通1次 (線上)', '主題腳本規劃', '主題腳本溝通1次', '現場拍攝2小時內', '後製剪輯', '影片修改1次'], 
+                features: ['前置溝通1次 (線上)', '主題腳本選單1份', '調整主題與內容1次', '現場拍攝2小時內', '後製剪輯', '影片修改1次'], 
                 video: 'https://drive.google.com/file/d/1F-0szJkXtIWyW5ArT2Crv2jRJVgvjAEq/preview' 
             },
             'starter': { 
@@ -946,52 +1101,25 @@
                 customHtml: `
                     <div class="space-y-8 text-sm md:text-base h-[60vh] md:h-auto overflow-y-auto pr-2 custom-scrollbar">
                         <div>
-                            <h4 class="text-lg font-bold gold-text mb-3">● 課程對象：零基礎想要拍攝製作短影音的人</h4>
-                            <ul class="space-y-2 opacity-80 list-decimal list-inside pl-2">
-                                <li>一直想做短影音，一直看別人 <span class="text-[#c9a67a]">→ 所以就懷疑自己是不是沒有機會</span></li>
-                                <li>自己拍了一兩支，但是沒有辦法持續拍 <span class="text-[#c9a67a]">→ 所以在找可以持續拍的方法</span></li>
-                                <li>有拍過但是花了太多時間去想 <span class="text-[#c9a67a]">→ 所以在找可以快速複製的方法</span></li>
-                                <li>想要拍短影音，但只要一看到鏡頭就緊張 <span class="text-[#c9a67a]">→ 所以想要放棄但又覺得不想放棄</span></li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-lg font-bold gold-text mb-3">● 講師背景</h4>
-                            <p class="opacity-80">RENATA蕾娜塔髮品 影音行銷經理 │ 品牌影音企劃4年以上經驗 │ 協助他人製作短影音至少1000支(含)以上</p>
-                        </div>
-
-                        <div>
                             <h4 class="text-lg font-bold gold-text mb-3">● 課程特色</h4>
                             <ul class="space-y-2 opacity-80 list-decimal list-inside pl-2">
-                                <li>不用過多理論，現場直接說明製作整體過程與邏輯 <span class="text-[#c9a67a]">→ 快速了解製作過程，以及需要準備好的東西</span></li>
+                                <li>不用過多理論</li>
                                 <li>一份萬用表格，可以用在任何影片製作邏輯 <span class="text-[#c9a67a]">→ 減少思考焦慮，提升製作效率</span></li>
-                                <li>全程不用昂貴器材，只需要一支手機 <span class="text-[#c9a67a]">→ 不用多餘花費</span></li>
-                                <li>消除面對鏡頭緊張的技術，實用在任何場合 <span class="text-[#c9a67a]">→ 輕鬆面對鏡頭，拍出來的模樣就像日常中的你</span></li>
-                                <li>課程最後提供紫微斗數限量名額算命盤 <span class="text-[#c9a67a]">→ 對教你的個人特質和適合的拍攝方向</span></li>
-                                <li>RENATA蕾娜塔髮品 短影音製作服務 優先與優惠名額</li>
+                                <li>不用昂貴器材，只需要一支手機 <span class="text-[#c9a67a]">→ 不用多餘花費</span></li>
+                                <li>消除面對鏡頭緊張的技術 <span class="text-[#c9a67a]">→ 輕鬆面對鏡頭，拍出來就是日常中的你</span></li>
                             </ul>
                         </div>
 
                         <div>
                             <h4 class="text-lg font-bold gold-text mb-3">● 課程大綱</h4>
                             <ul class="space-y-2 opacity-80 list-decimal list-inside pl-2">
-                                <li><strong>拍攝前準備</strong> <span class="text-[#c9a67a]">→ 當我們知道要面對鏡頭的時候就會預設緊張了，直接帶你放下心防，更能拍出好影片！</span></li>
-                                <li><strong>5秒定位</strong> <span class="text-[#c9a67a]">→ 釐清最基礎的個人定位，一句話幫你找出來！</span></li>
-                                <li><strong>主題模板</strong> <span class="text-[#c9a67a]">→ 用一張路線指引表格，直接一步步發展出妳的主題方向！</span></li>
-                                <li><strong>腳本大綱</strong> <span class="text-[#c9a67a]">→ 萬用腳本大綱，讓你複製到所有影片！</span></li>
-                                <li><strong>拍攝</strong> <span class="text-[#c9a67a]">→ 給你拍攝畫面漂亮的秘訣，遇到問題再帶你做緊張鬆解法！</span></li>
-                                <li><strong>剪輯</strong> <span class="text-[#c9a67a]">→ 提供給你快速剪輯方法！(回家作業)</span></li>
+                                <li><strong>拍攝前準備</strong> <span class="text-[#c9a67a]">→ 帶你的大腦卸下心防，更能拍出好影片！</span></li>
+                                <li><strong>5秒定位表</strong> <span class="text-[#c9a67a]">→ 基礎個人定位，一句話找出來！</span></li>
+                                <li><strong>主題模板</strong> <span class="text-[#c9a67a]">→ 一張指引表，發展出妳的主題方向！</span></li>
+                                <li><strong>腳本模板</strong> <span class="text-[#c9a67a]">→ 萬用大綱模板，複製到所有影片！</span></li>
+                                <li><strong>拍攝秘訣</strong> <span class="text-[#c9a67a]">→ 拍攝漂亮的秘訣</span></li>
+                                <li><strong>剪輯秘訣</strong> <span class="text-[#c9a67a]">→ 快速剪輯方法！(回家作業)</span></li>
                                 <li><strong>完成大合照</strong> <span class="text-[#c9a67a]">→ 作為影音創作者，每一個收穫都是分享！</span></li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-lg font-bold gold-text mb-3">● 獨享福利</h4>
-                            <ul class="space-y-2 opacity-80 list-decimal list-inside pl-2">
-                                <li><strong>3種動作</strong>：減緩緊張、穩定身心、順暢說話。(有感對比動作前後面對鏡頭的狀態，回家做也能療癒身心)</li>
-                                <li><strong>3份表格</strong>：基礎定位、主題指引、萬用大綱。</li>
-                                <li><strong>2項祕訣</strong>：拍攝秘訣、剪輯秘訣。</li>
-                                <li><strong>服務優惠</strong>：憑體驗課的限動回饋截圖，就可以享有6個月內其他服務9折優惠！</li>
                             </ul>
                         </div>
                     </div>
@@ -1031,8 +1159,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
                         <div class="flex flex-col gap-2">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">你是不是</span>
-                            <!-- ✅ Video Container: Standardized & Centered -->
-                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative shadow-lg" style="box-sizing: border-box; background: transparent;">
+                            <!-- ✅ Video Container: Standardized to 320px & Centered -->
+                            <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/1aHvR0BNRP0hku-XYLtHEAy_sojLbjq55/preview" 
                                             frameborder="0" 
@@ -1045,8 +1173,8 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">害怕鏡頭</span>
-                            <!-- ✅ Video Container: Standardized & Centered -->
-                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative shadow-lg" style="box-sizing: border-box; background: transparent;">
+                            <!-- ✅ Video Container: Standardized to 320px & Centered -->
+                            <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/1EAKRBpazu-9ftQbCqplm7iCFUXaET4FF/preview" 
                                             frameborder="0" 
@@ -1208,6 +1336,16 @@
                         form.reset();
                     }, 1500);
                 };
+            }
+        };
+
+        window.checkAdminAccess = (resourceName) => {
+            const password = prompt(`請輸入管理者密碼以存取「${resourceName}」：`);
+            if (password === "8888") { // 預設密碼
+                alert(`密碼正確！(這裡將會跳轉至 ${resourceName} 的真實連結)`);
+                // window.open('URL', '_blank');
+            } else if (password !== null) {
+                alert("密碼錯誤");
             }
         };
     </script>
