@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>社群影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
+    <title>順勢影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -133,23 +133,25 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 修復後的影片容器 */
+        /* ✅ 影片容器優化：解決 Google Drive 跑框問題 */
+        /* 使用相對定位，並隱藏溢出內容，這是裁切邊緣的關鍵 */
         .vertical-video-wrapper { 
-            position: relative;           /* 改成 relative 作為定位基準 */
-            top: auto;                    /* 移除 top */
-            left: auto;                   /* 移除 left */
+            position: relative;           
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            box-sizing: border-box;       /* 加上 box-sizing */
-            background: transparent;      /* 明確設為透明 */
+            overflow: hidden;         /* 關鍵：裁切掉 iframe 超出的部分 */
+            box-sizing: border-box;       
+            background: transparent;  /* 避免黑屏 */
+            border-radius: 1rem;      /* 確保圓角 */
         }
+
+        /* 強制 iframe 填滿並微幅放大以隱藏卷軸 */
         .vertical-video-wrapper iframe {
             position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
+            top: -2px !important;     /* 微調位置消除白邊 */
+            left: -2px !important;
+            width: calc(100% + 4px) !important; /* 微幅放大 100% -> 100% + 4px */
+            height: calc(100% + 4px) !important;
             border: none !important;
             display: block !important;
         }
@@ -432,10 +434,15 @@
                         <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-[#3d332d] font-black text-xl shrink-0 order-1 md:order-2 shadow-[0_0_20px_rgba(201,166,122,0.5)]">3</div>
                         
                         <div class="w-full md:w-5/12 order-3">
-                            <!-- Video Container Resized and Centered -->
-                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box;">
+                            <!-- Video Container Resized and Centered with Google Drive Fix -->
+                            <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
+                                            frameborder="0" 
+                                            allow="autoplay; fullscreen; picture-in-picture" 
+                                            allowfullscreen
+                                            scrolling="no">
+                                    </iframe>
                                 </div>
                             </div>
                         </div>
@@ -479,27 +486,42 @@
                         <!-- Video 1 (Original) -->
                         <div class="flex flex-col gap-2">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">你是不是</span>
-                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box;">
+                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1aHvR0BNRP0hku-XYLtHEAy_sojLbjq55/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    <iframe src="https://drive.google.com/file/d/1aHvR0BNRP0hku-XYLtHEAy_sojLbjq55/preview" 
+                                            frameborder="0" 
+                                            allow="autoplay; fullscreen; picture-in-picture" 
+                                            allowfullscreen
+                                            scrolling="no">
+                                    </iframe>
                                 </div>
                             </div>
                         </div>
                         <!-- Video 2 -->
                         <div class="flex flex-col gap-2">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
-                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box;">
+                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
+                                            frameborder="0" 
+                                            allow="autoplay; fullscreen; picture-in-picture" 
+                                            allowfullscreen
+                                            scrolling="no">
+                                    </iframe>
                                 </div>
                             </div>
                         </div>
                         <!-- Video 3 -->
                         <div class="flex flex-col gap-2">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">害怕鏡頭</span>
-                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box;">
+                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1EAKRBpazu-9ftQbCqplm7iCFUXaET4FF/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    <iframe src="https://drive.google.com/file/d/1EAKRBpazu-9ftQbCqplm7iCFUXaET4FF/preview" 
+                                            frameborder="0" 
+                                            allow="autoplay; fullscreen; picture-in-picture" 
+                                            allowfullscreen
+                                            scrolling="no">
+                                    </iframe>
                                 </div>
                             </div>
                         </div>
@@ -868,9 +890,73 @@
 
         const articles = [
             {
-                title: "天賦定錨：為何紫微斗數能幫你拍片？",
-                summary: "拍短影音最怕模仿。透過命盤定錨個人能量場，找出適合您的表達方式，讓「真」成為流量密碼。",
-                content: `<h2 class="text-3xl gold-text mb-6">天賦，才是最持久的競爭力</h2><p class="opacity-80 leading-loose">在短影音泛濫的時代，模仿是最大的陷阱。紫微斗數能揭示您的天生能量場——是威權型的領袖，還是親和型的鄰家姐姐？順著特質表達，您在鏡頭前的真誠是無法模仿的，這也是現今演算法最推崇的稀缺資源。</p>`
+                title: "為什麼專業人士不該「演戲」？用「訪談式拍攝」引導出最真實的專家魅力",
+                summary: "想做個人品牌拍攝短影音卻有鏡頭恐懼症？本文說明「訪談式拍攝」為何是建立信任感的關鍵，透過引導式對話，不背稿也能拍出高專業度的短影音。",
+                content: `
+                    <div class="space-y-6">
+                        <p class="opacity-80 leading-loose font-serif-italic border-l-2 border-[#c9a67a] pl-4 italic">
+                            「我看鏡頭就會尷尬，腦袋一片空白怎麼辦？」<br>
+                            「背腳本真的好難，講出來的話像機器人...」
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            這是不是你拿起手機想拍短影音時，內心最真實的崩潰？<br>
+                            身為髮型設計師、健身教練、美甲師或是專業工作者，面對客戶時總能侃侃而談，展現無比的自信與專業。但奇怪的是，一旦鏡頭對準你，那份自信就消失，取而代之的是僵硬的微笑和死板的語氣。
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            於是，你開始模仿網紅，試圖讓自己「變」得很嗨、「變」得很有趣、「變」得很有道理。結果呢？影片拍出來看久了自己都覺得不像自己，更別說吸引喜歡原本的你的高質感客戶了。<br>
+                            <strong class="text-white">問題本身不在於不會拍，是在用錯方法。專業人士需要的不是「演技」，而是「真實」。</strong>
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">一、為什麼「演戲」會毀掉專業人士的品牌信任感？</h3>
+                        <p class="opacity-80 leading-loose">
+                            在短影音的世界，有一種看不見的貨幣叫「信任感」。<br>
+                            當你試圖背誦一段你不熟悉的「爆款文案」，或是不適合你個性的「搞笑梗」，觀眾的潛意識會立刻察覺到「違和感」。看見你的微表情僵硬、眼神飄忽不確定性（因為你在想下一句台詞），這些微小訊息都在告訴觀眾：「這不是你」。
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            對於賣娛樂的網紅來說，誇張是效果；但對於賣專業服務（如美業、健身、諮詢）的你，「真實」是成交關鍵。<br>
+                            而高客單價的客戶，不會為你的表演買單，而會買單你解決問題的能力，以及你散發出的「可靠感」。
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">二、什麼是「訪談式拍攝」？讓流量回歸溝通本質</h3>
+                        <p class="opacity-80 leading-loose">
+                            如果不想演戲，那該怎麼拍？答案就是：「引導式拍攝」，或稱為「訪談式拍攝」。<br>
+                            想像一下，現在不是在拍片，而是一位新客人坐在你面前，問你：「教練，我真的很想瘦下來，但我試過很多方法都沒用，我很絕望，你覺得我還有救嗎？」
+                        </p>
+                        <p class="opacity-80 leading-loose">
+                            這時候，你一定會眼神發光、語氣堅定地告訴他你的專業見解，對吧？<br>
+                            「訪談式拍攝」就是還原這個場景。<br>
+                            我們不給你冷冰冰的劇本，而是透過鏡頭外的人員進行「引導提問」。你不需要看鏡頭，你只需要看著訪問者，像平常聊天一樣回答問題。
+                        </p>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">三、為什麼「引導式拍攝」能幫助社群的短影音內容經營？</h3>
+                        <ul class="space-y-4 opacity-80 leading-loose">
+                            <li><strong class="text-[#c9a67a]">1. 克服鏡頭恐懼症</strong><br>因為你是處於「對話狀態」，你的注意力會集中在「回答問題」，而不是「錄影的鏡頭正在拍我」。能瞬間消除 80% 的緊張感，讓你的肢體語言自然放鬆。</li>
+                            <li><strong class="text-[#c9a67a]">2. 展現「專家權威感」</strong><br>當人在談論自己擅長的領域時，會進入一種「心流狀態」，散發篤定的眼神、自信的語速，是任何演技都模仿不來的。這是高質量客戶最想看到的「職人魅力」。</li>
+                            <li><strong class="text-[#c9a67a]">3. 製作效率翻倍</strong><br>不用背稿、不用一直 NG 重來。傳統拍片可能要花一下午磨一支影片；引導式拍攝，我們曾經協助一位資深設計師，在 2 小時內完成了 10 支專業短影音，也曾經協助過資深設計師，透過「引導式拍攝」挖掘出更多個人特色。</li>
+                        </ul>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">四、不只是拍攝，更是挖掘你的「品牌磁場」</h3>
+                        <p class="opacity-80 leading-loose">
+                            在我們的【短影音製作服務】中，這套流程不只是拿著手機問問題而已。<br>
+                            我們引入了源自 RENATA 蕾娜塔的品牌基因，將服務分為三個階段：
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 opacity-80 leading-loose pl-2">
+                            <li><strong>個人特質分析：</strong>開拍前，我們會透過表單與諮詢，挖掘你的核心特質。你是溫暖療癒型？還是數據權威型？這決定了我們的引導方向。</li>
+                            <li><strong>有腳本大綱-無腳本引導：</strong>拍攝現場，我們可以有腳本大綱的輔助，也能無腳本引導，就像你的朋友或好奇的客戶，拋出那些能激發你專業熱情的話題。</li>
+                            <li><strong>價值剪輯：</strong>最後，透過剪輯將你的對話精煉成高含金量的短影音。</li>
+                        </ul>
+
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">結語：你不必成為別人，才能在網路上發光</h3>
+                        <p class="opacity-80 leading-loose">
+                            在 AI 生成內容氾濫的時代，「人味」變得稀缺且昂貴。<br>
+                            別再強迫自己去背那些尷尬台詞。你的專業知識、你對工作的熱情、你幫助客戶改變的故事，這些才是你最強大的武器。
+                        </p>
+                        <p class="text-lg font-bold text-white mt-4">
+                            準備好展現最真實的自己了嗎？<br>
+                            現在就透過我們的「引導式拍攝」，用最輕鬆、無壓力的方式，建立屬於你的個人品牌磁場。
+                        </p>
+                    </div>
+                `
             },
             {
                 title: "數位遺產：每一支影片都是未來的資產",
