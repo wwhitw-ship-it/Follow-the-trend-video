@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>社群影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
+    <title>順勢影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -133,25 +133,24 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 影片容器優化：解決 Google Drive 跑框問題 */
-        /* 使用相對定位，並隱藏溢出內容，這是裁切邊緣的關鍵 */
+        /* ✅ 絕對穩定的影片容器修正 (還原回您滿意的版本) */
         .vertical-video-wrapper { 
             position: relative;           
+            top: auto;                    
+            left: auto;                   
             width: 100%;
             height: 100%;
-            overflow: hidden;         /* 關鍵：裁切掉 iframe 超出的部分 */
+            overflow: hidden;
             box-sizing: border-box;       
-            background: transparent;  /* 避免黑屏 */
-            border-radius: 1rem;      /* 確保圓角 */
+            background: transparent;      
         }
-
-        /* 強制 iframe 填滿並微幅放大以隱藏卷軸 */
+        
         .vertical-video-wrapper iframe {
             position: absolute !important;
-            top: -2px !important;     /* 微調位置消除白邊 */
-            left: -2px !important;
-            width: calc(100% + 4px) !important; /* 微幅放大 100% -> 100% + 4px */
-            height: calc(100% + 4px) !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
             border: none !important;
             display: block !important;
         }
@@ -245,7 +244,7 @@
                     </div>
                 </div>
                 
-                <!-- Practical Plan (formerly Subscription) -->
+                <!-- Practical Plan -->
                 <div class="plan-card rounded-[32px] p-8 md:p-10 flex flex-col text-left">
                     <div class="featured-badge">想省力拍？ 建議選</div>
                     <h3 class="text-2xl font-light mb-2">實戰方案</h3>
@@ -277,7 +276,7 @@
         </div>
     </section>
 
-    <!-- NEW: Our Features (我們的特色) - Further Compacted -->
+    <!-- NEW: Our Features (我們的特色) -->
     <section class="py-12 md:py-16 bg-[#3d332d] border-t border-white/5 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 pointer-events-none" style="background: radial-gradient(circle at center, #c9a67a 0%, transparent 60%);"></div>
         <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
@@ -338,7 +337,6 @@
                             <h3 class="text-2xl font-bold gold-text mb-2">製作前期</h3>
                             <p class="text-sm opacity-60 mb-4 tracking-wider font-bold">14-28 工作天 | 前置溝通，資料收集與分析</p>
                             
-                            <!-- Original Description Added Back -->
                             <p class="text-white/80 leading-relaxed mb-4 text-sm">以訪談方式收集與你相關的資訊，彙整後提供一份專屬你的分析建議報告。</p>
                             
                             <ul class="space-y-3 mb-8 inline-block text-left w-full md:text-right">
@@ -346,7 +344,6 @@
                                 <li class="flex items-center gap-2 text-white/90 md:justify-end text-lg"><span class="gold-text md:order-2">▌</span> 個人分析報告</li>
                             </ul>
                             
-                            <!-- Admin Links -->
                             <div class="flex flex-wrap justify-start md:justify-end gap-3">
                                 <a href="javascript:void(0)" onclick="alert('管理者功能：查看訪談規劃表')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                     <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> 訪談規劃表 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
@@ -361,7 +358,6 @@
                         
                         <div class="w-full md:w-1/2 order-3">
                             <div class="aspect-video bg-black/20 rounded-2xl border border-white/5 overflow-hidden relative group-hover:border-[#c9a67a]/50 transition-all shadow-xl">
-                                <!-- Removed opacity-80 and group-hover:opacity-100 -->
                                 <img src="https://lh3.googleusercontent.com/d/1VGUUzDt3U3YFljT37-d7bpH3Z79hy8o0" class="w-full h-full object-cover" alt="訪談與分析">
                             </div>
                         </div>
@@ -373,7 +369,6 @@
                     <div class="flex flex-col md:flex-row items-center justify-between gap-8 group">
                         <div class="w-full md:w-1/2 order-3 md:order-1">
                             <div class="aspect-video bg-black/20 rounded-2xl border border-white/5 overflow-hidden relative group-hover:border-[#c9a67a]/50 transition-all shadow-xl">
-                                <!-- Removed opacity-80 and group-hover:opacity-100 -->
                                 <img src="https://lh3.googleusercontent.com/d/1pit8L17EPKS3bA9F2sMZMUQrufGnqO3f" class="w-full h-full object-cover" alt="影片清單庫">
                             </div>
                         </div>
@@ -384,7 +379,6 @@
                             <h3 class="text-2xl font-bold gold-text mb-2">製作中期</h3>
                             <p class="text-sm opacity-60 mb-4 tracking-wider font-bold">7-14 工作天 | 主題規劃，腳本大綱修改，對焦內容，拍攝影片</p>
                             
-                            <!-- Original Description Added Back -->
                             <div class="text-white/80 leading-relaxed mb-4 space-y-3 text-sm">
                                 <p>我們會提供一份專屬於你的線上「影片清單庫」，可以自由選擇你想拍攝的主題，並於選擇後於影片清單庫查看腳本大綱。</p>
                                 <p>我們將會在您選擇完影片主題後，與您預約線上腳本討論時間(約1小時)，再次對焦及修改腳本大綱與方向。</p>
@@ -409,7 +403,6 @@
                             <h3 class="text-2xl font-bold gold-text mb-2">製作後期</h3>
                             <p class="text-sm opacity-60 mb-4 tracking-wider font-bold">30-45 工作天 | 剪輯製作，文案撰寫，觀察建議</p>
                             
-                            <!-- Original Description Added Back -->
                             <div class="text-white/80 leading-relaxed mb-4 space-y-3 text-sm">
                                 <p>我們將於此工作天內為您剪輯製作影片，並您可隨時於您專屬的「影片清單庫」查看影片進度。</p>
                                 <p>影片完成後將優先請您確認是否需要修改，影片修改1次為限，影片確稿後將連同文案上傳至您專屬的「影片清單庫」存放，您可自由下載高清影片、複製文案。</p>
@@ -423,7 +416,6 @@
                                 <li class="flex items-center gap-2 text-white/90 md:justify-end text-lg"><span class="gold-text md:order-2">▌</span> 製作觀察與建議</li>
                             </ul>
 
-                            <!-- Admin Link Moved Here -->
                             <div class="flex justify-start md:justify-end">
                                 <a href="javascript:void(0)" onclick="alert('管理者功能：進入專屬影片清單庫')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                     <i data-lucide="folder-check" class="w-4 h-4"></i> 專屬雲端連結：下載影片與文案 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
@@ -434,15 +426,10 @@
                         <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-[#3d332d] font-black text-xl shrink-0 order-1 md:order-2 shadow-[0_0_20px_rgba(201,166,122,0.5)]">3</div>
                         
                         <div class="w-full md:w-5/12 order-3">
-                            <!-- Video Container Resized and Centered with Google Drive Fix -->
-                            <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                            <!-- ✅ Video Container: Standardized with aspect-[9/16] and double-layer wrapper -->
+                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
-                                            frameborder="0" 
-                                            allow="autoplay; fullscreen; picture-in-picture" 
-                                            allowfullscreen
-                                            scrolling="no">
-                                    </iframe>
+                                    <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen scrolling="no"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -477,49 +464,22 @@
                             <button onclick="window.selectPlanAndScroll('event')" class="w-full sm:w-auto px-6 py-3 gold-bg text-[#3d332d] rounded-full font-black text-base shadow-2xl active:scale-95 transition-all text-center whitespace-nowrap hover:brightness-110">預約體驗</button>
                             <button onclick="window.openModal('event_intro')" class="w-full sm:w-auto px-5 py-3 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-sm hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">課程介紹</button>
                             <button onclick="window.openModal('event_locations')" class="w-full sm:w-auto px-5 py-3 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-sm hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">課程資訊</button>
+                            <!-- New Button -->
+                            <button onclick="window.openModal('student_results')" class="w-full sm:w-auto px-5 py-3 border border-[#c9a67a] text-[#c9a67a] rounded-full font-bold text-sm hover:bg-[#c9a67a] hover:text-[#3d332d] active:scale-95 transition-all text-center whitespace-nowrap">更多學員成果</button>
                         </div>
                         <p class="text-xs opacity-50 mt-4 text-left">課程體驗請聯繫你的業務</p>
                     </div>
                     
-                    <!-- Right Side: 3 Videos (9:16 Vertical) - Size increased by giving column more width (lg:w-3/5) -->
-                    <div class="w-full lg:w-3/5 mt-8 lg:mt-0 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <!-- Video 1 -->
-                        <div class="flex flex-col gap-2">
-                            <span class="text-center text-white/90 text-sm font-bold tracking-widest">你是不是</span>
-                            <!-- Applied strict masking and max-width like the working video -->
-                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative shadow-lg" style="box-sizing: border-box; transform: translateZ(0);">
-                                <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1aHvR0BNRP0hku-XYLtHEAy_sojLbjq55/preview" 
-                                            frameborder="0" 
-                                            allow="autoplay; fullscreen; picture-in-picture" 
-                                            allowfullscreen 
-                                            scrolling="no">
-                                    </iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Video 2 -->
-                        <div class="flex flex-col gap-2">
+                    <!-- Right Side: 1 Video (9:16 Vertical) - Centered and Single -->
+                    <div class="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center">
+                        <div class="flex flex-col gap-2 w-full max-w-[280px]">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
-                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative shadow-lg" style="box-sizing: border-box; transform: translateZ(0);">
+                            <!-- ✅ Video Container: Standardized & Centered -->
+                            <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
                                             frameborder="0" 
-                                            allow="autoplay; fullscreen; picture-in-picture" 
-                                            allowfullscreen 
-                                            scrolling="no">
-                                    </iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Video 3 -->
-                        <div class="flex flex-col gap-2">
-                            <span class="text-center text-white/90 text-sm font-bold tracking-widest">害怕鏡頭</span>
-                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative shadow-lg" style="box-sizing: border-box; transform: translateZ(0);">
-                                <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1EAKRBpazu-9ftQbCqplm7iCFUXaET4FF/preview" 
-                                            frameborder="0" 
-                                            allow="autoplay; fullscreen; picture-in-picture" 
+                                            allow="autoplay; fullscreen" 
                                             allowfullscreen 
                                             scrolling="no">
                                     </iframe>
@@ -826,27 +786,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 container mx-auto px-6 border-t border-white/5 text-center">
-        <div class="flex justify-center gap-8 mb-8">
-            <a href="https://www.instagram.com/betty.tzeng/" target="_blank" class="group flex items-center gap-2 opacity-60 hover:opacity-100 transition-all">
-                <div class="w-10 h-10 rounded-full border border-[#c9a67a] flex items-center justify-center group-hover:bg-[#c9a67a] group-hover:text-[#3d332d] transition-all">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                </div>
-                <span class="text-xs tracking-widest hidden md:block">betty.tzeng</span>
-            </a>
-            <a href="https://www.facebook.com/videosoul.re" target="_blank" class="group flex items-center gap-2 opacity-60 hover:opacity-100 transition-all">
-                <div class="w-10 h-10 rounded-full border border-[#c9a67a] flex items-center justify-center group-hover:bg-[#c9a67a] group-hover:text-[#3d332d] transition-all">
-                    <i data-lucide="facebook" class="w-5 h-5"></i>
-                </div>
-                <span class="text-xs tracking-widest hidden md:block">順勢影音沙龍</span>
-            </a>
-        </div>
-        <div class="opacity-30 text-[10px] tracking-[0.3em] uppercase">
-            RENATA © 2026 SALON. BORN WITH TALENT, FLOW WITH ART.
-        </div>
-    </footer>
-
     <!-- Article Modal -->
     <div id="article-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left">
         <div class="modal-content bg-[#3d332d] rounded-[32px] md:rounded-[48px] shadow-2xl relative w-full max-w-3xl p-8 md:p-16 text-left">
@@ -1081,6 +1020,36 @@
                     </div>
                 `,
                 video: '' 
+            },
+            'student_results': {
+                name: '學員成果展示',
+                customHtml: `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+                        <div class="flex flex-col gap-2">
+                            <span class="text-center text-white/90 text-sm font-bold tracking-widest">你是不是</span>
+                            <div class="video-box-fix max-w-[280px] mx-auto relative shadow-lg"> 
+                                <iframe src="https://drive.google.com/file/d/1aHvR0BNRP0hku-XYLtHEAy_sojLbjq55/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-center text-white/90 text-sm font-bold tracking-widest">害怕鏡頭</span>
+                            <div class="video-box-fix max-w-[280px] mx-auto relative shadow-lg"> 
+                                <iframe src="https://drive.google.com/file/d/1EAKRBpazu-9ftQbCqplm7iCFUXaET4FF/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                video: ''
             }
         };
 
