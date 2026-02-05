@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>順勢影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
+    <title>社群影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -488,12 +488,7 @@
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">你是不是</span>
                             <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1aHvR0BNRP0hku-XYLtHEAy_sojLbjq55/preview" 
-                                            frameborder="0" 
-                                            allow="autoplay; fullscreen; picture-in-picture" 
-                                            allowfullscreen
-                                            scrolling="no">
-                                    </iframe>
+                                    <iframe src="https://drive.google.com/file/d/1aHvR0BNRP0hku-XYLtHEAy_sojLbjq55/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen scrolling="no"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -502,12 +497,7 @@
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
                             <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
-                                            frameborder="0" 
-                                            allow="autoplay; fullscreen; picture-in-picture" 
-                                            allowfullscreen
-                                            scrolling="no">
-                                    </iframe>
+                                    <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen scrolling="no"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -516,12 +506,7 @@
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">害怕鏡頭</span>
                             <div class="aspect-[9/16] w-full rounded-xl overflow-hidden border border-[#c9a67a]/30 shadow-lg relative" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
-                                    <iframe src="https://drive.google.com/file/d/1EAKRBpazu-9ftQbCqplm7iCFUXaET4FF/preview" 
-                                            frameborder="0" 
-                                            allow="autoplay; fullscreen; picture-in-picture" 
-                                            allowfullscreen
-                                            scrolling="no">
-                                    </iframe>
+                                    <iframe src="https://drive.google.com/file/d/1EAKRBpazu-9ftQbCqplm7iCFUXaET4FF/preview" frameborder="0" allow="autoplay; fullscreen" allowfullscreen scrolling="no"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -859,9 +844,12 @@
     <div id="sample-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left">
         <div class="modal-content bg-[#3d332d] rounded-[32px] relative w-full max-w-4xl p-6 md:p-12 flex flex-col lg:flex-row gap-10 text-left">
             <button onclick="window.closeModal()" class="absolute top-6 right-6 text-white opacity-40 text-left"><i data-lucide="x" class="w-8 h-8 text-left"></i></button>
-            <div class="w-full max-w-[260px] mx-auto shrink-0 aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl text-left">
+            
+            <!-- Video Container in Modal: Fixed Structure -->
+            <div class="w-full max-w-[260px] mx-auto shrink-0 aspect-[9/16] rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl text-left relative" style="box-sizing: border-box; background: transparent;">
                 <div id="modal-video-container" class="vertical-video-wrapper text-left"></div>
             </div>
+            
             <div class="flex-1 text-left flex flex-col justify-center text-left">
                 <h2 id="modal-title" class="text-3xl gold-text font-light mb-6 text-left">方案範本</h2>
                 <div id="modal-features-box" class="p-6 bg-black/20 rounded-3xl border border-white/5 space-y-4 mb-8 text-left">
@@ -877,9 +865,12 @@
         <div class="modal-content bg-[#3d332d] rounded-[32px] relative w-full max-w-[400px] p-8 text-center text-center">
             <button onclick="window.closeInsightModal()" class="absolute top-4 right-4 text-white opacity-40 text-center"><i data-lucide="x" class="w-6 h-6 text-center"></i></button>
             <h2 id="insight-modal-title" class="text-xl gold-text font-light mb-6 text-center text-center">實戰教學</h2>
-            <div class="aspect-[9/16] bg-black rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl mb-6 text-center text-center">
+            
+            <!-- Insight Video Container: Fixed Structure -->
+            <div class="aspect-[9/16] rounded-3xl overflow-hidden border border-[#c9a67a33] shadow-2xl mb-6 text-center text-center relative" style="box-sizing: border-box; background: transparent;">
                 <div id="insight-video-container" class="vertical-video-wrapper text-center text-center"></div>
             </div>
+            
             <button onclick="window.closeInsightModal()" class="px-8 py-3 border border-white/10 text-white rounded-full text-xs text-center text-center">關閉觀看</button>
         </div>
     </div>
@@ -1156,7 +1147,8 @@
             const videoWrapper = document.getElementById('modal-video-container').parentElement;
             if (d.video) {
                 videoWrapper.style.display = 'block';
-                document.getElementById('modal-video-container').innerHTML = `<iframe class="w-full h-full" src="${d.video}" frameborder="0" allowfullscreen></iframe>`;
+                // Added scrolling="no" for Google Drive iframe stability
+                document.getElementById('modal-video-container').innerHTML = `<iframe class="w-full h-full" src="${d.video}" frameborder="0" allowfullscreen scrolling="no"></iframe>`;
             } else {
                 videoWrapper.style.display = 'none';
                 document.getElementById('modal-video-container').innerHTML = '';
@@ -1171,7 +1163,8 @@
         
         window.openInsightModal = (u, t) => {
             document.getElementById('insight-modal-title').innerText = t;
-            document.getElementById('insight-video-container').innerHTML = `<iframe class="w-full h-full" src="${u}" frameborder="0" allowfullscreen></iframe>`;
+            // Added scrolling="no" for Google Drive iframe stability
+            document.getElementById('insight-video-container').innerHTML = `<iframe class="w-full h-full" src="${u}" frameborder="0" allowfullscreen scrolling="no"></iframe>`;
             document.getElementById('insight-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         };
