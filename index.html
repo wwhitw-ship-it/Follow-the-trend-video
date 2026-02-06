@@ -132,7 +132,7 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 影片容器設定：防止 Google Drive 播放器跑框 */
+        /* ✅ 影片容器優化：解決 Google Drive 跑框問題 (Padding Hack) */
         .video-box-fix {
             width: 100%;
             position: relative;
@@ -152,9 +152,10 @@
             width: 100%;
             height: 100%;
             border: 0;
-            z-index: 10; 
+            z-index: 10;
         }
 
+        /* 舊有的 wrapper 結構，為了相容性保留並統一設定 */
         .vertical-video-wrapper { 
             position: relative;           
             top: auto;                    
@@ -440,6 +441,7 @@
                         <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-[#3d332d] font-black text-xl shrink-0 order-1 md:order-2 shadow-[0_0_20px_rgba(201,166,122,0.5)]">3</div>
                         
                         <div class="w-full md:w-5/12 order-3">
+                            <!-- Video Container in Modal: Fixed Structure with 320px -->
                             <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
@@ -1348,102 +1350,36 @@
             window.populateArticles(); 
             window.initFormSelects();
             
-            // Form Submit（修正版）
-const form = document.getElementById('booking-form');
-if(form) {
-    form.onsubmit = async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById('submit-btn');
-        const st = document.getElementById('form-status');
-        
-        btn.disabled = true; 
-        btn.innerText = "傳送中...";
-        st.innerText = "";
-        
-        // ⚠️ 請替換成你的 Google Apps Script 網頁應用程式 URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxRSU20DhAdcfIuK6_6a0VYS--SP4hGoBH4t7Uue2seheeGMAJ8lOnUxRdiQBgzPbcjIA/exec';
-        
-        try {
-            const formData = new FormData(form);
-            
-            // 使用 fetch 送出資料
-            const response = await fetch(scriptURL, {
-                method: 'POST',
-                body: formData
-            });
-            
-            // ⚠️ 移除 mode: 'no-cors' 以便正確接收回應
-            const result = await response.json();
-            
-            if (result.result === 'success') {
-                st.innerText = "✓ 預約成功！我們將儘快與您聯繫。";
-                st.style.color = "#c9a67a";
-                form.reset();
-            } else {
-                throw new Error(result.message || '提交失敗');
+            // Form Submit Simulation
+            const form = document.getElementById('booking-form');
+            if(form) {
+                form.onsubmit = (e) => {
+                    e.preventDefault();
+                    const btn = document.getElementById('submit-btn');
+                    const st = document.getElementById('form-status');
+                    btn.disabled = true; btn.innerText = "傳送中...";
+                    
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbxRSU20DhAdcfIuK6_6a0VYS--SP4hGoBH4t7Uue2seheeGMAJ8lOnUxRdiQBgzPbcjIA/exec';
+
+                    fetch(scriptURL, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        mode: 'no-cors' // Important for simple submission to avoid CORS errors in browser console
+                    })
+                    .then(() => {
+                        st.innerText = "✓ 預約成功！我們將儘快與您聯繫。";
+                        st.style.color = "#c9a67a";
+                        btn.innerText = "預約免費諮詢與了解"; btn.disabled = false;
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        st.innerText = "❌ 傳送失敗，請稍後再試或直接聯繫我們。";
+                        st.style.color = "red";
+                        btn.innerText = "預約免費諮詢與了解"; btn.disabled = false;
+                    });
+                };
             }
-            
-        } catch (error) {
-            console.error('Error:', error);
-            st.innerText = "❌ 傳送失敗，請稍後再試或直接聯繫我們。";
-            st.style.color = "red";
-        } finally {
-            btn.innerText = "預約免費諮詢與了解";
-            btn.disabled = false;
-        }
-    };
-}
-```
-
-## 📋 完整測試步驟
-
-### Step 1: 更新 Apps Script
-1. 複製上面的修正後 Apps Script 程式碼
-2. 貼到你的 Google Sheets 的 Apps Script 編輯器
-3. 點選「儲存」
-
-### Step 2: 重新部署
-1. 點選「部署」→「管理部署」
-2. 點選現有部署右邊的「編輯」（鉛筆圖示）
-3. 在「版本」欄位選擇「新版本」
-4. 確認「具有應用程式存取權的使用者」設定為「**任何人**」
-5. 點選「部署」
-6. **複製新的網頁應用程式 URL**（會跟舊的不同）
-
-### Step 3: 更新 HTML
-1. 將 HTML 中的 `scriptURL` 替換成新的 URL
-2. 儲存檔案
-
-### Step 4: 測試
-1. 開啟你的網頁
-2. 填寫表單
-3. 送出
-4. 檢查 Google Sheets 是否有新資料
-
-## 🔍 除錯方法
-
-如果還是不行，可以這樣檢查：
-
-**方法 1：在瀏覽器測試 API**
-```
-直接在瀏覽器網址列貼上你的 Apps Script URL
-如果看到 {"status":"API is working","sheet":"2026"}
-代表 API 正常運作
-```
-
-**方法 2：檢查瀏覽器 Console**
-```
-1. 按 F12 開啟開發者工具
-2. 點選 Console 頁籤
-3. 提交表單
-4. 查看是否有錯誤訊息
-```
-
-**方法 3：檢查 Apps Script 執行記錄**
-```
-1. 在 Apps Script 編輯器中
-2. 點選左側「執行作業」
-3. 查看是否有執行記錄和錯誤訊息
         };
 
         window.checkAdminAccess = (resourceName) => {
