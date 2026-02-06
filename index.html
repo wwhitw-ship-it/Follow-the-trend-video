@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>社群影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
+    <title>順勢影音沙龍 | RENATA 蕾娜塔髮品 2026 全新企劃</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -55,6 +55,7 @@
         .plan-card.featured {
             border: 2px solid var(--bronze-gold);
             background: rgba(201, 166, 122, 0.05);
+            /* position: relative; Removed as it's now on .plan-card */
         }
         .featured-badge {
             position: absolute;
@@ -132,14 +133,14 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 影片容器優化：解決 Google Drive 跑框問題 (Padding Hack) */
+        /* ✅ 絕對穩定的影片容器修正 (Padding Hack) */
         .video-box-fix {
             width: 100%;
             position: relative;
             padding-bottom: 177.77%; /* 9:16 Ratio */
             height: 0;
             overflow: hidden;
-            background: #000;
+            background: #000; /* 恢復黑色背景，避免破圖時穿透 */
             border-radius: 1rem;
             border: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
@@ -152,10 +153,10 @@
             width: 100%;
             height: 100%;
             border: 0;
-            z-index: 10;
+            z-index: 10; 
         }
 
-        /* 舊有的 wrapper 結構，為了相容性保留並統一設定 */
+        /* ✅ 修復後的影片容器 - 適用於 Vimeo 與 Google Drive */
         .vertical-video-wrapper { 
             position: relative;           
             top: auto;                    
@@ -174,6 +175,12 @@
             height: 100% !important;
             border: none !important;
             display: block !important;
+        }
+
+        /* Dropdown options styling: White background, Dark Wood Text */
+        option {
+            background-color: #ffffff;
+            color: #3d332d;
         }
 
         .notice-box {
@@ -224,8 +231,12 @@
                 <p>整合出屬於你的價值內容</p>
                 <p>讓流量成為你發光的附加價值</p>
             </div>
+
+            <!-- Buttons removed as requested -->
         </div>
     </section>
+
+    <!-- Removed Sections: Pain Points, Pathfinder, Brand Authority, Unique Feature, Core Solutions -->
 
     <!-- 2. Pricing Plans (服務項目：拍攝企劃) - MOVED HERE -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="plans">
@@ -404,7 +415,7 @@
                                 <li class="flex items-center gap-2 text-white/90 text-lg"><span class="gold-text">▌</span> 線上對焦</li>
                             </ul>
                             
-                            <a href="javascript:void(0)" onclick="window.checkAdminAccess('影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
+                            <a href="javascript:void(0)" onclick="alert('管理者功能：進入影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                 <i data-lucide="link" class="w-4 h-4"></i> 進入影片清單庫 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
                             </a>
                         </div>
@@ -681,26 +692,65 @@
             <p class="opacity-60 text-lg text-center">透過知識定錨，讓您的創作具備靈魂深度</p>
             <div class="w-20 h-1 gold-bg mx-auto mt-8 mb-16 text-center"></div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
-                <!-- Expert Articles -->
-                <div class="space-y-4">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-left"><i data-lucide="book-open" class="gold-text"></i> 影音深度專欄</h3>
-                    <div id="article-list" class="space-y-4 text-left">
-                        <!-- JS Populate -->
-                    </div>
+            <!-- Articles Grid (Now 2x2) -->
+            <div class="mb-20">
+                <h3 class="text-xl font-bold mb-8 flex items-center justify-center gap-3"><i data-lucide="book-open" class="gold-text"></i> 影音深度專欄</h3>
+                <!-- Changed from space-y-4 to grid for 4 articles -->
+                <div id="article-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <!-- JS Populate -->
                 </div>
-                <!-- Expert Videos -->
-                <div class="space-y-4">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-left"><i data-lucide="play-circle" class="gold-text"></i> 專家實戰引導</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl aspect-[9/16] border border-white/10" onclick="window.openInsightModal('https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview', '天賦影音引導實戰')">
-                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all flex items-center justify-center"><i data-lucide="play" class="w-12 h-12 gold-text"></i></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-xs font-bold">天賦影音引導實戰</div>
+            </div>
+
+            <!-- Expert Videos (Moved Down & Expanded to 3 Columns) -->
+            <div>
+                <h3 class="text-xl font-bold mb-8 flex items-center justify-center gap-3"><i data-lucide="play-circle" class="gold-text"></i> 實戰經驗分享</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Video 1 -->
+                    <div class="flex flex-col gap-4">
+                        <!-- Video Container: Fixed Structure (Match "First Time Filming" - 320px) -->
+                        <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                            <div class="vertical-video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/1e7iTHVoxEz9FBgrRfCPWK7bh9DJ385Vc/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
                         </div>
-                        <div class="relative group cursor-pointer overflow-hidden rounded-2xl aspect-[9/16] border border-white/10" onclick="window.openInsightModal('https://drive.google.com/file/d/1JJAxO60e3D9LkZ1GMeElvojI6ApgcBrf/preview', '克服鏡頭焦慮教學')">
-                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all flex items-center justify-center"><i data-lucide="play" class="w-12 h-12 gold-text"></i></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-xs font-bold">克服鏡頭焦慮教學</div>
+                        <p class="text-sm font-bold text-center opacity-80">經驗分享_有體感更容易</p>
+                    </div>
+
+                    <!-- Video 2 (Updated) -->
+                    <div class="flex flex-col gap-4">
+                        <!-- Video Container: Fixed Structure (Match "First Time Filming" - 320px) -->
+                        <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                            <div class="vertical-video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/16n0K61TKtQwWopoHiAQng1VlDaL74EMn/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
                         </div>
+                        <p class="text-sm font-bold text-center opacity-80">真實案例_有基礎更容易</p>
+                    </div>
+
+                    <!-- Video 3 (Updated) -->
+                    <div class="flex flex-col gap-4">
+                        <!-- Video Container: Fixed Structure (Match "First Time Filming" - 320px) -->
+                        <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                            <div class="vertical-video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/1jQyUzhSySYHQOLMbD13rz9n3WOIl0I4i/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
+                        </div>
+                        <p class="text-sm font-bold text-center opacity-80">更多實戰案例分享</p>
                     </div>
                 </div>
             </div>
@@ -759,11 +809,12 @@
                     </div>
                     <div class="flex flex-col gap-3 text-left">
                         <label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left text-left">所在地區</label>
-                        <select name="location" class="p-4 rounded-xl font-bold gold-text text-left">
+                        <!-- ✅ Fixed: Removed inline styles to match Name input style (dark bg, light text) -->
+                        <select name="location" class="p-4 rounded-xl text-left">
                             <option value="" disabled selected>請選擇地區</option>
-                            <option value="北">新竹以北 (車資+$1,000)</option>
-                            <option value="中">新竹以南 (車資+$3,000)</option>
-                            <option value="南">嘉義以南 (車資+$5,000)</option>
+                            <option value="北部">北部</option>
+                            <option value="中部">中部</option>
+                            <option value="南部">南部</option>
                         </select>
                     </div>
                     
@@ -1089,6 +1140,33 @@
                             短影音的終局，不是比誰的觀看數多，而是比誰的客戶黏著度高。<br>
                             當你建立起強大的「品牌磁場」，你就不需要再去追逐演算法的紅利。<br>
                             <strong class="text-white">因為，對的人自然會被你吸引，主動敲你的私訊，說出那句你最想聽的話：「老師/教練，請問怎麼預約？」</strong>
+                        </p>
+                    </div>
+                `
+            },
+            {
+                title: "短影音變現的最後一哩路：私域流量經營",
+                summary: "流量進來了，然後呢？本文解析如何將公域流量導入私域（Line@/社群），透過精準的名單經營，實現高轉化率的自動化變現系統。",
+                content: `
+                    <div class="space-y-6">
+                        <p class="opacity-80 leading-loose">
+                            很多人在經營短影音時，都只盯著「播放量」看。播放量破萬好開心，播放量只有幾百好焦慮。<br>
+                            但身為專業經營者，你該關注的不是數字，而是<strong>「轉化率」</strong>。
+                        </p>
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">一、公域 vs 私域：流量的本質</h3>
+                        <p class="opacity-80 leading-loose">
+                            TikTok、IG Reels 這些平台是「公域」，人潮多，但就像在大馬路上發傳單，路過的人不一定是你的客人。<br>
+                            你的 Line@、官方網站、私密社群則是「私域」，就像是你自己的店面。
+                        </p>
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">二、為什麼需要導入私域？</h3>
+                        <ul class="list-disc list-inside opacity-80 leading-loose pl-2">
+                            <li><strong>降低演算法風險：</strong>平台演算法隨時會變，但私域名單是你可以隨時觸及的資產。</li>
+                            <li><strong>建立深度信任：</strong>在私域中，你可以發布更深入的專業內容，進行一對一諮詢。</li>
+                            <li><strong>提高客單價：</strong>信任感越高，客戶越願意購買高單價的服務。</li>
+                        </ul>
+                        <h3 class="text-xl md:text-2xl gold-text font-bold mt-8 mb-4">結語</h3>
+                        <p class="opacity-80 leading-loose">
+                            別讓流量像流水一樣流走。透過我們的影音企劃，我們不僅教你拍片，更會建議你如何設計「鉤子」，將觀眾引導至你的私域，真正實現流量變現。
                         </p>
                     </div>
                 `
