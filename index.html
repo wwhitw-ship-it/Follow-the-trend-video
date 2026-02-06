@@ -55,7 +55,6 @@
         .plan-card.featured {
             border: 2px solid var(--bronze-gold);
             background: rgba(201, 166, 122, 0.05);
-            /* position: relative; Removed as it's now on .plan-card */
         }
         .featured-badge {
             position: absolute;
@@ -133,14 +132,14 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 修復後的影片容器 */
+        /* ✅ 影片容器設定：防止 Google Drive 播放器跑框 */
         .video-box-fix {
             width: 100%;
             position: relative;
             padding-bottom: 177.77%; /* 9:16 Ratio */
             height: 0;
             overflow: hidden;
-            background: #000; /* 黑色背景，避免破圖時穿透 */
+            background: #000;
             border-radius: 1rem;
             border: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
@@ -156,7 +155,6 @@
             z-index: 10; 
         }
 
-        /* ✅ 修復後的影片容器 - 適用於 Vimeo 與 Google Drive */
         .vertical-video-wrapper { 
             position: relative;           
             top: auto;                    
@@ -225,8 +223,6 @@
                 <p>整合出屬於你的價值內容</p>
                 <p>讓流量成為你發光的附加價值</p>
             </div>
-
-            <!-- Buttons removed as requested -->
         </div>
     </section>
 
@@ -407,7 +403,7 @@
                                 <li class="flex items-center gap-2 text-white/90 text-lg"><span class="gold-text">▌</span> 線上對焦</li>
                             </ul>
                             
-                            <a href="javascript:void(0)" onclick="alert('管理者功能：進入影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
+                            <a href="javascript:void(0)" onclick="window.checkAdminAccess('影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                 <i data-lucide="link" class="w-4 h-4"></i> 進入影片清單庫 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
                             </a>
                         </div>
@@ -444,7 +440,6 @@
                         <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-[#3d332d] font-black text-xl shrink-0 order-1 md:order-2 shadow-[0_0_20px_rgba(201,166,122,0.5)]">3</div>
                         
                         <div class="w-full md:w-5/12 order-3">
-                            <!-- Video Container in Modal: Fixed Structure with 320px -->
                             <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
