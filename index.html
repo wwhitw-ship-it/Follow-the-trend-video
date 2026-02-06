@@ -133,6 +133,29 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
+        /* ✅ 絕對穩定的影片容器修正 (Padding Hack) */
+        .video-box-fix {
+            width: 100%;
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000; /* 黑色背景，避免破圖時穿透 */
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-sizing: border-box;
+        }
+        
+        .video-box-fix iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            z-index: 10; 
+        }
+
         /* ✅ 修復後的影片容器 - 適用於 Vimeo 與 Google Drive */
         .vertical-video-wrapper { 
             position: relative;           
@@ -341,7 +364,6 @@
                                 <li class="flex items-center gap-2 text-white/90 md:justify-end text-lg"><span class="gold-text md:order-2">▌</span> 個人分析報告</li>
                             </ul>
                             
-                            <!-- Admin Links with Password Check -->
                             <div class="flex flex-wrap justify-start md:justify-end gap-3">
                                 <a href="javascript:void(0)" onclick="window.checkAdminAccess('訪談規劃表')" class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                     <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> 訪談規劃表 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
@@ -387,7 +409,7 @@
                                 <li class="flex items-center gap-2 text-white/90 text-lg"><span class="gold-text">▌</span> 線上對焦</li>
                             </ul>
                             
-                            <a href="javascript:void(0)" onclick="window.checkAdminAccess('影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
+                            <a href="javascript:void(0)" onclick="alert('管理者功能：進入影片清單庫')" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg hover:border-[#c9a67a] hover:text-[#c9a67a] transition-all text-xs">
                                 <i data-lucide="link" class="w-4 h-4"></i> 進入影片清單庫 <i data-lucide="lock" class="w-3 h-3 opacity-50"></i>
                             </a>
                         </div>
@@ -424,7 +446,7 @@
                         <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-[#3d332d] font-black text-xl shrink-0 order-1 md:order-2 shadow-[0_0_20px_rgba(201,166,122,0.5)]">3</div>
                         
                         <div class="w-full md:w-5/12 order-3">
-                            <!-- Video Container in Modal: Fixed Structure -->
+                            <!-- Video Container in Modal: Fixed Structure with 320px -->
                             <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
@@ -473,11 +495,11 @@
                         <p class="text-xs opacity-50 mt-4 text-left">課程體驗請聯繫你的業務</p>
                     </div>
                     
-                    <!-- Right Side: 1 Video (9:16 Vertical) - Centered and Single -->
+                    <!-- Right Side: 1 Video (9:16 Vertical) - Centered and Single with 320px width -->
                     <div class="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center">
-                        <div class="flex flex-col gap-2 w-full max-w-[280px]">
+                        <div class="flex flex-col gap-2 w-full max-w-[320px]">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
-                            <!-- ✅ Video Container: Standardized to 280px & Centered -->
+                            <!-- ✅ Video Container: Standardized to 320px & Centered -->
                             <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
@@ -737,7 +759,7 @@
                         <input type="text" name="recommender" id="form_recommender" placeholder="推薦人或業務姓名" class="p-4 rounded-xl text-left">
                     </div>
                     <div class="flex flex-col gap-3 text-left">
-                        <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">店家名稱</label>
+                        <label class="text-sm gold-text font-bold uppercase tracking-widest text-left">店家 / 品牌名稱</label>
                         <input type="text" name="shop_name" placeholder="所屬店家" class="p-4 rounded-xl text-left text-left">
                     </div>
                     <div class="flex flex-col gap-3 text-left">
@@ -776,13 +798,16 @@
                             <i data-lucide="lock" class="w-8 h-8 gold-text shrink-0 mt-1 text-left"></i>
                             <div class="text-left text-left">
                                 <p class="gold-text font-black text-xl mb-2 text-left">隱私與資料承諾</p>
-                                <p class="opacity-80 text-sm leading-loose text-left text-left">您的資料將由專人審核，絕對保密。請提供正確的出生年月日以便我們為您準備初步解析。</p>
+                                <p class="opacity-80 text-sm leading-loose text-left text-left">
+                                    您的資料將由專人審核，絕對保密。<br>
+                                    您送出資料後，將有專人聯繫您。
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-12 text-center text-center">
-                    <button type="submit" id="submit-btn" class="w-full sm:w-auto px-16 py-6 gold-bg text-[#3d332d] rounded-full text-xl md:text-2xl font-black tracking-widest hover:brightness-110 shadow-xl transition-all active:scale-95 text-center text-center whitespace-nowrap">確認資料並開啟旅程</button>
+                    <button type="submit" id="submit-btn" class="w-full sm:w-auto px-16 py-6 gold-bg text-[#3d332d] rounded-full text-xl md:text-2xl font-black tracking-widest hover:brightness-110 shadow-xl transition-all active:scale-95 text-center text-center whitespace-nowrap">預約免費諮詢與了解</button>
                     <p id="form-status" class="mt-6 text-sm font-bold transition-all text-center text-center"></p>
                 </div>
             </form>
@@ -1122,6 +1147,15 @@
                                 <li><strong>完成大合照</strong> <span class="text-[#c9a67a]">→ 作為影音創作者，每一個收穫都是分享！</span></li>
                             </ul>
                         </div>
+
+                        <div>
+                            <h4 class="text-lg font-bold gold-text mb-3">● 獨享福利</h4>
+                            <ul class="space-y-2 opacity-80 list-decimal list-inside pl-2">
+                                <li><strong>3種動作</strong>：減緩緊張、穩定身心、順暢說話。(有感對比動作前後面對鏡頭的狀態，回家做也能療癒身心)</li>
+                                <li><strong>3份表格</strong>：基礎定位、主題指引、萬用大綱。</li>
+                                <li><strong>2項祕訣</strong>：拍攝秘訣、剪輯秘訣。</li>
+                            </ul>
+                        </div>
                     </div>
                 `,
                 video: '' 
@@ -1329,12 +1363,26 @@
                     const btn = document.getElementById('submit-btn');
                     const st = document.getElementById('form-status');
                     btn.disabled = true; btn.innerText = "傳送中...";
-                    setTimeout(() => {
+                    
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbxRSU20DhAdcfIuK6_6a0VYS--SP4hGoBH4t7Uue2seheeGMAJ8lOnUxRdiQBgzPbcjIA/exec';
+
+                    fetch(scriptURL, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        mode: 'no-cors' // Important for simple submission to avoid CORS errors in browser console
+                    })
+                    .then(() => {
                         st.innerText = "✓ 預約成功！我們將儘快與您聯繫。";
                         st.style.color = "#c9a67a";
-                        btn.innerText = "確認預約並送出"; btn.disabled = false;
+                        btn.innerText = "預約免費諮詢與了解"; btn.disabled = false;
                         form.reset();
-                    }, 1500);
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        st.innerText = "❌ 傳送失敗，請稍後再試或直接聯繫我們。";
+                        st.style.color = "red";
+                        btn.innerText = "預約免費諮詢與了解"; btn.disabled = false;
+                    });
                 };
             }
         };
