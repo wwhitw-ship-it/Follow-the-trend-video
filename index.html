@@ -132,18 +132,40 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 絕對穩定的影片容器 (還原回您喜歡的版本) */
+        /* ✅ 影片容器優化：解決 Google Drive 跑框問題 (Padding Hack) */
+        .video-box-fix {
+            width: 100%;
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-sizing: border-box;
+        }
+        
+        .video-box-fix iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            z-index: 10;
+        }
+
+        /* 舊有的 wrapper 結構，為了相容性保留並統一設定 */
         .vertical-video-wrapper { 
-            position: absolute; /* 關鍵：絕對定位填滿父容器 */
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
+            position: relative;           
+            top: auto;                    
+            left: auto;                   
+            width: 100%;
+            height: 100%;
             overflow: hidden;
             box-sizing: border-box;       
             background: transparent;      
         }
-        
         .vertical-video-wrapper iframe {
             position: absolute !important;
             top: 0 !important;
@@ -478,7 +500,7 @@
                     <div class="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center">
                         <div class="flex flex-col gap-2 w-full max-w-[280px]">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
-                            <!-- ✅ 課程體驗影片：使用與後期製作相同的結構，但 max-w 設定為 280px -->
+                            <!-- ✅ Video Container: Standardized to 280px & Centered -->
                             <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
@@ -1067,13 +1089,13 @@
                             <div class="space-y-6">
                                 <div class="bg-white/5 p-6 rounded-2xl">
                                     <h4 class="text-xl font-bold text-white mb-3">1. 前期：關於你的人物分析</h4>
-                                    <p class="opacity-90 leading-loose">
+                                    <p class="opacity-90 leading-loose text-lg">
                                         在開拍前，我們會透過獨家的「個人特質表單」與訪談，先摸清你的說話風格與品牌定位。我們不會讓一個幽默風趣的教練去拍嚴肅的教學片，也不會讓一個氣質優雅的設計師去拍搞笑段子。除非你的骨子裡跟外表就是長這樣，然而方向對了，拍攝自然快。
                                     </p>
                                 </div>
                                 <div class="bg-white/5 p-6 rounded-2xl">
                                     <h4 class="text-xl font-bold text-white mb-3">2. 中期：邏輯延伸與重組</h4>
-                                    <p class="opacity-90 leading-loose">
+                                    <p class="opacity-90 leading-loose text-lg">
                                         你在現場講話可能有贅詞、有停頓，這都沒關係。我們在第一次拍攝之後，會重新分析你的真實性格與特性，重新將你的「個人特色」進行邏輯重組。提煉出你對話中的「金句」。
                                     </p>
                                 </div>
@@ -1131,7 +1153,7 @@
                             短影音時代，我們常聽到一句話：「現在流量很兇。」<br>
                             但身為專業人士（無論你是設計師、教練、房仲或顧問），你心中可能有個更大的疑問：「流量是很兇，但為什麼我抓不住？」
                         </p>
-                        <p class="opacity-90 leading-loose">
+                        <p class="opacity-90 leading-loose text-lg">
                             你可能試過跟風拍了搞笑影片，觀看數破萬，但預約表卻沒有動靜；<br>
                             或者你拍了專業教學，但內容太生硬，滑過去的人連停都不停。<br>
                             其實，你缺的不是流量，而是<strong class="text-white text-xl">「留量」</strong>。<br>
@@ -1140,12 +1162,12 @@
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">一、什麼是「品牌磁場」？</h3>
-                            <p class="opacity-90 leading-loose">
+                            <p class="opacity-90 leading-loose text-lg">
                                 想像一下，有些人的影片，你滑到時會覺得「哇，這個人好厲害」；<br>
                                 但有些人的影片，你會覺得「天啊，我好想把我的頭髮/身材交給他！」<br>
                                 後者，就是擁有了「品牌磁場」。
                             </p>
-                            <p class="opacity-90 leading-loose mt-4">
+                            <p class="opacity-90 leading-loose text-lg mt-4">
                                 它是一種透過影片傳遞出的頻率與氛圍。<br>
                                 當你的專業（內在）與你的表現方式（外在）完美對齊時，你會散發出一種獨特的吸引力。<br>
                                 這股磁場會幫你「過濾」客戶：
@@ -1158,7 +1180,7 @@
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">二、從「操作」到「專家」：磁場如何運作？</h3>
-                            <p class="opacity-90 leading-loose">
+                            <p class="opacity-90 leading-loose text-lg">
                                 我們服務過許多不同領域的專業人士，發現核心邏輯都是一樣的：信任，源自於真實的展現。
                             </p>
                             <div class="p-6 bg-white/5 rounded-2xl border-l-4 border-[#c9a67a] my-6">
@@ -1177,7 +1199,7 @@
                             <p class="opacity-90 leading-loose mb-6">
                                 打造磁場不需要華麗的特效，也不需要百萬剪輯師，你需要的是做對這三件事：
                             </p>
-                            <ul class="space-y-6 opacity-90 leading-loose">
+                            <ul class="space-y-6 opacity-90 leading-loose text-lg">
                                 <li class="bg-white/5 p-4 rounded-xl border border-white/10">
                                     <strong class="text-[#c9a67a] text-xl block mb-2">1. 挖掘核心特質：</strong>
                                     你是溫柔療癒型？還是數據權威型？不要去模仿別人，做你自己，磁場最強。 我們的前期分析報告，就是為了幫你找到這個特色。
@@ -1195,7 +1217,7 @@
 
                         <div class="py-8 border-t border-white/10">
                             <h3 class="text-2xl gold-text font-bold mb-6">結論：當內在與外在對齊，流量自然會變現</h3>
-                            <p class="opacity-90 leading-loose">
+                            <p class="opacity-90 leading-loose text-lg">
                                 短影音的終局，不是比誰的觀看數多，而是比誰的客戶黏著度高。<br>
                                 當你建立起強大的「品牌磁場」，你就不需要再去追逐演算法的紅利。<br>
                                 <strong class="text-white text-xl block mt-4 p-4 bg-gradient-to-r from-[#c9a67a]/20 to-transparent rounded-xl border-l-4 border-[#c9a67a]">因為，對的人自然會被你吸引，主動敲你的私訊，說出那句你最想聽的話：「老師/教練，請問怎麼預約？」</strong>
@@ -1214,7 +1236,7 @@
                             在種下去的前四年，你幾乎看不到它在長，因為它只長了 3 公分。<br>
                             但在第五年開始，它會以每天 30 公分的速度瘋狂生長，短短六週就能長到 15 公尺高。
                         </p>
-                        <p class="opacity-90 leading-loose">
+                        <p class="opacity-90 leading-loose text-lg">
                             很多人做短影音，就像是在種毛竹。<br>
                             拍了一個月、兩個月，觀看數總是卡在幾百，私訊也沒幾個人。<br>
                             於是他們心想：「我不適合做這個」、「這個方法沒效」，然後就把鏟子丟了，放棄了。<br>
@@ -1223,11 +1245,11 @@
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">一、有一種觀眾，叫做「潛水客」</h3>
-                            <p class="opacity-90 leading-loose">
+                            <p class="opacity-90 leading-loose text-lg">
                                 你是不是也有這種經驗？長期關注某個網紅或專家，你從來不按讚、不留言，甚至很少分享。<br>
                                 但是，當你真的有需求（例如想買房、想剪髮、想健身）時，你腦中第一個跳出來的，就是他。
                             </p>
-                            <p class="opacity-90 leading-loose mt-4">
+                            <p class="opacity-90 leading-loose text-lg mt-4">
                                 這就是<strong>「隱形累積」</strong>。<br>
                                 數據板上的「觀看數」和「按讚數」只是冰山一角。<br>
                                 真正有價值的，是那些默默看著你、正在心裡為你的專業打分數的潛在客戶。<br>
@@ -1237,7 +1259,7 @@
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">二、放棄，是因為「成本」太高</h3>
-                            <p class="opacity-90 leading-loose">
+                            <p class="opacity-90 leading-loose text-lg">
                                 為什麼 90% 的人撐不過那個「扎根期」？<br>
                                 因為<strong>「太累太苦了」</strong>。<br>
                                 如果每拍一支影片都要耗盡你的洪荒之力，那你當然會希望每一支都要爆紅，否則心理會不平衡。這種「賭徒心態」是堅持最大的殺手。<br>
@@ -1247,16 +1269,16 @@
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">三、用「低耗能」模式，跑贏這場馬拉松</h3>
-                            <p class="opacity-90 leading-loose mb-4">
+                            <p class="opacity-90 leading-loose text-lg mb-4">
                                 這就是為什麼我們的【實戰方案】設計成「一次拍 10 支」。<br>
                                 當你把「拍片」這件事，從「每天的壓力」變成「每個月一次的下午茶聊天」：
                             </p>
-                            <ul class="list-disc list-inside opacity-90 leading-loose pl-2">
+                            <ul class="list-disc list-inside opacity-90 leading-loose pl-2 text-lg">
                                 <li><strong>你沒有壓力：</strong> 因為是聊天，不用背稿，心情很輕鬆。</li>
                                 <li><strong>你沒有得失心：</strong> 因為一次有 10 支庫存,每一支都在為你累積信任分數。</li>
                                 <li><strong>你能專注本業：</strong> 你有更多的時間去服務客人、精進技術，而不是被剪輯軟體綁架。</li>
                             </ul>
-                            <p class="opacity-90 leading-loose mt-4">
+                            <p class="opacity-90 leading-loose text-lg mt-4">
                                 當你的心態放鬆了，你才能像竹子一樣，耐心地扎根，等待那場必然到來的雨水。
                             </p>
                         </div>
@@ -1556,10 +1578,22 @@
         };
 
         window.checkAdminAccess = (resourceName) => {
+            const urls = {
+                '訪談規劃表': 'https://docs.google.com/forms/d/e/1FAIpQLScO9TAAezKZMJD7C9uJlSAshMEJs49HI_Mx9k4zJbOT7DBreA/formResponse',
+                '個人分析報告': 'https://drive.google.com/file/d/1wiU9V5pJD-tyhI7xU6TmdWhW7O4FPDEV/view',
+                '影片清單庫': 'https://wwhitw-ship-it.github.io/script-menu/?mode=admin',
+                '專屬雲端連結': 'https://wwhitw-ship-it.github.io/script-menu/?mode=admin'
+            };
+
             const password = prompt(`請輸入管理者密碼以存取「${resourceName}」：`);
             if (password === "8888") { // 預設密碼
-                alert(`密碼正確！(這裡將會跳轉至 ${resourceName} 的真實連結)`);
-                // window.open('URL', '_blank');
+                alert("密碼正確！即將開啟連結...");
+                const url = urls[resourceName];
+                if(url) {
+                    window.open(url, '_blank');
+                } else {
+                    alert("連結設定有誤，請聯繫管理員。");
+                }
             } else if (password !== null) {
                 alert("密碼錯誤");
             }
