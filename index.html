@@ -155,7 +155,7 @@
             z-index: 10;
         }
 
-        /* 舊有的 wrapper 結構，為了相容性保留並統一設定 */
+        /* ✅ 修復後的影片容器 */
         .vertical-video-wrapper { 
             position: relative;           
             top: auto;                    
@@ -174,12 +174,6 @@
             height: 100% !important;
             border: none !important;
             display: block !important;
-        }
-
-        /* Dropdown options styling */
-        option {
-            background-color: #ffffff;
-            color: #3d332d;
         }
 
         .notice-box {
@@ -447,7 +441,7 @@
                         <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-[#3d332d] font-black text-xl shrink-0 order-1 md:order-2 shadow-[0_0_20px_rgba(201,166,122,0.5)]">3</div>
                         
                         <div class="w-full md:w-5/12 order-3">
-                            <!-- ✅ 製作後期影片：使用 aspect-[9/16] 雙層結構 + max-w-[320px] -->
+                            <!-- ✅ 製作後期影片：還原 aspect-[9/16] + max-w-[320px] 結構 -->
                             <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
@@ -500,7 +494,7 @@
                     <div class="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center">
                         <div class="flex flex-col gap-2 w-full max-w-[280px]">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
-                            <!-- ✅ Video Container: Standardized to 280px & Centered -->
+                            <!-- ✅ 課程影片：統一使用 aspect-[9/16] 雙層結構 + max-w-[280px] -->
                             <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
                                 <div class="vertical-video-wrapper">
                                     <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
@@ -803,7 +797,6 @@
                     </div>
                     <div class="flex flex-col gap-3 text-left">
                         <label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left text-left">所在地區</label>
-                        <!-- ✅ Fixed: Removed inline styles to match Name input style (dark bg, light text) -->
                         <select name="location" class="p-4 rounded-xl text-left">
                             <option value="" disabled selected>請選擇地區</option>
                             <option value="北部">北部</option>
@@ -853,6 +846,17 @@
             </form>
         </div>
     </section>
+
+    <!-- Admin Password Modal -->
+    <div id="admin-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left" style="z-index: 60;">
+        <div class="modal-content bg-[#3d332d] rounded-2xl shadow-2xl relative w-full max-w-sm p-8 text-center border border-white/10">
+            <button onclick="document.getElementById('admin-modal').classList.add('hidden')" class="absolute top-4 right-4 text-white opacity-40 hover:opacity-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h3 class="text-xl gold-text font-bold mb-6">管理者驗證</h3>
+            <p class="text-sm opacity-60 mb-4">請輸入密碼以存取此資源</p>
+            <input type="password" id="admin-password-input" class="w-full p-3 rounded-lg bg-black/20 border border-white/10 text-white text-center mb-6 focus:border-[#c9a67a] outline-none transition-all" placeholder="輸入密碼">
+            <button onclick="submitAdminPassword()" class="w-full py-3 gold-bg text-[#3d332d] rounded-full font-bold shadow-lg active:scale-95 transition-all">確認</button>
+        </div>
+    </div>
 
     <!-- Article Modal -->
     <div id="article-modal" class="modal-overlay fixed inset-0 hidden flex items-center justify-center text-left">
@@ -1039,51 +1043,51 @@
                         <p class="opacity-90 leading-loose">
                             許多專業人士（無論是髮型師、教練或講師）遲遲不敢經營短影音，通常不是因為「沒專業」，而是卡在兩個字：<strong class="text-white text-xl">「麻煩」</strong>。
                         </p>
-                        <p class="opacity-90 leading-loose">
+                        <p class="opacity-90 leading-loose text-lg">
                             想到要寫腳本、背台詞、架燈光，拍一支影片 NG 十幾次，好不容易拍完，一天也過去了。這種「時間成本」對於分秒必爭的專業人士來說，實在太高了。<br>
                             但如果我告訴你，你只需要像平常跟客人聊天一樣，喝著咖啡，坐下來聊個 2 小時，就能完成一個月所需的 10 支高質感影片，你會不會覺得輕鬆很多？
                         </p>
-                        <p class="opacity-90 leading-loose">
+                        <p class="opacity-90 leading-loose text-lg">
                             這不是魔法，這是我們經過無數次實戰驗證的<strong class="text-[#c9a67a]">「引導式拍攝SOP」</strong>。今天，就帶你揭秘我們是如何做到的。
                         </p>
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">秘密一：我們不寫「劇本」，我們設計「話題」</h3>
-                            <p class="opacity-90 leading-loose mb-4">
+                            <p class="opacity-90 leading-loose text-lg mb-4">
                                 傳統拍片最大的痛苦來源就是「背劇本」。當你的大腦在回想文字時，表情會僵硬，眼神會死板。<br>
                                 我們的做法完全不同。在拍攝前，我們會提供一份專屬的「影片清單庫」。這不是要你死背的台詞，而是根據你的專業領域（美業、健身、諮詢、餐廳等）設計出的「話題選單」。
                             </p>
                             <div class="p-6 bg-white/5 rounded-2xl border-l-4 border-[#c9a67a]">
-                                <p class="opacity-90 italic leading-loose">
+                                <p class="opacity-90 italic text-lg leading-loose">
                                     例如，我們不會給你一份 500 字的稿子唸，而是會在現場問你：<br><br>
                                     「教練，對於想瘦肚子的人，你建議先做哪三個動作？」<br>
                                     「設計師，今年秋冬最顯白的髮色，你會推薦哪一款？」
                                 </p>
                             </div>
-                            <p class="opacity-90 leading-loose mt-4">
+                            <p class="opacity-90 leading-loose text-lg mt-4">
                                 因為這些都是你每天在講的專業知識，你根本不需要背，張口就能來。不用背，自然就不會忘詞。
                             </p>
                         </div>
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">秘密二：像朋友一樣的「引導式拍攝」現場</h3>
-                            <p class="opacity-90 leading-loose">
+                            <p class="opacity-90 leading-loose text-lg">
                                 拍攝現場沒有冷冰冰的倒數計時，只有一位像朋友一樣的引導師。<br>
                                 我們採用「訪談視角」。你不需要盯著鏡頭看（這會讓很多人恐懼），你只需要看著鏡頭旁邊的引導師，回答他的問題。
                             </p>
-                            <ul class="space-y-2 opacity-90 leading-loose pl-4 list-disc mt-4">
+                            <ul class="space-y-2 opacity-90 leading-loose pl-4 list-disc text-lg mt-4">
                                 <li>你卡詞了？ 沒關係，我們聊天帶過。</li>
                                 <li>你講錯了？ 沒關係，我們換個問法再來一次。</li>
                                 <li>不知道怎麼結尾？ 沒關係，引導師會幫你收尾。</li>
                             </ul>
-                            <p class="opacity-90 leading-loose mt-4">
+                            <p class="opacity-90 leading-loose text-lg mt-4">
                                 這種「沉浸式」的對話氛圍，能讓你進入「心流狀態」。很多客戶拍完後驚訝地說：「蛤？已經拍完10 支了？原來我可以拍這麼快！」
                             </p>
                         </div>
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">秘密三：獨家黑科技——「個人特質分析」與「結構化剪輯」</h3>
-                            <p class="opacity-90 leading-loose mb-6">
+                            <p class="opacity-90 leading-loose text-lg mb-6">
                                 為什麼我們能在 2 小時內完成？因為我們把 80% 的工作都在「鏡頭外」解決了。
                             </p>
                             <div class="space-y-6">
@@ -1104,29 +1108,20 @@
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">為什麼這套方法適合忙碌的你？</h3>
-                            <p class="opacity-90 leading-loose mb-4">
+                            <p class="opacity-90 leading-loose text-lg mb-4">
                                 對於創業者和專業職人來說，時間就是金錢。
                             </p>
-                            <div class="space-y-6 opacity-90 leading-loose">
-                                <div class="p-4 rounded-xl bg-white/5 border border-white/10">
-                                    <div class="flex gap-3 items-center mb-2">
-                                        <span class="text-red-400 font-bold shrink-0 text-xl">✕</span>
-                                        <strong class="text-lg">傳統自製影片：</strong>
-                                    </div>
-                                    <p class="pl-8">寫稿 2 小時 + 拍攝 4 小時 + 剪輯 6 小時 = <span class="text-red-400 font-bold">耗費 12 小時</span>產出 1 支影片（而且品質不一定好）。</p>
-                                    <p class="pl-8 mt-1 text-sm opacity-70">機會成本：12小時 × 3000元 = <span class="text-white font-bold">36,000元</span></p>
-                                </div>
-                                
-                                <div class="p-4 rounded-xl bg-[#c9a67a]/10 border border-[#c9a67a]/30">
-                                    <div class="flex gap-3 items-center mb-2">
-                                        <span class="text-[#c9a67a] font-bold shrink-0 text-xl">✓</span>
-                                        <strong class="text-white text-lg">我們的實戰方案：</strong>
-                                    </div>
-                                    <p class="pl-8">前期溝通 1 小時 +中期溝通 1 小時 + 現場拍攝 5 小時 = <span class="text-[#c9a67a] font-bold">耗費 7 小時產出 10 支</span>高品質影片。</p>
-                                    <p class="pl-8 mt-1 text-sm opacity-90 text-[#c9a67a]">費用：<span class="font-bold text-xl">28,000元</span></p>
-                                </div>
-                            </div>
-                            <p class="opacity-90 leading-loose mt-6">
+                            <ul class="space-y-4 opacity-90 leading-loose text-lg">
+                                <li class="flex gap-3 items-start">
+                                    <span class="text-red-400 font-bold shrink-0 text-xl">✕</span>
+                                    <span><strong>傳統自製影片：</strong>寫稿 2 小時 + 拍攝 4 小時 + 剪輯 6 小時 = <span class="text-red-400 font-bold">耗費 12 小時</span>產出 1 支影片（而且品質不一定好）。</span>
+                                </li>
+                                <li class="flex gap-3 items-start">
+                                    <span class="text-[#c9a67a] font-bold shrink-0 text-xl">✓</span>
+                                    <span><strong>我們的實戰方案：</strong>前期溝通 1 小時 + 現場拍攝 2 小時 = <span class="text-[#c9a67a] font-bold">耗費 3 小時產出 10 支</span>高品質影片。</span>
+                                </li>
+                            </ul>
+                            <p class="opacity-90 leading-loose text-lg mt-6">
                                 這不僅是效率的提升，更是讓你能把時間花在你最擅長的「本業」上，而不用為了當網紅而犧牲專業。
                             </p>
                         </div>
@@ -1149,7 +1144,7 @@
                 summary: "短影音流量很大，但為什麼你的私訊總是靜悄悄？本文分析從美業設計師到健身教練的成功案例，揭秘如何不靠百萬流量，而是透過建立「品牌磁場」，吸引精準的高價值客戶主動買單。",
                 content: `
                     <div class="space-y-8 tracking-wide text-lg">
-                        <p class="opacity-90 leading-loose">
+                        <p class="opacity-90 leading-loose text-lg">
                             短影音時代，我們常聽到一句話：「現在流量很兇。」<br>
                             但身為專業人士（無論你是設計師、教練、房仲或顧問），你心中可能有個更大的疑問：「流量是很兇，但為什麼我抓不住？」
                         </p>
@@ -1172,7 +1167,7 @@
                                 當你的專業（內在）與你的表現方式（外在）完美對齊時，你會散發出一種獨特的吸引力。<br>
                                 這股磁場會幫你「過濾」客戶：
                             </p>
-                            <ul class="list-disc list-inside opacity-90 leading-loose pl-2 mt-4">
+                            <ul class="list-disc list-inside opacity-90 leading-loose pl-2 text-lg mt-4">
                                 <li>它會推開那些只在乎價格、愛比價的「無效流量」。</li>
                                 <li>它會吸進那些認同你價值觀、信任你技術的「高價值客戶」。</li>
                             </ul>
@@ -1196,7 +1191,7 @@
 
                         <div class="py-4">
                             <h3 class="text-2xl gold-text font-bold mb-6 border-l-4 border-[#c9a67a] pl-4">三、如何打造你的品牌磁場？</h3>
-                            <p class="opacity-90 leading-loose mb-6">
+                            <p class="opacity-90 leading-loose mb-6 text-lg">
                                 打造磁場不需要華麗的特效，也不需要百萬剪輯師，你需要的是做對這三件事：
                             </p>
                             <ul class="space-y-6 opacity-90 leading-loose text-lg">
@@ -1231,7 +1226,7 @@
                 summary: "你聽過「竹子定律」嗎？短影音經營前期其實是在往下扎根。本文告訴你如何克服數據焦慮，並利用「批量製作」的優勢，輕鬆撐過最難熬的起步期，迎來品牌的順勢生長。",
                 content: `
                     <div class="space-y-8 tracking-wide text-lg">
-                        <p class="opacity-90 leading-loose">
+                        <p class="opacity-90 leading-loose text-lg">
                             有一種植物叫做毛竹（Bamboo）。<br>
                             在種下去的前四年，你幾乎看不到它在長，因為它只長了 3 公分。<br>
                             但在第五年開始，它會以每天 30 公分的速度瘋狂生長，短短六週就能長到 15 公尺高。
@@ -1578,24 +1573,44 @@
         };
 
         window.checkAdminAccess = (resourceName) => {
+            let pendingResourceUrl = '';
             const urls = {
                 '訪談規劃表': 'https://docs.google.com/forms/d/e/1FAIpQLScO9TAAezKZMJD7C9uJlSAshMEJs49HI_Mx9k4zJbOT7DBreA/formResponse',
                 '個人分析報告': 'https://drive.google.com/file/d/1wiU9V5pJD-tyhI7xU6TmdWhW7O4FPDEV/view',
                 '影片清單庫': 'https://wwhitw-ship-it.github.io/script-menu/?mode=admin',
                 '專屬雲端連結': 'https://wwhitw-ship-it.github.io/script-menu/?mode=admin'
             };
+            
+            pendingResourceUrl = urls[resourceName];
+            
+            if(pendingResourceUrl) {
+                // Clear input
+                document.getElementById('admin-password-input').value = '';
+                // Set logic for submit button
+                window.submitAdminPassword = () => {
+                    const password = document.getElementById('admin-password-input').value;
+                    if (password === "8888") {
+                        document.getElementById('admin-modal').classList.add('hidden');
+                        window.open(pendingResourceUrl, '_blank');
+                    } else {
+                        alert("密碼錯誤，請重新輸入。");
+                        document.getElementById('admin-password-input').value = '';
+                        document.getElementById('admin-password-input').focus();
+                    }
+                };
+                // Show modal
+                document.getElementById('admin-modal').classList.remove('hidden');
+                document.getElementById('admin-password-input').focus();
+                
+                // Allow enter key
+                document.getElementById('admin-password-input').onkeypress = function(e){
+                    if(e.key === 'Enter'){
+                        window.submitAdminPassword();
+                    }
+                };
 
-            const password = prompt(`請輸入管理者密碼以存取「${resourceName}」：`);
-            if (password === "8888") { // 預設密碼
-                alert("密碼正確！即將開啟連結...");
-                const url = urls[resourceName];
-                if(url) {
-                    window.open(url, '_blank');
-                } else {
-                    alert("連結設定有誤，請聯繫管理員。");
-                }
-            } else if (password !== null) {
-                alert("密碼錯誤");
+            } else {
+                alert("連結設定有誤，請聯繫管理員。");
             }
         };
     </script>
