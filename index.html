@@ -132,40 +132,18 @@
         .modal-overlay { background-color: rgba(30, 25, 22, 0.98); backdrop-filter: blur(20px); z-index: 100; padding: 1rem; }
         .modal-content { border: 1px solid rgba(201, 166, 122, 0.3); max-height: 92vh; overflow-y: auto; }
         
-        /* ✅ 絕對穩定的影片容器修正 (Padding Hack) */
-        .video-box-fix {
-            width: 100%;
-            position: relative;
-            padding-bottom: 177.77%; /* 9:16 Ratio */
-            height: 0;
-            overflow: hidden;
-            background: #000;
-            border-radius: 1rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-sizing: border-box;
-        }
-        
-        .video-box-fix iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            z-index: 10;
-        }
-
-        /* ✅ 修復後的影片容器 - 適用於 Vimeo 與 Google Drive */
+        /* ✅ 絕對穩定的影片容器 (還原回您喜歡的版本) */
         .vertical-video-wrapper { 
-            position: relative;           
-            top: auto;                    
-            left: auto;                   
-            width: 100%;
-            height: 100%;
+            position: absolute; /* 關鍵：絕對定位填滿父容器 */
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
             overflow: hidden;
             box-sizing: border-box;       
             background: transparent;      
         }
+        
         .vertical-video-wrapper iframe {
             position: absolute !important;
             top: 0 !important;
@@ -233,7 +211,7 @@
         </div>
     </section>
 
-    <!-- 2. Pricing Plans (服務項目：拍攝企劃) -->
+    <!-- 2. Pricing Plans (服務項目：拍攝企劃) - MOVED HERE -->
     <section class="py-20 md:py-32 bg-[#342c27]" id="plans">
         <div class="container mx-auto px-6 max-w-7xl text-center">
             <h2 class="text-3xl md:text-5xl font-light mb-4 gold-text uppercase text-center">短影音企劃製作</h2>
@@ -447,14 +425,16 @@
                         <div class="w-12 h-12 rounded-full gold-bg flex items-center justify-center text-[#3d332d] font-black text-xl shrink-0 order-1 md:order-2 shadow-[0_0_20px_rgba(201,166,122,0.5)]">3</div>
                         
                         <div class="w-full md:w-5/12 order-3">
-                            <!-- Video Container in Modal: Fixed Structure with 320px -->
-                            <div class="video-box-fix max-w-[320px] mx-auto shadow-xl relative group hover:border-[#c9a67a] transition-all">
-                                <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
-                                        frameborder="0" 
-                                        allow="autoplay; fullscreen; picture-in-picture" 
-                                        allowfullscreen
-                                        scrolling="no">
-                                </iframe>
+                            <!-- ✅ 製作後期影片：使用 aspect-[9/16] 雙層結構 + max-w-[320px] -->
+                            <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                                <div class="vertical-video-wrapper">
+                                    <iframe src="https://drive.google.com/file/d/1nb5DydGTJwRV9EjmaFeccT76ze6JdhMz/preview" 
+                                            frameborder="0" 
+                                            allow="autoplay; fullscreen; picture-in-picture" 
+                                            allowfullscreen
+                                            scrolling="no">
+                                    </iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -498,14 +478,16 @@
                     <div class="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center">
                         <div class="flex flex-col gap-2 w-full max-w-[280px]">
                             <span class="text-center text-white/90 text-sm font-bold tracking-widest">第一次拍</span>
-                            <!-- ✅ Video Container: Standardized to 280px & Centered -->
-                            <div class="video-box-fix mx-auto shadow-lg relative"> 
-                                <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
-                                        frameborder="0" 
-                                        allow="autoplay; fullscreen; picture-in-picture" 
-                                        allowfullscreen 
-                                        scrolling="no">
-                                </iframe>
+                            <!-- ✅ 課程體驗影片：使用與後期製作相同的結構，但 max-w 設定為 280px -->
+                            <div class="aspect-[9/16] w-full max-w-[280px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                                <div class="vertical-video-wrapper">
+                                    <iframe src="https://drive.google.com/file/d/18W2q77arlZmahJZe7OQL7hCDnM8aNJph/preview" 
+                                            frameborder="0" 
+                                            allow="autoplay; fullscreen; picture-in-picture" 
+                                            allowfullscreen 
+                                            scrolling="no">
+                                    </iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -697,39 +679,48 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Video 1 -->
                     <div class="flex flex-col gap-4">
-                        <div class="video-box-fix max-w-[280px] mx-auto shadow-xl relative group hover:border-[#c9a67a] transition-all"> 
-                            <iframe src="https://drive.google.com/file/d/1e7iTHVoxEz9FBgrRfCPWK7bh9DJ385Vc/preview" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen; picture-in-picture" 
-                                    allowfullscreen 
-                                    scrolling="no">
-                            </iframe>
+                        <!-- ✅ 統一使用 aspect-[9/16] 雙層結構 + max-w-[320px] -->
+                        <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                            <div class="vertical-video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/1e7iTHVoxEz9FBgrRfCPWK7bh9DJ385Vc/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
                         </div>
                         <p class="text-sm font-bold text-center opacity-80">經驗分享_有體感更容易</p>
                     </div>
 
                     <!-- Video 2 -->
                     <div class="flex flex-col gap-4">
-                        <div class="video-box-fix max-w-[280px] mx-auto shadow-xl relative group hover:border-[#c9a67a] transition-all"> 
-                            <iframe src="https://drive.google.com/file/d/16n0K61TKtQwWopoHiAQng1VlDaL74EMn/preview" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen; picture-in-picture" 
-                                    allowfullscreen 
-                                    scrolling="no">
-                            </iframe>
+                        <!-- ✅ 統一使用 aspect-[9/16] 雙層結構 + max-w-[320px] -->
+                        <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                            <div class="vertical-video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/16n0K61TKtQwWopoHiAQng1VlDaL74EMn/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
                         </div>
                         <p class="text-sm font-bold text-center opacity-80">真實案例_有基礎更容易</p>
                     </div>
 
                     <!-- Video 3 -->
                     <div class="flex flex-col gap-4">
-                        <div class="video-box-fix max-w-[280px] mx-auto shadow-xl relative group hover:border-[#c9a67a] transition-all"> 
-                            <iframe src="https://drive.google.com/file/d/1jQyUzhSySYHQOLMbD13rz9n3WOIl0I4i/preview" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen; picture-in-picture" 
-                                    allowfullscreen 
-                                    scrolling="no">
-                            </iframe>
+                        <!-- ✅ 統一使用 aspect-[9/16] 雙層結構 + max-w-[320px] -->
+                        <div class="aspect-[9/16] w-full max-w-[320px] mx-auto rounded-2xl border border-white/10 overflow-hidden relative group-hover:border-[#c9a67a] transition-all shadow-xl" style="box-sizing: border-box; background: transparent;">
+                            <div class="vertical-video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/1jQyUzhSySYHQOLMbD13rz9n3WOIl0I4i/preview" 
+                                        frameborder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture" 
+                                        allowfullscreen 
+                                        scrolling="no">
+                                </iframe>
+                            </div>
                         </div>
                         <p class="text-sm font-bold text-center opacity-80">更多實戰案例分享</p>
                     </div>
@@ -790,6 +781,7 @@
                     </div>
                     <div class="flex flex-col gap-3 text-left">
                         <label class="text-sm gold-text font-bold uppercase tracking-widest text-left text-left text-left">所在地區</label>
+                        <!-- ✅ Fixed: Removed inline styles to match Name input style (dark bg, light text) -->
                         <select name="location" class="p-4 rounded-xl text-left">
                             <option value="" disabled selected>請選擇地區</option>
                             <option value="北部">北部</option>
@@ -1025,11 +1017,11 @@
                         <p class="opacity-90 leading-loose">
                             許多專業人士（無論是髮型師、教練或講師）遲遲不敢經營短影音，通常不是因為「沒專業」，而是卡在兩個字：<strong class="text-white text-xl">「麻煩」</strong>。
                         </p>
-                        <p class="opacity-90 leading-loose text-lg">
+                        <p class="opacity-90 leading-loose">
                             想到要寫腳本、背台詞、架燈光，拍一支影片 NG 十幾次，好不容易拍完，一天也過去了。這種「時間成本」對於分秒必爭的專業人士來說，實在太高了。<br>
                             但如果我告訴你，你只需要像平常跟客人聊天一樣，喝著咖啡，坐下來聊個 2 小時，就能完成一個月所需的 10 支高質感影片，你會不會覺得輕鬆很多？
                         </p>
-                        <p class="opacity-90 leading-loose text-lg">
+                        <p class="opacity-90 leading-loose">
                             這不是魔法，這是我們經過無數次實戰驗證的<strong class="text-[#c9a67a]">「引導式拍攝SOP」</strong>。今天，就帶你揭秘我們是如何做到的。
                         </p>
 
@@ -1171,7 +1163,7 @@
                             </p>
                             <div class="p-6 bg-white/5 rounded-2xl border-l-4 border-[#c9a67a] my-6">
                                 <h4 class="font-bold text-white text-xl mb-4">舉例：美業設計師的磁場：不只賣髮型，更賣「懂你」</h4>
-                                <p class="opacity-90 leading-loose">
+                                <p class="opacity-90 text-lg leading-loose">
                                     過去，設計師只會拍美美的髮型成品照。<br>
                                     但在我們的「引導式拍攝」中，我們讓設計師面對鏡頭聊：「為什麼你會建議客人不要染這個顏色？」<br><br>
                                     當設計師說出：「因為會傷害髮質，雖然不染我少賺一筆，但我希望她的頭髮健康。」<br>
